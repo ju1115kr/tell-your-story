@@ -1,0 +1,9 @@
+*/*.sqlite
+*.wsgi
+*.pyc
+*~
+venv/
+nohup*
+migrations/*
+.idea
+*.swo
