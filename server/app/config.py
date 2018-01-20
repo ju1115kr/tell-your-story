@@ -13,10 +13,12 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
 
 
 class ProductionConfig(Config):
     DEBUG = False
+    SQLALCHEMY_DATABASE_URI = 'mysql://tellyourstory:tellyourstory@localhost/tellyourstory')
 
 config = {
     'development': DevelopmentConfig,

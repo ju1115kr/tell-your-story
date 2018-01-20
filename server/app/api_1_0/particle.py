@@ -2,9 +2,8 @@
 from flask import request, jsonify, make_response, url_for, g
 from . import api
 from .. import db
-from ..models import User, Comment, Particle
+from ..models import Particle, Comment
 from errors import not_found, forbidden, bad_request
-from datetime import datetime
 from flask.ext.cors import cross_origin
 import os
 

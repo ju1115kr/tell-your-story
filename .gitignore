@@ -7,3 +7,4 @@ nohup*
 migrations/*
 .idea
 *.swo
+*.swp
