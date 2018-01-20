@@ -47,7 +47,6 @@ def get_particle_comments(particle_id):
 
 
 @api.route('/comments/<int:comment_id>', methods=['GET'])  # 특정 덧글 요청
-@auth.login_required
 def get_comment(comment_id):
     comment = Comment.query.get(comment_id)
     if comment is None:

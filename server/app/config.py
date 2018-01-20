@@ -18,7 +18,7 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'mysql://tellyourstory:tellyourstory@localhost/tellyourstory')
+    SQLALCHEMY_DATABASE_URI = 'mysql://tellyourstory:tellyourstory@localhost/tellyourstory'
 
 config = {
     'development': DevelopmentConfig,

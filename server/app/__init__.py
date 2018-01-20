@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
+from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.cors import CORS
 
 from .config import config
@@ -7,6 +8,7 @@ from .config import config
 from flask_socketio import SocketIO
 
 app = Flask(__name__)
+db = SQLAlchemy()
 socketio = SocketIO()
 
 def create_app(config_name):
@@ -14,6 +16,7 @@ def create_app(config_name):
     app.config.from_object(config['default'])
     config['default'].init_app(app)
 
+    db.init_app(app)
     socketio.init_app(app) #For initialize SocketIO app
 
     from .api_1_0 import api as api_1_0_blueprint
