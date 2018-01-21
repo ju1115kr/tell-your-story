@@ -4,7 +4,7 @@ from . import api
 from .. import db
 from ..models import Particle, Comment
 from errors import not_found, forbidden, bad_request
-from flask.ext.cors import cross_origin
+from flask_cors import cross_origin
 import os
 
 

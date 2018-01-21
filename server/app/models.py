@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from flask import url_for, current_app, g
 from . import db
 from app.exceptions import ValidationError
 from datetime import datetime
@@ -11,7 +10,7 @@ class Particle(db.Model):
     author_id = db.Column(db.Integer, nullable=False)
     context = db.Column(db.Text, nullable=False)
     parsed_context = db.Column(db.Text)
-    geometry = db.Column(db.Text, nullabe=False)
+    geometry = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, index=True,
                     default=datetime.utcnow)
 
@@ -30,7 +29,7 @@ class Particle(db.Model):
             'author': self.author_id,
             'context': self.context,
             'created_at': self.created_at,
-			'geometry' : self.geometry,
+			'geometry': self.geometry,
         }
         return json_particle
 

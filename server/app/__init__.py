@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 from .config import config
 

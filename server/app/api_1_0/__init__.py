@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint
-from flask.ext.cors import CORS
+from flask_cors import CORS
 
 # Flask Blueprint 정의
 api = Blueprint('api', __name__)
