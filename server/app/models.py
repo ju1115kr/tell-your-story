@@ -8,10 +8,10 @@ from datetime import datetime
 class Particle(db.Model):
     __tablename__ = 'particles'
     id = db.Column(db.Integer, primary_key=True)
-    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    author_id = db.Column(db.Integer, nullable=False)
     context = db.Column(db.Text, nullable=False)
     parsed_context = db.Column(db.Text)
-    geometry = db.Column(db.Text)
+    geometry = db.Column(db.Text, nullabe=False)
     created_at = db.Column(db.DateTime, index=True,
                     default=datetime.utcnow)
 
@@ -58,7 +58,7 @@ class Comment(db.Model):
     context = db.Column(db.Text)
     parsed_context = db.Column(db.Text)
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    author_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    author_id = db.Column(db.Integer, nullable=False)
     particle_id = db.Column(db.Integer, db.ForeignKey('particles.id'), nullable=False)
     parent_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     comments = db.relationship('Comment', lazy='dynamic')
