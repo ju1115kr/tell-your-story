@@ -4,7 +4,7 @@
 *~
 venv/
 nohup*
-migrations/*
+server/migrations/*
 .idea
 *.swo
 *.swp
