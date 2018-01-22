@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>조선의 먼찌들</title>
+  <script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <link href="http://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/mainView.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/form.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/d3-tip.css" />
+</head>
+
+<body>
+  <!--header id="header"></header>
+  <aside id="aside"></aside-->
+
+  <div id="mainView">
+
+    <div class="globe">
+      <input type="text" id="searchBox" name="search" placeholder="Search..." /><br />
+      <svg id="d3-globe"></svg>
+    </div>      
+
+    <div class="wrapper">
+      <div id="message">
+        <img id="authorPicture" src="" alt="" />
+        <hr />
+        <div id="mainContext"></div>
+      </div>
+
+      <div>
+        <form action="#" class="commentBroadcast">
+          <img id="myPicture" src="" alt="" />
+          <input type="text" id="commentTextarea" />
+          <button id="commentSend">Send</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="broadcast">
+    <div id="facebookLoginForm">
+      <fb:login-button id="fbLoginButton" scope="public_profile, email" onlogin="checkLoginState();">Hi</fb:login-button>
+    </div>
+    <form class="particleBroadcast">
+      <img id="myPicture" src="/stylesheets/searchicon.png" alt="" / >
+      <input type="text" id="particleTextarea" />
+      <button id="particleSend">Send</button>
+    </form>
+  </div>
+</body>
+</html>
+
+<script>
+  $('form#search').submit(function(event){
+    console.log($('input#searchBox').val());
+  });
+</script>
+
+<script>
+// Map configuration
+var width  = $("#d3-globe").width();
+var height = $("#d3-globe").height();
+var rScale = d3.scale.sqrt();
+var peoplePerPixel = 50000;
+var max_population = [];
+
+// Configuration for the spinning effect
+var time = Date.now();
+var rotate = [0, 0];
+var velocity = [.015, -0];
+
+// set projection type and paremetes
+var projection = d3.geo.orthographic()
+//var projection = d3.geo.equirectangular()
+   .scale(250)
+   .translate([(width / 2), height / 2])
+   .clipAngle(90)
+   .precision(0.3);
+
+// create path variable, empty svg element and group container
+var path = d3.geo.path()
+   .projection(projection);
+var svg = d3.select("svg");
+var g = svg.append("g");
+
+var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) { 
+        console.log(d.geometry.coordinates); 
+        return d.geometry.coordinates; 
+    })
+
+g.call(tip)
+
+// drawing dark grey spehere as landmass
+g.append("path")
+   .datum({type: "Sphere"})
+   .attr("class", "sphere")
+   .attr("d", path)
+   .attr("fill", "#0D0D0D")
+//   .attr("xlink:href", 'http:/placekitten.com/g/48/48');
+
+// loading city locations from geoJSON
+d3.json("geonames_cities_100k.geojson", function(error, data) {
+
+         // Handle errors getting and parsing the data
+         if (error) { return error; }
+         population_array = [];
+         for (i = 0; i < data.features.length; i++) {
+            population_array.push(data.features[i].properties.population);
+         }
+         max_population = population_array.sort(d3.descending)[0]
+         var rMin = 0;
+         var rMax = Math.sqrt(max_population / (peoplePerPixel * Math.PI));
+         rScale.domain([0, max_population]);
+         rScale.range([rMin, rMax]);
+
+         path.pointRadius(function(d) {
+            return d.properties ? rScale(d.properties.population) : 1;
+         });
+
+         // Drawing transparent circle markers for cities
+         g.selectAll("path.cities").data(data.features)
+            .enter()
+            .append("path").attr("class", "cities")
+            .attr("d", path)
+            .attr("fill", "#FFBA00")
+            .attr("fill-opacity", 0.5)
+            .on('mouseover', function() {
+                        tip
+                            .attr('class', 'd3-tip animate')
+                            .show
+                    })
+            .on('mouseout', tip.hide);
+
+        console.log(g.selectAll("path.cities")[0][0].getAttribute("fill"));
+        spinning_globe();
+});
+
+function spinning_globe(){
+   d3.timer(function() {
+
+      // get current time
+      var dt = Date.now() - time;
+
+      // get the new position from modified projection function
+      projection.rotate([rotate[0] + velocity[0] * dt, rotate[1] + velocity[1] * dt]);
+
+      // update cities position = redraw
+      svg.selectAll("path.cities").attr("d", path)
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
+   });
+
+}
+
+</script>
+
+<script>
+
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+
+    if (response.status === 'connected') {
+      console.log(response.authResponse.userID);
+      userID = response.authResponse.userID;
+      testAPI(userID);
+    } else if (response.status === 'not_authorized') {
+      //document.getElementById('status').innerHTML = 'Please log' + 'into this app.';
+    } else {
+      //document.getElementById('status').innerHTML = 'Please log' + 'into Facebook.';
+    }
+  }
+
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  function testAPI(userID) {
+    console.log('Welcome! Fetching your information');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+    });
+    $("#fbLoginButton").hide();
+    $("img#myPicture")
+        .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
+    $("form#particleBroadcast").show();
+  }
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id))
+      return; js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId : '1339808736124796',
+      cookie : true,
+      xfbml : true,
+      version : 'v2.11'
+    });
+  }
+</script>

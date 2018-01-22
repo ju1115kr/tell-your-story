@@ -1,0 +1,41 @@
+div#mainView {
+  display: grid;
+  //grid: ;
+  //grid-template-columns: 1fr 1fr;
+  //grid-template-rows: 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  background-color: #f4c20d;
+  padding: 3px;
+  margin: 4px 0;
+  height: 700px;
+}
+
+div.globe{
+  background-color: #4885ed;
+}
+
+svg#d3-globe {
+  background-color: gray;
+  margin: 5px 5px;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  height: 80%;
+  align: center;
+}
+
+div.wrapper {
+  background-color: #3cba54;
+}
+
+div.braodcast {
+  background-color: black;
+}
+
+@media screen and (min-width: 800px) {
+  #mainView {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
