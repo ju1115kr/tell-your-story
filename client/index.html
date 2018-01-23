@@ -15,47 +15,222 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/d3-tip.css" />
 </head>
 
+<style>
+img#logoImg {
+  margin-top: 20px;
+  display: block;
+  //margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  height: 20%;
+  float: center;
+}
+
+#navBarForm {
+  border-radius: 35px;
+  background-color: #333;
+  width: 328px;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+#navBarForm a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-deocration: none;
+  font-size: 17px;
+}
+
+#navBarForm a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navBarForm a.active {
+  background-color: #6B2B8F;
+  color: white;
+}
+
+.axis path, .axis line {
+  file: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+svg {
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: center;
+}
+
+</style>
+
 <body>
-  <!--header id="header"></header>
-  <aside id="aside"></aside-->
 
-  <div id="mainView">
-
-    <div class="globe">
-      <input type="text" id="searchBox" name="search" placeholder="Search..." /><br />
-      <svg id="d3-globe"></svg>
-    </div>      
-
-    <div class="wrapper">
-      <div id="message">
-        <img id="authorPicture" src="" alt="" />
-        <hr />
-        <div id="mainContext"></div>
-      </div>
-
-      <div>
-        <form action="#" class="commentBroadcast">
-          <img id="myPicture" src="" alt="" />
-          <input type="text" id="commentTextarea" />
-          <button id="commentSend">Send</button>
-        </form>
-      </div>
-
-    </div>
+  <div id="logoForm" style="float:center">
+    <img id="logoImg" src="picture/meonzziLogo.png" alt="" />
   </div>
+
+  <div id="navBarForm">
+    <a class="active" href="#">Universe</a>
+    <a href="#">About</a>
+    <a href="#">News</a>
+    <a href="#">Video</a>
+  </div>
+
+  <div id="searchBarForm">
+    <strong>태그 검색</strong><br />
+    <input type="text" id="searchBox" name="search" placeholder="태그 검색" />
+
+  </div>
+
+  <div id="stardustForm"></div>
 
   <div class="broadcast">
     <div id="facebookLoginForm">
       <fb:login-button id="fbLoginButton" scope="public_profile, email" onlogin="checkLoginState();">Hi</fb:login-button>
     </div>
-    <form class="particleBroadcast">
-      <img id="myPicture" src="/stylesheets/searchicon.png" alt="" / >
-      <input type="text" id="particleTextarea" />
-      <button id="particleSend">Send</button>
     </form>
   </div>
 </body>
 </html>
+
+
+<script type="text/javascript">
+//  var w = window.innerWidth,
+//    h = window.innerHeight,
+  var w = $("body").width() * 0.8,
+    h = $("body").height() * 0.8,
+    margin = { top: 40, right: 20, bottom: 20, left: 40 },
+    radius = 6;
+
+  var svg = d3.select("div#stardustForm").append("svg").attr({
+    width: w,
+    height: h
+  });
+
+      var dataset = [
+        { x: 100, y: 110 },
+        { x: 83, y: 43 },
+        { x: 92, y: 28 },
+        { x: 49, y: 74 },
+        { x: 51, y: 10 },
+        { x: 25, y: 98 },
+        { x: 77, y: 30 },
+        { x: 20, y: 83 },
+        { x: 11, y: 63 },
+        { x:  4, y: 55 },
+        { x:  0, y:  0 },
+        { x: 85, y: 100 },
+        { x: 60, y: 40 },
+        { x: 70, y: 80 },
+        { x: 10, y: 20 },
+        { x: 40, y: 50 },
+        { x: 25, y: 31 }
+      ];
+
+      // We're passing in a function in d3.max to tell it what we're maxing (x value)
+      var xScale = d3.scale.linear()
+          .domain([0, d3.max(dataset, function (d) { return d.x + 10; })])
+          .range([margin.left, w - margin.right]);  // Set margins for x specific
+
+      // We're passing in a function in d3.max to tell it what we're maxing (y value)
+      var yScale = d3.scale.linear()
+          .domain([0, d3.max(dataset, function (d) { return d.y + 10; })])
+          .range([margin.top, h - margin.bottom]);  // Set margins for y specific
+
+      // Add a X and Y Axis (Note: orient means the direction that ticks go, not position)
+      var xAxis = d3.svg.axis().scale(xScale).orient("top");
+      var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+      var circleAttrs = {
+          cx: function(d) { return xScale(d.x); },
+          cy: function(d) { return yScale(d.y); },
+          r: radius
+      };
+
+      // Adds X-Axis as a 'g' element
+      svg.append("g").attr({
+        "class": "axis",  // Give class so we can style it
+        transform: "translate(" + [0, margin.top] + ")"  // Translate just moves it down into position (or will be on top)
+      }).call(xAxis);  // Call the xAxis function on the group
+
+      // Adds Y-Axis as a 'g' element
+      svg.append("g").attr({
+        "class": "axis",
+        transform: "translate(" + [margin.left, 0] + ")"
+      }).call(yAxis);  // Call the yAxis function on the group
+
+      svg.selectAll("circle")
+          .data(dataset)
+          .enter()
+          .append("circle")
+          .attr(circleAttrs)  // Get attributes from circleAttrs var
+          .on("mouseover", handleMouseOver)
+          .on("mouseout", handleMouseOut);
+
+      // On Click, we want to add data to the array and chart
+      svg.on("click", function() {
+          var coords = d3.mouse(this);
+
+          // Normally we go from data to pixels, but here we're doing pixels to data
+          var newData= {
+            x: Math.round( xScale.invert(coords[0])),  // Takes the pixel number to convert to number
+            y: Math.round( yScale.invert(coords[1]))
+          };
+
+          dataset.push(newData);   // Push data to our array
+
+          svg.selectAll("circle")  // For new circle, go through the update process
+            .data(dataset)
+            .enter()
+            .append("circle")
+            .attr(circleAttrs)  // Get attributes from circleAttrs var
+            .on("mouseover", handleMouseOver)
+            .on("mouseout", handleMouseOut);
+        })
+
+      // Create Event Handlers for mouse
+      function handleMouseOver(d, i) {  // Add interactivity
+
+            // Use D3 to select element, change color and size
+            d3.select(this).attr({
+              fill: "orange",
+              r: radius * 2
+            });
+
+            // Specify where to put label of text
+            svg.append("text").attr({
+               id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
+                x: function() { return xScale(d.x) - 30; },
+                y: function() { return yScale(d.y) - 15; }
+            })
+            .text(function() {
+              return [d.x, d.y];  // Value of the text
+            });
+          }
+
+      function handleMouseOut(d, i) {
+            // Use D3 to select element, change color back to normal
+            d3.select(this).attr({
+              fill: "black",
+              r: radius
+            });
+
+            // Select text by id and then remove
+            d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+          }
+
+
+</script>
 
 <script>
   $('form#search').submit(function(event){
@@ -63,109 +238,8 @@
   });
 </script>
 
-<script>
-// Map configuration
-var width  = $("#d3-globe").width();
-var height = $("#d3-globe").height();
-var rScale = d3.scale.sqrt();
-var peoplePerPixel = 50000;
-var max_population = [];
-
-// Configuration for the spinning effect
-var time = Date.now();
-var rotate = [0, 0];
-var velocity = [.015, -0];
-
-// set projection type and paremetes
-var projection = d3.geo.orthographic()
-//var projection = d3.geo.equirectangular()
-   .scale(250)
-   .translate([(width / 2), height / 2])
-   .clipAngle(90)
-   .precision(0.3);
-
-// create path variable, empty svg element and group container
-var path = d3.geo.path()
-   .projection(projection);
-var svg = d3.select("svg");
-var g = svg.append("g");
-
-var tip = d3.tip()
-    .attr('class', 'd3-tip')
-    .offset([-10, 0])
-    .html(function(d) { 
-        console.log(d.geometry.coordinates); 
-        return d.geometry.coordinates; 
-    })
-
-g.call(tip)
-
-// drawing dark grey spehere as landmass
-g.append("path")
-   .datum({type: "Sphere"})
-   .attr("class", "sphere")
-   .attr("d", path)
-   .attr("fill", "#0D0D0D")
-//   .attr("xlink:href", 'http:/placekitten.com/g/48/48');
-
-// loading city locations from geoJSON
-d3.json("geonames_cities_100k.geojson", function(error, data) {
-
-         // Handle errors getting and parsing the data
-         if (error) { return error; }
-         population_array = [];
-         for (i = 0; i < data.features.length; i++) {
-            population_array.push(data.features[i].properties.population);
-         }
-         max_population = population_array.sort(d3.descending)[0]
-         var rMin = 0;
-         var rMax = Math.sqrt(max_population / (peoplePerPixel * Math.PI));
-         rScale.domain([0, max_population]);
-         rScale.range([rMin, rMax]);
-
-         path.pointRadius(function(d) {
-            return d.properties ? rScale(d.properties.population) : 1;
-         });
-
-         // Drawing transparent circle markers for cities
-         g.selectAll("path.cities").data(data.features)
-            .enter()
-            .append("path").attr("class", "cities")
-            .attr("d", path)
-            .attr("fill", "#FFBA00")
-            .attr("fill-opacity", 0.5)
-            .on('mouseover', function() {
-                        tip
-                            .attr('class', 'd3-tip animate')
-                            .show
-                    })
-            .on('mouseout', tip.hide);
-
-        console.log(g.selectAll("path.cities")[0][0].getAttribute("fill"));
-        spinning_globe();
-});
-
-function spinning_globe(){
-   d3.timer(function() {
-
-      // get current time
-      var dt = Date.now() - time;
-
-      // get the new position from modified projection function
-      projection.rotate([rotate[0] + velocity[0] * dt, rotate[1] + velocity[1] * dt]);
-
-      // update cities position = redraw
-      svg.selectAll("path.cities").attr("d", path)
-        .on('mouseover', tip.show)
-        .on('mouseout', tip.hide);
-   });
-
-}
-
-</script>
 
 <script>
-
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
