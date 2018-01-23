@@ -11,7 +11,7 @@ import os
 @api.route('/particle', methods=['GET'])
 def get_all_particle():
     particles = Particle.query.all()
-    return jsonify({'particle': [particle.to_json() for particle in particles]})
+    return jsonify({'particles': [particle.to_json() for particle in particles]})
 
 
 @api.route('/particle/<int:id>', methods=['GET'])
@@ -36,6 +36,44 @@ def post_particle():
     resp.headers['Location'] = url_for('api.get_particle', id=particle.id)
     resp.status_code = 201
     return resp
+
+
+@api.route('/particle/<int:particle_id/like', methods=['GET'])
+def get_particle_like(particle_id):
+    particle = Particle.query.get(particle_id)
+    if particle is None:
+        return not_found('Particle does not exist')
+    return jsonify({'likes': [like.to_json() for like in particle.likes]})
+
+
+@api.route('/particle/<int:particle_id>/like', methods=['POST'])
+def post_particle_like(particle_id):
+    if request.json is None and request.json.get('userID'):
+        return bad_request('JSON Request is invaild')
+    particle = Particle.query.get(particle_id)
+    if particle is None:
+        return not_found('Particle does not exist')
+
+    userID = request.json.get('userID')
+    particle.likes.append(userID)
+
+    return jsonify(particle.to_json())
+
+
+@api.route('/particle/<int:particle_id>/like', methods=['DELETE'])
+def delete_particle_like(particle_id):
+    if request.json is None and request.json.get('userID'):
+        return bad_request('JSON Request is invaild')
+    particle = Particle.query.get(particle_id)
+    if particle is None:
+        return not_found('Particle does not exist')
+
+    userID = request.json.get('userID')
+    if particle.likes.count(userID) == 0:
+        return not_found('User does not like this particle')
+    else particle.likes.count(userID) >= 1:
+        particle.likes.remove(userID)
+        return jsonify(particle.to_json())
 
 
 @api.route('/particle/<int:particle_id>/comments', methods=['GET'])  # 모든 덧글 조회

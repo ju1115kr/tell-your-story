@@ -10,7 +10,9 @@ class Particle(db.Model):
     author_id = db.Column(db.Integer, nullable=False)
     context = db.Column(db.Text, nullable=False)
     parsed_context = db.Column(db.Text)
-    geometry = db.Column(db.Text, nullable=False)
+    x = db.Column(db.Integer, nullable=False)
+    y = db.Column(db.Integer, nullable=False)
+    likes = db.Column(db.Text)
     created_at = db.Column(db.DateTime, index=True,
                     default=datetime.utcnow)
 
@@ -29,7 +31,9 @@ class Particle(db.Model):
             'author': self.author_id,
             'context': self.context,
             'created_at': self.created_at,
-			'geometry': self.geometry,
+			'x': self.x,
+            'y': self.y,
+            'likes': self.likes,
         }
         return json_particle
 
@@ -38,16 +42,18 @@ class Particle(db.Model):
     def from_json(json_particle):  # json 입력 루틴
         author_id = json_particle.get('author_id')
         context = json_particle.get('context')
-        geometry = json_particle.get('geometry')
+        x = json_particle.get('x')
+        y = json_particle.get('y')
+        likes = []
 
         if (author_id is None or author_id == '') and \
                 (context is None or context == '') and \
-                (geometry is None or geometry == ''):
+                (x is None or x == '') and (y is None or y == ''):
             raise ValidationError('particle does not have information')
         parsed_context = removeEscapeChar(context).lower()
 
         particle = Particle(author_id=author_id, context=context, parsed_context=parsed_context,
-                geometry=geometry)
+                x=x, y=y, likes=likes)
         return particle
 
 
