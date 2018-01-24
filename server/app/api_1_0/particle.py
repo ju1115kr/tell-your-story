@@ -38,7 +38,7 @@ def post_particle():
     return resp
 
 
-@api.route('/particle/<int:particle_id/like', methods=['GET'])
+@api.route('/particle/<int:particle_id>/like', methods=['GET'])
 def get_particle_like(particle_id):
     particle = Particle.query.get(particle_id)
     if particle is None:
@@ -71,9 +71,11 @@ def delete_particle_like(particle_id):
     userID = request.json.get('userID')
     if particle.likes.count(userID) == 0:
         return not_found('User does not like this particle')
-    else particle.likes.count(userID) >= 1:
+    elif particle.likes.count(userID) >= 1:
         particle.likes.remove(userID)
         return jsonify(particle.to_json())
+    else:
+        return bad_request('User does not exist')
 
 
 @api.route('/particle/<int:particle_id>/comments', methods=['GET'])  # 모든 덧글 조회
