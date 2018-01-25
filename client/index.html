@@ -5,73 +5,13 @@
   <title>조선의 먼찌들</title>
   <script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
   <link href="http://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
   <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
   <link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/mainView.css" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/form.css" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/d3-tip.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/broadcast.css" />
 </head>
-
-<style>
-img#logoImg {
-  margin-top: 20px;
-  display: block;
-  //margin: auto;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
-  height: 20%;
-  float: center;
-}
-
-#navBarForm {
-  border-radius: 35px;
-  background-color: #333;
-  width: 328px;
-  margin-top: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-}
-
-#navBarForm a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-deocration: none;
-  font-size: 17px;
-}
-
-#navBarForm a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-#navBarForm a.active {
-  background-color: #6B2B8F;
-  color: white;
-}
-
-.axis path, .axis line {
-  file: none;
-  stroke: black;
-  shape-rendering: crispEdges;
-}
-
-svg {
-  margin-top: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  float: center;
-}
-
-</style>
 
 <body>
 
@@ -87,9 +27,9 @@ svg {
   </div>
 
   <div id="searchBarForm">
-    <strong>태그 검색</strong><br />
+    <strong>태그 검색</strong><p>추천 키워드 #군대 #전여친</p>
+    <hr />
     <input type="text" id="searchBox" name="search" placeholder="태그 검색" />
-
   </div>
 
   <div id="stardustForm"></div>
@@ -98,7 +38,6 @@ svg {
     <div id="facebookLoginForm">
       <fb:login-button id="fbLoginButton" scope="public_profile, email" onlogin="checkLoginState();">Hi</fb:login-button>
     </div>
-    </form>
   </div>
 </body>
 </html>
@@ -240,6 +179,37 @@ svg {
 
 
 <script>
+
+  function ajaxTest(){
+    var SendInfo = { author_id:"123", context:"test", x:0, y:0 };
+
+//    $.ajax({
+//      type: 'post',
+//      url: 'http://ju1115kr.iptime.org:9009/api/v1.0/particle',
+//      data: JSON.stringify(SendInfo),
+//      contentType: "application/json; charset=utf-8",
+//      traditional: true,
+//      success: function(data, response){
+//        console.log(data);
+//        console.log(response);
+//      }
+//    });
+
+    $.ajax({
+      type: 'get',
+      url: 'http://ju1115kr.iptime.org:9009/api/v1.0/particle',
+      contentType: 'application/json; charset=utf-8',
+      traditional: true,
+      success: function(data, response){
+        console.log(data.particles);
+        console.log(data.particles[0].created_at);
+        console.log(response);
+      }
+    });
+  }
+
+  ajaxTest();
+
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
