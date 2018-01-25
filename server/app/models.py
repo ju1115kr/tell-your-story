@@ -2,25 +2,30 @@
 from . import db
 from app.exceptions import ValidationError
 from datetime import datetime
-
+from sqlalchemy.dialects.postgresql import ARRAY
 
 class Particle(db.Model):
     __tablename__ = 'particles'
     id = db.Column(db.Integer, primary_key=True)
-    author_id = db.Column(db.Integer, nullable=False)
+    author_id = db.Column(db.BigInteger, nullable=False)
     context = db.Column(db.Text, nullable=False)
     parsed_context = db.Column(db.Text)
-    x = db.Column(db.Integer, nullable=False)
-    y = db.Column(db.Integer, nullable=False)
-    likes = db.Column(db.Text)
+    x = db.Column(db.Float, nullable=False)
+    y = db.Column(db.Float, nullable=False)
+    likes = db.Column(ARRAY(db.Integer))
     created_at = db.Column(db.DateTime, index=True,
                     default=datetime.utcnow)
 
     comments = db.relationship('Comment', backref='particle', lazy='dynamic')
 
-    def __init__(self, context, parsed_context):
+
+    def __init__(self, author_id, context, parsed_context, x, y):
+        self.author_id = author_id
         self.context = context
         self.parsed_context = parsed_context
+        self.x = x
+        self.y = y
+        #self.likes = []
 
     def __repr__(self):
         return '<Particle [%r](%r):%r>' % (self.created_at, self.author_id, self.context)
@@ -44,7 +49,6 @@ class Particle(db.Model):
         context = json_particle.get('context')
         x = json_particle.get('x')
         y = json_particle.get('y')
-        likes = []
 
         if (author_id is None or author_id == '') and \
                 (context is None or context == '') and \
@@ -52,8 +56,8 @@ class Particle(db.Model):
             raise ValidationError('particle does not have information')
         parsed_context = removeEscapeChar(context).lower()
 
-        particle = Particle(author_id=author_id, context=context, parsed_context=parsed_context,
-                x=x, y=y, likes=likes)
+        particle = Particle(author_id=author_id, context=context,
+                parsed_context=parsed_context, x=x, y=y)
         return particle
 
 
@@ -104,7 +108,11 @@ class Comment(db.Model):
 
 def removeEscapeChar(context):
     import re
-    str = re.sub("(<([^>]+)>", "", context)
+    str = re.sub("(<([^>]+)>)", "", context)
     str = str.replace('&nbsp;', "").replace('&lt;', "<").replace('&gt;', ">")\
         .replace('&amp;', "&").replace('&quot;', '"')
     return str
+
+
+
+

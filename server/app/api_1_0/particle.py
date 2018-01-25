@@ -43,20 +43,31 @@ def get_particle_like(particle_id):
     particle = Particle.query.get(particle_id)
     if particle is None:
         return not_found('Particle does not exist')
-    return jsonify({'likes': [like.to_json() for like in particle.likes]})
+    return jsonify(particle.to_json())
+#    return jsonify({'likes': [like.to_json() for like in particle.likes]})
 
 
 @api.route('/particle/<int:particle_id>/like', methods=['POST'])
 def post_particle_like(particle_id):
     if request.json is None and request.json.get('userID'):
         return bad_request('JSON Request is invaild')
-    particle = Particle.query.get(particle_id)
+    particle = Particle.query.filter_by(id=particle_id).first()
     if particle is None:
         return not_found('Particle does not exist')
 
     userID = request.json.get('userID')
-    particle.likes.append(userID)
 
+    userList = particle.likes
+    userList = list(userList)
+
+    print(particle.likes)
+    print(userList)
+    print(type(particle.likes))
+    print(userList[1])
+    print(dir(particle.likes))
+#    particle.likes.append(userList)
+    particle.likes.append(userID)
+    db.session.commit()
     return jsonify(particle.to_json())
 
 
