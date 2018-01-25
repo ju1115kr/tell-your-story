@@ -2,7 +2,6 @@
 from . import db
 from app.exceptions import ValidationError
 from datetime import datetime
-from sqlalchemy.dialects.postgresql import ARRAY
 
 class Particle(db.Model):
     __tablename__ = 'particles'
@@ -12,7 +11,6 @@ class Particle(db.Model):
     parsed_context = db.Column(db.Text)
     x = db.Column(db.Float, nullable=False)
     y = db.Column(db.Float, nullable=False)
-#    likes = db.Column(ARRAY(db.Integer))
     created_at = db.Column(db.DateTime, index=True,
                     default=datetime.utcnow)
 
@@ -25,7 +23,6 @@ class Particle(db.Model):
         self.parsed_context = parsed_context
         self.x = x
         self.y = y
-        #self.likes = []
 
     def __repr__(self):
         return '<Particle [%r](%r):%r>' % (self.created_at, self.author_id, self.context)
@@ -129,7 +126,4 @@ def removeEscapeChar(context):
     str = str.replace('&nbsp;', "").replace('&lt;', "<").replace('&gt;', ">")\
         .replace('&amp;', "&").replace('&quot;', '"')
     return str
-
-
-
 
