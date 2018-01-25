@@ -33,7 +33,7 @@ class Particle(db.Model):
             'author': self.author_id,
             'context': self.context,
             'created_at': self.created_at,
-			'x': self.x,
+            'x': self.x,
             'y': self.y,
             'likes': [ like.user_id for like in self.likes ],
             'likes_count': self.likes.count(),
