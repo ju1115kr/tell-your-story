@@ -2,7 +2,7 @@
 from flask import request, jsonify, make_response, url_for, g
 from . import api
 from .. import db
-from ..models import Particle, Comment
+from ..models import Particle, Like, Comment
 from errors import not_found, forbidden, bad_request
 from flask_cors import cross_origin
 import os
@@ -38,36 +38,39 @@ def post_particle():
     return resp
 
 
-@api.route('/particle/<int:particle_id>/like', methods=['GET'])
-def get_particle_like(particle_id):
-    particle = Particle.query.get(particle_id)
-    if particle is None:
+@api.route('/particle/<int:particle_id>', methods=['PUT'])
+def put_particle(particle_id):
+    if request.json is None:
+        return bad_request('JSON Request is invaild')
+    old_particle = Particle.query.filter_by(id=particle_id).first()
+    if old_particle is None:
         return not_found('Particle does not exist')
-    return jsonify(particle.to_json())
-#    return jsonify({'likes': [like.to_json() for like in particle.likes]})
+    particle = Particle.from_json(request.json)
+    old_particle.context = particle.context
+    old_particle.x = particle.x
+    old_particle.y = particle.y
+    db.session.commit()
+    return jsonify(old_particle.to_json())
 
 
 @api.route('/particle/<int:particle_id>/like', methods=['POST'])
 def post_particle_like(particle_id):
     if request.json is None and request.json.get('userID'):
         return bad_request('JSON Request is invaild')
-    particle = Particle.query.filter_by(id=particle_id).first()
+    particle = Particle.query.get(particle_id)
     if particle is None:
         return not_found('Particle does not exist')
 
-    userID = request.json.get('userID')
+    for like in particle.likes:
+        if int(request.json.get('userID')) == like.user_id:
+            return bad_request('user already like this particle')
 
-    userList = particle.likes
-    userList = list(userList)
+    like = Like.from_json(request.json)
+    like.particle_id = particle_id
 
-    print(particle.likes)
-    print(userList)
-    print(type(particle.likes))
-    print(userList[1])
-    print(dir(particle.likes))
-#    particle.likes.append(userList)
-    particle.likes.append(userID)
+    db.session.add(like)
     db.session.commit()
+
     return jsonify(particle.to_json())
 
 
@@ -79,14 +82,17 @@ def delete_particle_like(particle_id):
     if particle is None:
         return not_found('Particle does not exist')
 
-    userID = request.json.get('userID')
-    if particle.likes.count(userID) == 0:
-        return not_found('User does not like this particle')
-    elif particle.likes.count(userID) >= 1:
-        particle.likes.remove(userID)
-        return jsonify(particle.to_json())
-    else:
-        return bad_request('User does not exist')
+    user_id = request.json.get('userID')
+    if int(user_id) not in [ like.user_id for like in particle.likes ]:
+        return bad_request('user does not like this particle')
+
+    like = Like.query.filter_by(user_id=user_id) \
+                    .filter_by(particle_id=particle_id).first()
+
+    db.session.delete(like)
+    db.session.commit()
+
+    return '', 204
 
 
 @api.route('/particle/<int:particle_id>/comments', methods=['GET'])  # 모든 덧글 조회

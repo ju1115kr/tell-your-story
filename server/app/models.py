@@ -12,12 +12,12 @@ class Particle(db.Model):
     parsed_context = db.Column(db.Text)
     x = db.Column(db.Float, nullable=False)
     y = db.Column(db.Float, nullable=False)
-    likes = db.Column(ARRAY(db.Integer))
+#    likes = db.Column(ARRAY(db.Integer))
     created_at = db.Column(db.DateTime, index=True,
                     default=datetime.utcnow)
 
     comments = db.relationship('Comment', backref='particle', lazy='dynamic')
-
+    likes = db.relationship('Like', backref='particle', lazy='dynamic')
 
     def __init__(self, author_id, context, parsed_context, x, y):
         self.author_id = author_id
@@ -38,7 +38,8 @@ class Particle(db.Model):
             'created_at': self.created_at,
 			'x': self.x,
             'y': self.y,
-            'likes': self.likes,
+            'likes': [ like.user_id for like in self.likes ],
+            'likes_count': self.likes.count(),
         }
         return json_particle
 
@@ -50,15 +51,31 @@ class Particle(db.Model):
         x = json_particle.get('x')
         y = json_particle.get('y')
 
-        if (author_id is None or author_id == '') and \
-                (context is None or context == '') and \
-                (x is None or x == '') and (y is None or y == ''):
+        if author_id is None or author_id == '':
             raise ValidationError('particle does not have information')
         parsed_context = removeEscapeChar(context).lower()
 
         particle = Particle(author_id=author_id, context=context,
                 parsed_context=parsed_context, x=x, y=y)
         return particle
+
+
+class Like(db.Model):
+    __tablename__ = 'likes'
+    id = db.Column(db.Integer, primary_key=True)
+    particle_id = db.Column(db.Integer, db.ForeignKey('particles.id'), nullable=False)
+    user_id = db.Column(db.BigInteger, nullable=False)
+
+    def __init__(self, user_id):
+        self.user_id = user_id
+
+    @staticmethod
+    def from_json(json_like):
+        user_id = json_like.get('userID')
+        if user_id is None or user_id == '':
+            raise ValidationError('Like does not have information')
+        like = Like(user_id = user_id)
+        return like
 
 
 class Comment(db.Model):
