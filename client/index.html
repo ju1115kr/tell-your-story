@@ -2,11 +2,17 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<meta property="og:url" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="조선의 먼찌들">
+<meta property="og:description" content="당신의 찌질했던 기억들을 담아주세요.">
+<meta property="og:image" content="">
 <title>조선의 먼찌들</title>
 <script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="./js/d3.js" charset="utf-8"></script>
 <script src="./js/facebookLogin.js" charset="utf-8"></script>
+<script src="./js/ajaxQuery.js"></script>
 <link href="http://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
@@ -37,8 +43,11 @@
 
 <div class="broadcast">
     <div id="facebookLoginForm">
-        <fb:login-button id="fbLoginButton" scope="public_profile, email" onlogin="checkLoginState();">Hi</fb:login-button>
+        <fb:login-button id="fbLoginButton" scope="public_profile, email" onlogin="checkLoginState();">로그인</fb:login-button>
     </div>
+    <div class="fb-share-button"
+        data-href="http://ju1115kr.iptime.org:3000"
+        data-layout="button_count">공유하기</div>
 </div>
 
 <script src="./js/d3.js" charset="utf-8"></script>
