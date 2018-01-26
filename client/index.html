@@ -1,264 +1,48 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <title>조선의 먼찌들</title>
-  <script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <link href="http://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
-  <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/broadcast.css" />
+<meta charset="utf-8">
+<title>조선의 먼찌들</title>
+<script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="./js/d3.js" charset="utf-8"></script>
+<script src="./js/facebookLogin.js" charset="utf-8"></script>
+<link href="http://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/broadcast.css" />
 </head>
 
 <body>
-
-  <div id="logoForm" style="float:center">
+<div id="logoForm" style="float:center">
     <img id="logoImg" src="picture/meonzziLogo.png" alt="" />
-  </div>
+</div>
 
-  <div id="navBarForm">
+<div id="navBarForm">
     <a class="active" href="#">Universe</a>
     <a href="#">About</a>
     <a href="#">News</a>
     <a href="#">Video</a>
-  </div>
+</div>
 
-  <div id="searchBarForm">
+<div id="searchBarForm">
     <strong>태그 검색</strong><p>추천 키워드 #군대 #전여친</p>
     <hr />
     <input type="text" id="searchBox" name="search" placeholder="태그 검색" />
-  </div>
+</div>
 
-  <div id="stardustForm"></div>
+<div id="stardustForm"></div>
 
-  <div class="broadcast">
+<div class="broadcast">
     <div id="facebookLoginForm">
-      <fb:login-button id="fbLoginButton" scope="public_profile, email" onlogin="checkLoginState();">Hi</fb:login-button>
+        <fb:login-button id="fbLoginButton" scope="public_profile, email" onlogin="checkLoginState();">Hi</fb:login-button>
     </div>
-  </div>
+</div>
+
+<script src="./js/d3.js" charset="utf-8"></script>
 </body>
 </html>
 
 
-<script type="text/javascript">
-//  var w = window.innerWidth,
-//    h = window.innerHeight,
-  var w = $("body").width() * 0.8,
-    h = $("body").height() * 0.8,
-    margin = { top: 40, right: 20, bottom: 20, left: 40 },
-    radius = 6;
-
-  var svg = d3.select("div#stardustForm").append("svg").attr({
-    width: w,
-    height: h
-  });
-
-      var dataset = [
-        { x: 100, y: 110 },
-        { x: 83, y: 43 },
-        { x: 92, y: 28 },
-        { x: 49, y: 74 },
-        { x: 51, y: 10 },
-        { x: 25, y: 98 },
-        { x: 77, y: 30 },
-        { x: 20, y: 83 },
-        { x: 11, y: 63 },
-        { x:  4, y: 55 },
-        { x:  0, y:  0 },
-        { x: 85, y: 100 },
-        { x: 60, y: 40 },
-        { x: 70, y: 80 },
-        { x: 10, y: 20 },
-        { x: 40, y: 50 },
-        { x: 25, y: 31 }
-      ];
-
-      // We're passing in a function in d3.max to tell it what we're maxing (x value)
-      var xScale = d3.scale.linear()
-          .domain([0, d3.max(dataset, function (d) { return d.x + 10; })])
-          .range([margin.left, w - margin.right]);  // Set margins for x specific
-
-      // We're passing in a function in d3.max to tell it what we're maxing (y value)
-      var yScale = d3.scale.linear()
-          .domain([0, d3.max(dataset, function (d) { return d.y + 10; })])
-          .range([margin.top, h - margin.bottom]);  // Set margins for y specific
-
-      // Add a X and Y Axis (Note: orient means the direction that ticks go, not position)
-      var xAxis = d3.svg.axis().scale(xScale).orient("top");
-      var yAxis = d3.svg.axis().scale(yScale).orient("left");
-
-      var circleAttrs = {
-          cx: function(d) { return xScale(d.x); },
-          cy: function(d) { return yScale(d.y); },
-          r: radius
-      };
-
-      // Adds X-Axis as a 'g' element
-      svg.append("g").attr({
-        "class": "axis",  // Give class so we can style it
-        transform: "translate(" + [0, margin.top] + ")"  // Translate just moves it down into position (or will be on top)
-      }).call(xAxis);  // Call the xAxis function on the group
-
-      // Adds Y-Axis as a 'g' element
-      svg.append("g").attr({
-        "class": "axis",
-        transform: "translate(" + [margin.left, 0] + ")"
-      }).call(yAxis);  // Call the yAxis function on the group
-
-      svg.selectAll("circle")
-          .data(dataset)
-          .enter()
-          .append("circle")
-          .attr(circleAttrs)  // Get attributes from circleAttrs var
-          .on("mouseover", handleMouseOver)
-          .on("mouseout", handleMouseOut);
-
-      // On Click, we want to add data to the array and chart
-      svg.on("click", function() {
-          var coords = d3.mouse(this);
-
-          // Normally we go from data to pixels, but here we're doing pixels to data
-          var newData= {
-            x: Math.round( xScale.invert(coords[0])),  // Takes the pixel number to convert to number
-            y: Math.round( yScale.invert(coords[1]))
-          };
-
-          dataset.push(newData);   // Push data to our array
-
-          svg.selectAll("circle")  // For new circle, go through the update process
-            .data(dataset)
-            .enter()
-            .append("circle")
-            .attr(circleAttrs)  // Get attributes from circleAttrs var
-            .on("mouseover", handleMouseOver)
-            .on("mouseout", handleMouseOut);
-        })
-
-      // Create Event Handlers for mouse
-      function handleMouseOver(d, i) {  // Add interactivity
-
-            // Use D3 to select element, change color and size
-            d3.select(this).attr({
-              fill: "orange",
-              r: radius * 2
-            });
-
-            // Specify where to put label of text
-            svg.append("text").attr({
-               id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
-                x: function() { return xScale(d.x) - 30; },
-                y: function() { return yScale(d.y) - 15; }
-            })
-            .text(function() {
-              return [d.x, d.y];  // Value of the text
-            });
-          }
-
-      function handleMouseOut(d, i) {
-            // Use D3 to select element, change color back to normal
-            d3.select(this).attr({
-              fill: "black",
-              r: radius
-            });
-
-            // Select text by id and then remove
-            d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
-          }
-
-
-</script>
-
-<script>
-  $('form#search').submit(function(event){
-    console.log($('input#searchBox').val());
-  });
-</script>
-
-
-<script>
-
-  function ajaxTest(){
-    var SendInfo = { author_id:"123", context:"test", x:0, y:0 };
-
-//    $.ajax({
-//      type: 'post',
-//      url: 'http://ju1115kr.iptime.org:9009/api/v1.0/particle',
-//      data: JSON.stringify(SendInfo),
-//      contentType: "application/json; charset=utf-8",
-//      traditional: true,
-//      success: function(data, response){
-//        console.log(data);
-//        console.log(response);
-//      }
-//    });
-
-    $.ajax({
-      type: 'get',
-      url: 'http://ju1115kr.iptime.org:9009/api/v1.0/particle',
-      contentType: 'application/json; charset=utf-8',
-      traditional: true,
-      success: function(data, response){
-        console.log(data.particles);
-        console.log(data.particles[0].created_at);
-        console.log(response);
-      }
-    });
-  }
-
-  ajaxTest();
-
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-
-    if (response.status === 'connected') {
-      console.log(response.authResponse.userID);
-      userID = response.authResponse.userID;
-      testAPI(userID);
-    } else if (response.status === 'not_authorized') {
-      //document.getElementById('status').innerHTML = 'Please log' + 'into this app.';
-    } else {
-      //document.getElementById('status').innerHTML = 'Please log' + 'into Facebook.';
-    }
-  }
-
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  function testAPI(userID) {
-    console.log('Welcome! Fetching your information');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
-    });
-    $("#fbLoginButton").hide();
-    $("img#myPicture")
-        .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
-    $("form#particleBroadcast").show();
-  }
-
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id))
-      return; js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId : '1339808736124796',
-      cookie : true,
-      xfbml : true,
-      version : 'v2.11'
-    });
-  }
-</script>
