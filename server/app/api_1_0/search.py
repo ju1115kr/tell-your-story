@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from flask import request, jsonify, g
 from . import api
-from ..models import Particle, Comment
+from ..models import Particle, Like, Comment
 from errors import not_found, forbidden, bad_request
 from datetime import datetime
 
@@ -12,7 +12,7 @@ def search_particle(context):
         return bad_request('Request is invaild')
 
     context = context.lower()
-    result = News.query\
+    result = Particle.query\
                     .filter(Particle.parsed_context.like('%'+context+'%'))\
                     .order_by(Particle.id.desc()).all()
 
