@@ -27,3 +27,12 @@
   text-color: yellow;
   padding: 10px;
 }
+
+.letterForm a.letterClose {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+}

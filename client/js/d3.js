@@ -11,24 +11,24 @@ var svg = d3.select("div#stardustForm").append("svg").attr({
 });
 
 var dataset = {"particles": [
-{ x: 100, y: 110 },
-{ x: 83, y: 43 },
-{ x: 92, y: 28 },
-{ x: 49, y: 74 },
-{ x: 51, y: 10 },
-{ x: 25, y: 98 },
-{ x: 77, y: 30 },
-{ x: 20, y: 83 },
-{ x: 11, y: 63 },
-{ x:  4, y: 55 },
-{ x:  0, y:  0 },
-{ x: 85, y: 100 },
-{ x: 60, y: 40 },
-{ x: 70, y: 80 },
-{ x: 10, y: 20 },
-{ x: 40, y: 50 },
-{ x: 25, y: 31 },
-{ x: 1000, y: 900 }
+    { x: 100, y: 110 },
+    { x: 83, y: 43 },
+    { x: 92, y: 28 },
+    { x: 49, y: 74 },
+    { x: 51, y: 10 },
+    { x: 25, y: 98 },
+    { x: 77, y: 30 },
+    { x: 20, y: 83 },
+    { x: 11, y: 63 },
+    { x:  4, y: 55 },
+    { x:  0, y:  0 },
+    { x: 85, y: 100 },
+    { x: 60, y: 40 },
+    { x: 70, y: 80 },
+    { x: 10, y: 20 },
+    { x: 40, y: 50 },
+    { x: 25, y: 31 },
+    { x: 1000, y: 900 }
 ]};
 
 //var dataset = ajaxQuery(type='get', apiURL='/particle');
@@ -44,14 +44,14 @@ var yScale = d3.scale.linear()
     .range([margin.top, h - margin.bottom]);  // Set margins for y specific
 
     // Add a X and Y Axis (Note: orient means the direction that ticks go, not position)
-    var xAxis = d3.svg.axis().scale(xScale).orient("top");
-    var yAxis = d3.svg.axis().scale(yScale).orient("left");
+var xAxis = d3.svg.axis().scale(xScale).orient("top");
+var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-    var circleAttrs = {
-        cx: function(d) { return xScale(d.x); },
-        cy: function(d) { return yScale(d.y); },
-        r: radius
-    };
+var circleAttrs = {
+    cx: function(d) { return xScale(d.x); },
+    cy: function(d) { return yScale(d.y); },
+    r: radius
+};
 
 // Adds X-Axis as a 'g' element
 svg.append("g").attr({
@@ -65,35 +65,35 @@ svg.append("g").attr({
     transform: "translate(" + [margin.left, 0] + ")"
 }).call(yAxis);  // Call the yAxis function on the group
 
-    svg.selectAll("circle")
+svg.selectAll("circle")
     .data(dataset.particles)
-.enter()
+    .enter()
     .append("circle")
     .attr({"fill": "yellow"})
-.attr(circleAttrs)  // Get attributes from circleAttrs var
+    .attr(circleAttrs)  // Get attributes from circleAttrs var
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
 
     // On Click, we want to add data to the array and chart
-    svg.on("click", function() {
-        var coords = d3.mouse(this);
+svg.on("click", function() {
+    var coords = d3.mouse(this);
 
-        // Normally we go from data to pixels, but here we're doing pixels to data
-        var newData= {
-            x: Math.round( xScale.invert(coords[0])),  // Takes the pixel number to convert to number
+    // Normally we go from data to pixels, but here we're doing pixels to data
+    var newData= {
+        x: Math.round( xScale.invert(coords[0])),  // Takes the pixel number to convert to number
         y: Math.round( yScale.invert(coords[1]))
-        };
+    };
 
-        dataset.particles.push(newData);   // Push data to our array
+    dataset.particles.push(newData);   // Push data to our array
 
-        svg.selectAll("circle")  // For new circle, go through the update process
+    svg.selectAll("circle")  // For new circle, go through the update process
         .data(dataset.particles)
         .enter()
         .append("circle")
         .attr(circleAttrs)  // Get attributes from circleAttrs var
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut);
-    })
+})
 
 // Create Event Handlers for mouse
 function handleMouseOver(d, i) {  // Add interactivity
@@ -101,7 +101,7 @@ function handleMouseOver(d, i) {  // Add interactivity
     // Use D3 to select element, change color and size
     d3.select(this).attr({
         fill: "orange",
-    r: radius * 2
+        r: radius * 2
     });
 
     // Specify where to put label of text
