@@ -10,31 +10,29 @@ var svg = d3.select("div#stardustForm").append("svg").attr({
     height: h
 });
 
-//var dataset = [
-//{ x: 100, y: 110 },
-//{ x: 83, y: 43 },
-//{ x: 92, y: 28 },
-//{ x: 49, y: 74 },
-//{ x: 51, y: 10 },
-//{ x: 25, y: 98 },
-//{ x: 77, y: 30 },
-//{ x: 20, y: 83 },
-//{ x: 11, y: 63 },
-//{ x:  4, y: 55 },
-//{ x:  0, y:  0 },
-//{ x: 85, y: 100 },
-//{ x: 60, y: 40 },
-//{ x: 70, y: 80 },
-//{ x: 10, y: 20 },
-//{ x: 40, y: 50 },
-//{ x: 25, y: 31 }
-//];
+var dataset = {"particles": [
+{ x: 100, y: 110 },
+{ x: 83, y: 43 },
+{ x: 92, y: 28 },
+{ x: 49, y: 74 },
+{ x: 51, y: 10 },
+{ x: 25, y: 98 },
+{ x: 77, y: 30 },
+{ x: 20, y: 83 },
+{ x: 11, y: 63 },
+{ x:  4, y: 55 },
+{ x:  0, y:  0 },
+{ x: 85, y: 100 },
+{ x: 60, y: 40 },
+{ x: 70, y: 80 },
+{ x: 10, y: 20 },
+{ x: 40, y: 50 },
+{ x: 25, y: 31 },
+{ x: 1000, y: 900 }
+]};
 
 //var dataset = ajaxQuery(type='get', apiURL='/particle');
 
-var dataset = ajaxQuery(type='get', apiURL='/particle', dataset='');
-
-console.log('dataset is', dataset);
 // We're passing in a function in d3.max to tell it what we're maxing (x value)
 var xScale = d3.scale.linear()
     .domain([0, d3.max(dataset.particles, function (d) { return d.x + 10; })])
@@ -71,6 +69,7 @@ svg.append("g").attr({
     .data(dataset.particles)
 .enter()
     .append("circle")
+    .attr({"fill": "yellow"})
 .attr(circleAttrs)  // Get attributes from circleAttrs var
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
@@ -120,7 +119,7 @@ function handleMouseOut(d, i) {
     // Use D3 to select element, change color back to normal
     d3.select(this).attr({
         fill: "black",
-    r: radius
+        r: radius
     });
 
     // Select text by id and then remove

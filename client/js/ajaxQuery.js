@@ -9,12 +9,12 @@ function ajaxQuery(type, apiURL, dataset) {
         async: false,
         data: JSON.stringify(dataset),
         success: function(data){
-            console.log(data);
+            //console.log(data);
             result = data;
         },
         error: function(xhr, ajaxOptions, thrownError) {
             console.log(xhr.status, ajaxOptions, thrownError);
-            return(false);
+            return false;
         }
     });
     return result;
@@ -23,7 +23,7 @@ function ajaxQuery(type, apiURL, dataset) {
 function ajaxTest(){
     var SendInfo = { author_id:"123", context:"test", x:0, y:0 };
 
-    ajaxQuery(type='get', apiURL='/particle', dataset=SendInfo);
+    //ajaxQuery(type='get', apiURL='/particle', dataset=SendInfo);
 
     //$.ajax({
     //    type: 'post',

@@ -26,8 +26,9 @@ function testAPI(userID) {
         //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
     });
     $("#fbLoginButton").hide();
-    $("img#myPicture")
+    $("img.letterImg")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
+    $("div.letterForm").show();
     $("form#particleBroadcast").show();
 }
 

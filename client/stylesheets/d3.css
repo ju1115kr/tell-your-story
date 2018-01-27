@@ -1,0 +1,13 @@
+.axis path, .axis line {
+  file: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+svg {
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: center;
+}
