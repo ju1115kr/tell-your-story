@@ -28,10 +28,12 @@ var dataset = {"particles": [
     { x: 10, y: 20 },
     { x: 40, y: 50 },
     { x: 25, y: 31 },
-    { x: 1000, y: 900 }
+//    { x: 1000, y: 900 }
 ]};
 
 //var dataset = ajaxQuery(type='get', apiURL='/particle');
+
+console.log(ajaxQuery(type='get', apiURL='/particle'));
 
 // We're passing in a function in d3.max to tell it what we're maxing (x value)
 var xScale = d3.scale.linear()
@@ -54,6 +56,7 @@ var circleAttrs = {
 };
 
 // Adds X-Axis as a 'g' element
+
 svg.append("g").attr({
     "class": "axis",  // Give class so we can style it
     transform: "translate(" + [0, margin.top] + ")"  // Translate just moves it down into position (or will be on top)
@@ -72,7 +75,9 @@ svg.selectAll("circle")
     .attr({"fill": "yellow"})
     .attr(circleAttrs)  // Get attributes from circleAttrs var
     .on("mouseover", handleMouseOver)
-    .on("mouseout", handleMouseOut);
+    .on("mouseout", handleMouseOut)
+    .on("click", handleMouseClick);
+
 
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
@@ -92,7 +97,8 @@ svg.on("click", function() {
         .append("circle")
         .attr(circleAttrs)  // Get attributes from circleAttrs var
         .on("mouseover", handleMouseOver)
-        .on("mouseout", handleMouseOut);
+        .on("mouseout", handleMouseOut)
+        .on("click", handleMouseClick);
 })
 
 // Create Event Handlers for mouse
@@ -126,3 +132,7 @@ function handleMouseOut(d, i) {
     d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
 }
 
+function handleMouseClick(d, i) {
+  $('p.letterContext').text(d.x, d.y);
+  $('div.letterForm').slideDown();
+}

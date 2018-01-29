@@ -28,8 +28,8 @@ function testAPI(userID) {
     $("#fbLoginButton").hide();
     $("img.letterImg")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
-    $("div.letterForm").show();
-    $("form#particleBroadcast").show();
+    $("div.letterForm").slideDown();
+    //$("form#particleBroadcast").show();
 }
 
 (function(d, s, id) {
