@@ -4,6 +4,9 @@ div.news-wrapper {
   grid-column-gap: 5px;
   grid-row-gap: 10px;
   background-color: #f4c20d;
+  width: 80%;
+  float: inherit;
+  margin: 0 auto;
   padding: 3px;
   margin: 35px 0;
 }
@@ -15,7 +18,7 @@ div.news-letter {
   padding: 20px;
   line-height: normal;
   cursor: pointer;
-  box-shadow: 2px grey;
+  box-shadow: 10px grey;
   background: #3cba54;
 } div.news-letter:hover {
   background: #3cba54;

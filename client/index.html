@@ -22,11 +22,27 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/d3.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/letter.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/news-layout.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/topmenu.css" />
 </head>
 
 <body>
+
+<div id="topMenu">
+    <div id="navBarForm">
+        <!--button class="tablink" onclick="openPage('Universe', this)" id="defaultOpen">Universe</button-->
+        <button class="tablink" onclick="openPage('About', this)">About</button>
+        <button class="tablink" onclick="openPage('News', this)">News</button>
+        <button class="tablink" onclick="openPage('Video', this)">Video</button>
+        <img class="letterImg" src="" alt="" />
+    </div>
+
+    <div id="FBlogin-button" class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState();"></div>
+</div>
+
 <div id="logoForm" style="float:center">
-    <img id="logoImg" src="picture/meonzziLogo.png" alt="" />
+    <span id="logoLink">
+        <img id="logoImg" src="picture/meonzziLogo.png" alt="" />
+    </span>
 </div>
 
 <!--div id="navBarForm">
@@ -36,13 +52,6 @@
     <a href="#">Video</a>
 </div-->
 
-<div id="navBarForm">
-    <button class="tablink" onclick="openPage('Universe', this, '#b197fc')" id="defaultOpen">Universe</button>
-    <button class="tablink" onclick="openPage('About', this, '#b197fc')">About</button>
-    <button class="tablink" onclick="openPage('News', this, '#b197fc')">News</button>
-    <button class="tablink" onclick="openPage('Video', this, '#b197fc')">Video</button>
-</div>
-
 <div id="Universe" class="tabcontent">
     <div id="searchBarForm">
         <strong>태그 검색</strong><p>추천 키워드 #군대 #전여친</p>
@@ -51,9 +60,9 @@
     </div>
 
     <div id="stardustForm">
-        <pattern id="image" x="0" y="0" height="40" width="40">
-          <image x="0" y="0" width="40" height="40" xlink:href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Google-favicon-2015.png/150px-Google-favicon-2015.png"></image>
-        </pattern>
+        <!--pattern id="image" x="0" y="0" height="40" width="40">
+            <image x="0" y="0" width="40" height="40" xlink:href="http://ju1115kr.iptime.org:3000/picture/yellowstar.png"></image>
+        </pattern-->
     </div>
 </div>
 
@@ -80,7 +89,7 @@
     <p class="letterContext">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
 </div>
 
-<div class="broadcast">
+<!--div class="broadcast">
     <div id="facebookLoginForm">
         <fb:login-button id="fbLoginButton" scope="public_profile, email" onlogin="checkLoginState();">로그인</fb:login-button>
     </div>
@@ -88,9 +97,11 @@
         data-href="http://ju1115kr.iptime.org:3000"
         data-layout="button_count">공유하기
     </div>
-</div>
+</div-->
 
 <script>
+openPage("Universe", '',"");
+
 function openPage(pageName, elmnt, color) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -103,9 +114,8 @@ function openPage(pageName, elmnt, color) {
         tablinks[i].style.backgroundColor = "";
     }
     document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
 }
-document.getElementById("defaultOpen").click();
+//document.getElementById("defaultOpen").click();
 </script>
 
 <script src="./js/d3.js" charset="utf-8"></script>

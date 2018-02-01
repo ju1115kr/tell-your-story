@@ -1,0 +1,52 @@
+#topMenu {
+  position: absolute;
+  right: 34px;
+  top: 10px;
+}
+
+#navBarForm {
+  display: flex;
+//  border-radius: 35px;
+  background-color: rgba(0, 0, 0, 0);
+//  width: 328px;
+//  margin-top: 0px;
+//  margin-left: auto;
+//  margin-right: auto;
+  overflow: hidden;
+}
+
+#navBarForm button {
+  float:left;
+//  background-color: #e5dbff;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+#navBarForm button:hover {
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#navBarForm button.active {
+//  background-color: #682B8F;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  font-weight: bold;
+}
+
+//#FBlogin-button {
+//  position: absolute;
+//  right: 4px;
+//  top: 4px;
+//}
+
+span#logoLink {
+  text-decoration: none;
+  cursor: pointer;
+}

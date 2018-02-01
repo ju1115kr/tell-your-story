@@ -10,6 +10,7 @@ var svg = d3.select("div#stardustForm").append("svg").attr({
     height: h
 });
 
+/*
 var dataset = {"particles": [
     { x: 100, y: 110 },
     { x: 83, y: 43 },
@@ -29,8 +30,9 @@ var dataset = {"particles": [
     { x: 25, y: 31 },
 //    { x: 1000, y: 900 }
 ]};
+*/
 
-//var dataset = ajaxQuery(type='get', apiURL='/particle');
+var dataset = ajaxQuery(type='get', apiURL='/particle');
 
 //console.log(ajaxQuery(type='get', apiURL='/particle'));
 
@@ -49,9 +51,13 @@ var xAxis = d3.svg.axis().scale(xScale).orient("top");
 var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 var circleAttrs = {
+/*
     cx: function(d) { return xScale(d.x); },
     cy: function(d) { return yScale(d.y); },
     r: radius
+    */
+    x: function(d) { return xScale(d.x); },
+    y: function(d) { return yScale(d.y); }
 };
 
 // Adds X-Axis as a 'g' element
@@ -67,6 +73,7 @@ svg.append("g").attr({
     transform: "translate(" + [margin.left, 0] + ")"
 }).call(yAxis);  // Call the yAxis function on the group
 
+/*
 svg.selectAll("circle")
     .data(dataset.particles)
     .enter()
@@ -77,10 +84,20 @@ svg.selectAll("circle")
     .on("mouseout", handleMouseOut)
     .on("click", handleMouseClick);
 
+    */
 svg.selectAll("image")
     .data(dataset.particles)
     .enter().append('image')
-    .attr('xlink:href', "http://mathworld.wolfram.com/images/eps-gif/SquareDiagonals_700.gif")
+    .attr('width', '12px')
+    .attr('height', '12px')
+    .attr('x', '40px')
+    .attr('y', '80px')
+    .attr(circleAttrs)
+    .attr('xlink:href', "/picture/yellowstar.png")
+    .on("mouseover", handleMouseOver)
+    .on("mouseout", handleMouseOut)
+    .on("click", handleMouseClick);
+
 
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
@@ -94,7 +111,7 @@ svg.on("click", function() {
     
     console.log(newData);
     dataset.particles.push(newData);   // Push data to our array
-
+/*
     svg.selectAll("circle")  // For new circle, go through the update process
         .data(dataset.particles)
         .enter()
@@ -103,6 +120,21 @@ svg.on("click", function() {
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
         .on("click", handleMouseClick);
+*/
+    svg.selectAll("image")
+        .data(dataset.particles)
+        .enter().append('image')
+        .attr('width', '12px')
+        .attr('height', '12px')
+        .attr('x', '40px')
+        .attr('y', '80px')
+        .attr(circleAttrs)
+        .attr('xlink:href', "/picture/yellowstar.png")
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+        .on("click", handleMouseClick);
+
+
 })
 
 // Create Event Handlers for mouse
