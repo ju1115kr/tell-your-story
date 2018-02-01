@@ -21,6 +21,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/broadcast.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/d3.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/letter.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/news-layout.css" />
 </head>
 
 <body>
@@ -28,20 +29,46 @@
     <img id="logoImg" src="picture/meonzziLogo.png" alt="" />
 </div>
 
-<div id="navBarForm">
+<!--div id="navBarForm">
     <a class="active" href="#">Universe</a>
     <a href="#">About</a>
     <a href="#">News</a>
     <a href="#">Video</a>
+</div-->
+
+<div id="navBarForm">
+    <button class="tablink" onclick="openPage('Universe', this, '#b197fc')" id="defaultOpen">Universe</button>
+    <button class="tablink" onclick="openPage('About', this, '#b197fc')">About</button>
+    <button class="tablink" onclick="openPage('News', this, '#b197fc')">News</button>
+    <button class="tablink" onclick="openPage('Video', this, '#b197fc')">Video</button>
 </div>
 
-<div id="searchBarForm">
-    <strong>태그 검색</strong><p>추천 키워드 #군대 #전여친</p>
-    <hr />
-    <input type="text" id="searchBox" name="search" placeholder="태그 검색" />
+<div id="Universe" class="tabcontent">
+    <div id="searchBarForm">
+        <strong>태그 검색</strong><p>추천 키워드 #군대 #전여친</p>
+        <hr />
+        <input type="text" id="searchBox" name="search" placeholder="태그 검색" autocomplete="off" />
+    </div>
+
+    <div id="stardustForm">
+        <pattern id="image" x="0" y="0" height="40" width="40">
+          <image x="0" y="0" width="40" height="40" xlink:href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Google-favicon-2015.png/150px-Google-favicon-2015.png"></image>
+        </pattern>
+    </div>
 </div>
 
-<div id="stardustForm"></div>
+<div id="About" class="tabcontent">About</div>
+<div id="News" class="tabcontent">
+    News
+    <div class="news-wrapper">
+        <div class="news-letter"></div>
+        <div class="news-letter"></div>
+        <div class="news-letter"></div>
+        <div class="news-letter"></div>
+    </div>
+
+</div>
+<div id="Video" class="tabcontent">Video</div>
 
 <div class="letterForm">
     <div class="letterInfo">
@@ -59,12 +86,31 @@
     </div>
     <div class="fb-share-button"
         data-href="http://ju1115kr.iptime.org:3000"
-        data-layout="button_count">공유하기</div>
+        data-layout="button_count">공유하기
+    </div>
 </div>
 
+<script>
+function openPage(pageName, elmnt, color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for(i=0; i < tabcontent.length; i++){
+        tabcontent[i].style.display = "none";
+    }
+
+    tablinks = document.getElementsByClassName("tablink");
+    for(i=0; i < tablinks.length; i++){
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+}
+document.getElementById("defaultOpen").click();
+</script>
+
+<script src="./js/d3.js" charset="utf-8"></script>
 <script src="./js/search.js" charset="utf-8"></script>
 <script src="./js/webEvent.js" charset="utf-8"></script>
-<script src="./js/d3.js" charset="utf-8"></script>
 </body>
 </html>
 

@@ -21,7 +21,6 @@ var dataset = {"particles": [
     { x: 20, y: 83 },
     { x: 11, y: 63 },
     { x:  4, y: 55 },
-    { x:  0, y:  0 },
     { x: 85, y: 100 },
     { x: 60, y: 40 },
     { x: 70, y: 80 },
@@ -33,7 +32,7 @@ var dataset = {"particles": [
 
 //var dataset = ajaxQuery(type='get', apiURL='/particle');
 
-console.log(ajaxQuery(type='get', apiURL='/particle'));
+//console.log(ajaxQuery(type='get', apiURL='/particle'));
 
 // We're passing in a function in d3.max to tell it what we're maxing (x value)
 var xScale = d3.scale.linear()
@@ -78,17 +77,22 @@ svg.selectAll("circle")
     .on("mouseout", handleMouseOut)
     .on("click", handleMouseClick);
 
+svg.selectAll("image")
+    .data(dataset.particles)
+    .enter().append('image')
+    .attr('xlink:href', "http://mathworld.wolfram.com/images/eps-gif/SquareDiagonals_700.gif")
 
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
     var coords = d3.mouse(this);
-
+    console.log(coords);
     // Normally we go from data to pixels, but here we're doing pixels to data
     var newData= {
         x: Math.round( xScale.invert(coords[0])),  // Takes the pixel number to convert to number
         y: Math.round( yScale.invert(coords[1]))
     };
-
+    
+    console.log(newData);
     dataset.particles.push(newData);   // Push data to our array
 
     svg.selectAll("circle")  // For new circle, go through the update process
@@ -105,10 +109,8 @@ svg.on("click", function() {
 function handleMouseOver(d, i) {  // Add interactivity
 
     // Use D3 to select element, change color and size
-    d3.select(this).attr({
-        fill: "orange",
-        r: radius * 2
-    });
+    d3.select(this)
+        .attr({fill: "orange", r: radius * 2})
 
     // Specify where to put label of text
     svg.append("text").attr({

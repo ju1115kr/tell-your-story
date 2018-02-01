@@ -1,0 +1,23 @@
+div.news-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 10px;
+  background-color: #f4c20d;
+  padding: 3px;
+  margin: 35px 0;
+}
+
+div.news-letter {
+  display: flex;
+  justify-content: center;
+  algin-items: center;
+  padding: 20px;
+  line-height: normal;
+  cursor: pointer;
+  box-shadow: 2px grey;
+  background: #3cba54;
+} div.news-letter:hover {
+  background: #3cba54;
+  opacity: 0.5;
+}
