@@ -19,6 +19,7 @@ $("input[name='search']").keypress(function(e){
         dataset.particles.push(result.particle[i]);
     }
 
+/*    
     svg.selectAll("circle")
         .data(dataset.particles)
         .enter()
@@ -32,7 +33,18 @@ $("input[name='search']").keypress(function(e){
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
         .on("click", handleMouseClick);
-
+*/
+    svg.selectAll("image")
+        .data(dataset.particles)
+        .enter()
+        .append("image")
+        .attr('width', '15px')
+        .attr('height', '15px')
+        .attr('x', function(d) {return d.x;})
+        .attr('y', function(d) {return d.y;})
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+        .on("click", handleMouseClick);
   }
 });
 

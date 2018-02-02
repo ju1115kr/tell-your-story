@@ -1,5 +1,5 @@
+//letter close 버튼 클릭 시
 $("a.letterClose").click(function() {
-//  $("div.letterForm").hide();
   $("div.letterForm").slideUp();
 });
 
@@ -15,4 +15,14 @@ $("span#logoLink").click(function() {
     tablinks[i].style.backgroundColor = "";
   }
   document.getElementById("Universe").style.display = "block";
+});
+
+$("div#news-8").click(function() {
+  $("div.news-main-content img").attr('src', '/picture/together.jpg');
+  $("div.news-main-content video source").attr('src', '/movie/prototype.mp4');
+  $("div.news-main-content video")[0].load();
+  //comment for autoplay
+  //$("div.news-main-content video")[0].play();
+  $("div.news-letter").fadeOut();
+  $("div.news-main-content").fadeIn();
 });

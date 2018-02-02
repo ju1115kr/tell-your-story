@@ -1,3 +1,8 @@
+div#Universe {
+  background-color: #a79ab1;
+  height: 100%;
+}
+
 .axis path, .axis line {
   file: none;
   stroke: black;

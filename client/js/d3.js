@@ -88,12 +88,12 @@ svg.selectAll("circle")
 svg.selectAll("image")
     .data(dataset.particles)
     .enter().append('image')
-    .attr('width', '12px')
-    .attr('height', '12px')
-    .attr('x', '40px')
-    .attr('y', '80px')
+    .attr('width', '15px')
+    .attr('height', '15px')
+//    .attr('x', '40px')
+//    .attr('y', '80px')
     .attr(circleAttrs)
-    .attr('xlink:href', "/picture/yellowstar.png")
+    .attr('xlink:href', "/picture/whitestar.png")
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut)
     .on("click", handleMouseClick);
@@ -126,10 +126,10 @@ svg.on("click", function() {
         .enter().append('image')
         .attr('width', '12px')
         .attr('height', '12px')
-        .attr('x', '40px')
-        .attr('y', '80px')
+//        .attr('x', '40px')
+//        .attr('y', '80px')
         .attr(circleAttrs)
-        .attr('xlink:href', "/picture/yellowstar.png")
+        .attr('xlink:href', "/picture/whitestar.png")
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
         .on("click", handleMouseClick);
@@ -142,7 +142,8 @@ function handleMouseOver(d, i) {  // Add interactivity
 
     // Use D3 to select element, change color and size
     d3.select(this)
-        .attr({fill: "orange", r: radius * 2})
+        .attr('xlink:href', "/picture/yellowstar.png")
+//        .attr({fill: "orange", r: radius * 2})
 
     // Specify where to put label of text
     svg.append("text").attr({
@@ -157,10 +158,12 @@ function handleMouseOver(d, i) {  // Add interactivity
 
 function handleMouseOut(d, i) {
     // Use D3 to select element, change color back to normal
-    d3.select(this).attr({
-        fill: "black",
-        r: radius
-    });
+    d3.select(this)
+      .attr("xlink:href", "/picture/whitestar.png")
+//      .attr({
+//        fill: "black",
+//        r: radius
+//    });
 
     // Select text by id and then remove
     d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location

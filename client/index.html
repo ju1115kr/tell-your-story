@@ -15,6 +15,7 @@
 <script src="./js/facebookLogin.js" charset="utf-8"></script>
 <link href="http://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+<!--link rel='stylesheet' href='https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css'-->
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" />
@@ -29,7 +30,6 @@
 
 <div id="topMenu">
     <div id="navBarForm">
-        <!--button class="tablink" onclick="openPage('Universe', this)" id="defaultOpen">Universe</button-->
         <button class="tablink" onclick="openPage('About', this)">About</button>
         <button class="tablink" onclick="openPage('News', this)">News</button>
         <button class="tablink" onclick="openPage('Video', this)">Video</button>
@@ -40,7 +40,7 @@
 </div>
 
 <div id="logoForm" style="float:center">
-    <span id="logoLink">
+    <span id="logoLink" onclick="openPage('Universe', this)">
         <img id="logoImg" src="picture/meonzziLogo.png" alt="" />
     </span>
 </div>
@@ -54,7 +54,7 @@
 
 <div id="Universe" class="tabcontent">
     <div id="searchBarForm">
-        <strong>태그 검색</strong><p>추천 키워드 #군대 #전여친</p>
+        <strong>태그 검색</strong><p>추천 키워드 #군대 #돈</p>
         <hr />
         <input type="text" id="searchBox" name="search" placeholder="태그 검색" autocomplete="off" />
     </div>
@@ -68,12 +68,117 @@
 
 <div id="About" class="tabcontent">About</div>
 <div id="News" class="tabcontent">
-    News
+    <div class="news-main-content">
+        <a class="news-main-Close">&times;</a>
+        <img class="news-main-content-img" src="" alt="" />
+        <hr />
+        <video class="news-main-video" controls controlsList="nodownload"/>
+            <source src="" type="video/mp4">
+        </video>
+        <p class="news-main-content-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+    </div>
+
     <div class="news-wrapper">
-        <div class="news-letter"></div>
-        <div class="news-letter"></div>
-        <div class="news-letter"></div>
-        <div class="news-letter"></div>
+        <div class="news-letter" id="news-8">
+            <div class="news-header">
+                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">기사</h2>
+                <p class="news-date">Feb 1, 2018</p>
+                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+            </div>
+        </div>
+
+        <div class="news-letter" id="news-7">
+            <div class="news-header">
+                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">기사</h2>
+                <p class="news-date">Feb 1, 2018</p>
+                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+            </div>
+        </div>        
+
+        <div class="news-letter" id="news-6">
+             <div class="news-header">
+                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">기사</h2>
+                <p class="news-date">Feb 1, 2018</p>
+                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+            </div>
+        
+        </div>
+
+        <div class="news-letter" id="news-5">
+             <div class="news-header">
+                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">기사</h2>
+                <p class="news-date">Feb 1, 2018</p>
+                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+            </div>
+        
+        </div>
+
+        <div class="news-letter" id="news-4">
+             <div class="news-header">
+                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">기사</h2>
+                <p class="news-date">Feb 1, 2018</p>
+                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+            </div>
+        </div>
+
+        <div class="news-letter" id="news-3">
+             <div class="news-header">
+                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">기사</h2>
+                <p class="news-date">Feb 1, 2018</p>
+                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+            </div>
+        
+        </div>
+
+        <div class="news-letter" id="news-2">
+            <div class="news-header">
+                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">기사</h2>
+                <p class="news-date">Feb 1, 2018</p>
+                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+            </div>
+
+        </div>
+
+        <div class="news-letter" id="news-1">
+             <div class="news-header">
+                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">기사</h2>
+                <p class="news-date">Feb 1, 2018</p>
+                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+            </div>
+        </div>
+
     </div>
 
 </div>
@@ -100,24 +205,16 @@
 </div-->
 
 <script>
-openPage("Universe", '',"");
-
-function openPage(pageName, elmnt, color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for(i=0; i < tabcontent.length; i++){
-        tabcontent[i].style.display = "none";
-    }
-
-    tablinks = document.getElementsByClassName("tablink");
-    for(i=0; i < tablinks.length; i++){
-        tablinks[i].style.backgroundColor = "";
-    }
-    document.getElementById(pageName).style.display = "block";
-}
-//document.getElementById("defaultOpen").click();
+  $("div.news-letter").mouseover(function() {
+//    $(this).find("p.news-preview").slideDown();
+    //$(this).slideDown();
+  });
+  $("div.news-letter").mouseout(function() {
+//    $(this).find("p.news-preview").slideUp();
+  });
 </script>
 
+<script src="./js/openPage.js" charset="utf-8"></script>
 <script src="./js/d3.js" charset="utf-8"></script>
 <script src="./js/search.js" charset="utf-8"></script>
 <script src="./js/webEvent.js" charset="utf-8"></script>

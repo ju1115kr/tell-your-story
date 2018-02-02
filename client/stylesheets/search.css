@@ -1,9 +1,11 @@
 div#searchBarForm {
   width: 50%;
   display: block;
+
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  padding-top: 15px;
 }
 
 #searchBarForm strong {
@@ -21,7 +23,7 @@ input#searchBox[type=text] {
   border-radius: 4px;
   font-size: 1rem;
   background-color: white;
-  background-image: url('searchicon.png');
+  background-image: url('../picture/searchicon.png');
   background-size: 27px 27px;
   background-position: 10px 10px; 
   background-repeat: no-repeat;

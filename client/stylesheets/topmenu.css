@@ -46,6 +46,14 @@
 //  top: 4px;
 //}
 
+#navBarForm img.letterImg {
+  display: none;
+  margin: 3px 3px;
+  width: 38px;
+  height: 38px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 span#logoLink {
   text-decoration: none;
   cursor: pointer;
