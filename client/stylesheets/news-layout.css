@@ -93,6 +93,18 @@ div.news-main-content {
   width: 70%;
 }
 
+div.news-main-content a.news-main-Close {
+  float:right;
+  top: 0;
+  //position: absolute;
+  right: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+} div.news-main-content a.news-main-Close:hover {
+  cursor: pointer;
+}
+
 div.news-main-content img {
   margin: 0;
   padding: 0;

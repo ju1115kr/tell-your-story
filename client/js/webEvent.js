@@ -26,3 +26,9 @@ $("div#news-8").click(function() {
   $("div.news-letter").fadeOut();
   $("div.news-main-content").fadeIn();
 });
+
+$("a.news-main-Close").click(function() {
+  $("div.news-letter").fadeIn();
+  $("div.news-main-content video")[0].pause();
+  $("div.news-main-content").fadeOut();
+});
