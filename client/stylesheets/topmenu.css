@@ -26,6 +26,10 @@
   font-size: 0.8rem;
 }
 
+#navBarForm button a {
+  color: black;
+}
+
 #navBarForm button:hover {
   background-color: rgba(0, 0, 0, 0);
   color: black;

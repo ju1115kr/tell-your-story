@@ -24,16 +24,22 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/letter.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/news-layout.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/topmenu.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/post.css" />
 </head>
 
 <body>
 
 <div id="topMenu">
     <div id="navBarForm">
-        <button class="tablink" onclick="openPage('About', this)">About</button>
+        <button class="tablink" onclick="openPage('About' this)">
+            <a target="_blank" href="https://fb.me/meonzzi">About</a></button>
         <button class="tablink" onclick="openPage('News', this)">News</button>
         <button class="tablink" onclick="openPage('Video', this)">Video</button>
         <img class="letterImg" src="" alt="" />
+        <a target="_blank" href="https://fb.me/meonzzi">
+            <img src="/picture/fblogo.png" width="15px" height="15px"/></a>
+        <a target="_blank" href="http://youtube.com">
+            <img src="/picture/youtubelogo.png" width="18px" height="15px"/></a>
     </div>
 
     <div id="FBlogin-button" class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState();"></div>
@@ -44,13 +50,6 @@
         <img id="logoImg" src="picture/meonzziLogo.png" alt="" />
     </span>
 </div>
-
-<!--div id="navBarForm">
-    <a class="active" href="#">Universe</a>
-    <a href="#">About</a>
-    <a href="#">News</a>
-    <a href="#">Video</a>
-</div-->
 
 <div id="Universe" class="tabcontent">
     <div id="searchBarForm">
@@ -63,6 +62,16 @@
         <!--pattern id="image" x="0" y="0" height="40" width="40">
             <image x="0" y="0" width="40" height="40" xlink:href="http://ju1115kr.iptime.org:3000/picture/yellowstar.png"></image>
         </pattern-->
+    </div>
+    <div id="PostRequestForm">
+        <input type="text" id="PostRequestFormBox" placeholder="새 글을 작성해주세요!" autocomplete="off"/>
+    </div>
+    <div id="PostForm">
+        <form id="Post">
+            <img id="PostFormImg" src="" alt="" /><br />
+            <textarea id="PostFormBox" placeholder="여기를 눌러서 글을 작성할 수 있습니다." autocomplete="off"></textarea>
+            <input type="submit" value="보내기">
+        <form>
     </div>
 </div>
 
@@ -220,4 +229,5 @@
 <script src="./js/webEvent.js" charset="utf-8"></script>
 </body>
 </html>
+
 

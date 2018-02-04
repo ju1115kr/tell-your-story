@@ -3,6 +3,28 @@ $("a.letterClose").click(function() {
   $("div.letterForm").slideUp();
 });
 
+$("div#PostRequestForm > input").click(function() {
+  $("div#PostRequestForm").hide();
+  $("div#PostForm").slideDown();
+});
+
+/*
+$("Form").submit(function(e) {
+//  ajaxQuery(type='post', apiURL='', dataset=$("div#PostFormBox").serialize());
+  $.ajax({
+      type: "POST",
+      url: "http://ju1115kr.iptime.org:9009/api/v1.0/particle",
+      data: $("div#PostFormBox").serialize(),
+      success: function(data) {
+        alert(data);
+      }
+  });
+
+  e.preventDefault();
+});
+
+*/
+
 $("span#logoLink").click(function() {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");

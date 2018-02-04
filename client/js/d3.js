@@ -1,7 +1,7 @@
-//  var w = window.innerWidth,
-//    h = window.innerHeight,
-var w = $("body").width() * 0.8,
-    h = $("body").height() * 0.8,
+var w = window.innerWidth,
+    h = window.innerHeight - 405,
+//var w = $("body").width() * 1,
+//    h = $("body").height() * 1.1,
     margin = { top: 40, right: 20, bottom: 20, left: 40 },
     radius = 6;
 
@@ -10,7 +10,7 @@ var svg = d3.select("div#stardustForm").append("svg").attr({
     height: h
 });
 
-/*
+
 var dataset = {"particles": [
     { x: 100, y: 110 },
     { x: 83, y: 43 },
@@ -30,11 +30,10 @@ var dataset = {"particles": [
     { x: 25, y: 31 },
 //    { x: 1000, y: 900 }
 ]};
-*/
 
-var dataset = ajaxQuery(type='get', apiURL='/particle');
 
-//console.log(ajaxQuery(type='get', apiURL='/particle'));
+//var dataset = ajaxQuery(type='get', apiURL='/particle');
+
 
 // We're passing in a function in d3.max to tell it what we're maxing (x value)
 var xScale = d3.scale.linear()
@@ -51,11 +50,6 @@ var xAxis = d3.svg.axis().scale(xScale).orient("top");
 var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 var circleAttrs = {
-/*
-    cx: function(d) { return xScale(d.x); },
-    cy: function(d) { return yScale(d.y); },
-    r: radius
-    */
     x: function(d) { return xScale(d.x); },
     y: function(d) { return yScale(d.y); }
 };
@@ -73,25 +67,11 @@ svg.append("g").attr({
     transform: "translate(" + [margin.left, 0] + ")"
 }).call(yAxis);  // Call the yAxis function on the group
 
-/*
-svg.selectAll("circle")
-    .data(dataset.particles)
-    .enter()
-    .append("circle")
-    .attr({"fill": "yellow"})
-    .attr(circleAttrs)  // Get attributes from circleAttrs var
-    .on("mouseover", handleMouseOver)
-    .on("mouseout", handleMouseOut)
-    .on("click", handleMouseClick);
-
-    */
 svg.selectAll("image")
     .data(dataset.particles)
     .enter().append('image')
     .attr('width', '15px')
     .attr('height', '15px')
-//    .attr('x', '40px')
-//    .attr('y', '80px')
     .attr(circleAttrs)
     .attr('xlink:href', "/picture/whitestar.png")
     .on("mouseover", handleMouseOver)
@@ -101,6 +81,14 @@ svg.selectAll("image")
 
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
+    if(!fbLogin) {
+        console.log("User doesn't login in fb");
+        checkLoginState();
+        return false;
+    }
+
+    $("div#PostRequestForm").slideDown();
+
     var coords = d3.mouse(this);
     console.log(coords);
     // Normally we go from data to pixels, but here we're doing pixels to data
@@ -111,23 +99,12 @@ svg.on("click", function() {
     
     console.log(newData);
     dataset.particles.push(newData);   // Push data to our array
-/*
-    svg.selectAll("circle")  // For new circle, go through the update process
-        .data(dataset.particles)
-        .enter()
-        .append("circle")
-        .attr(circleAttrs)  // Get attributes from circleAttrs var
-        .on("mouseover", handleMouseOver)
-        .on("mouseout", handleMouseOut)
-        .on("click", handleMouseClick);
-*/
+
     svg.selectAll("image")
         .data(dataset.particles)
         .enter().append('image')
-        .attr('width', '12px')
-        .attr('height', '12px')
-//        .attr('x', '40px')
-//        .attr('y', '80px')
+        .attr('width', '15px')
+        .attr('height', '15px')
         .attr(circleAttrs)
         .attr('xlink:href', "/picture/whitestar.png")
         .on("mouseover", handleMouseOver)
@@ -143,7 +120,6 @@ function handleMouseOver(d, i) {  // Add interactivity
     // Use D3 to select element, change color and size
     d3.select(this)
         .attr('xlink:href', "/picture/yellowstar.png")
-//        .attr({fill: "orange", r: radius * 2})
 
     // Specify where to put label of text
     svg.append("text").attr({
@@ -160,10 +136,6 @@ function handleMouseOut(d, i) {
     // Use D3 to select element, change color back to normal
     d3.select(this)
       .attr("xlink:href", "/picture/whitestar.png")
-//      .attr({
-//        fill: "black",
-//        r: radius
-//    });
 
     // Select text by id and then remove
     d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location

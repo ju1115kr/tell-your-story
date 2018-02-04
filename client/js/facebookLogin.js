@@ -1,3 +1,5 @@
+var fbLogin = false;
+
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -25,11 +27,14 @@ function testAPI(userID) {
         console.log('Successful login for: ' + response.name);
         //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
     });
+    fbLogin = true;
     $("#FBlogin-button").hide();
     $("#navBarForm img.letterImg").show();
     $("img.letterImg")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
-    $("div.letterForm").slideDown();
+    $("img#PostFormImg")
+        .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
+    //$("div.letterForm").slideDown();
     //$("form#particleBroadcast").show();
 }
 
@@ -37,9 +42,9 @@ function testAPI(userID) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id))
     return; js = d.createElement(s);
-js.id = id;
-js.src = "//connect.facebook.net/ko_KR/sdk.js";
-fjs.parentNode.insertBefore(js, fjs);
+    js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
 
@@ -48,6 +53,6 @@ window.fbAsyncInit = function() {
         appId : '1339808736124796',
         cookie : true,
         xfbml : true,
-        version : 'v2.12'
+        version : 'v2.11'
     });
 }
