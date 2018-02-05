@@ -3,8 +3,11 @@
 *.pyc
 *~
 venv/
-nohup*
+*nohup.out
 server/migrations/*
 .idea
 *.swo
 *.swp
+client/picture/*
+client/movie/*
+*.bak
