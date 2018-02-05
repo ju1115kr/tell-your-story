@@ -12,22 +12,22 @@ var svg = d3.select("div#stardustForm").append("svg").attr({
 
 
 var dataset = {"particles": [
-    { x: 100, y: 110 },
-    { x: 83, y: 43 },
-    { x: 92, y: 28 },
-    { x: 49, y: 74 },
-    { x: 51, y: 10 },
-    { x: 25, y: 98 },
-    { x: 77, y: 30 },
-    { x: 20, y: 83 },
-    { x: 11, y: 63 },
-    { x:  4, y: 55 },
-    { x: 85, y: 100 },
-    { x: 60, y: 40 },
-    { x: 70, y: 80 },
-    { x: 10, y: 20 },
-    { x: 40, y: 50 },
-    { x: 25, y: 31 },
+    { x: 1000, y: 1100 },
+    { x: 830, y: 430 },
+    { x: 920, y: 280 },
+    { x: 490, y: 740 },
+    { x: 510, y: 100 },
+    { x: 250, y: 980 },
+    { x: 770, y: 300 },
+    { x: 200, y: 830 },
+    { x: 110, y: 630 },
+    { x:  40, y: 550 },
+    { x: 850, y: 1000 },
+    { x: 600, y: 400 },
+    { x: 700, y: 800 },
+    { x: 100, y: 200 },
+    { x: 400, y: 500 },
+    { x: 250, y: 310 },
 //    { x: 1000, y: 900 }
 ]};
 
@@ -50,8 +50,8 @@ var xAxis = d3.svg.axis().scale(xScale).orient("top");
 var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 var circleAttrs = {
-    x: function(d) { return xScale(d.x); },
-    y: function(d) { return yScale(d.y); }
+    x: function(d) { return xScale(d.x) - 7.5; },
+    y: function(d) { return yScale(d.y) - 7.5; }
 };
 
 // Adds X-Axis as a 'g' element
@@ -81,37 +81,73 @@ svg.selectAll("image")
 
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
-    if(!fbLogin) {
-        console.log("User doesn't login in fb");
-        checkLoginState();
+    if( $("div#PostForm").is(':visible') ){
         return false;
     }
+    if( $("div#dummyDiv").is(':hidden') ){
+        if(!fbLogin) {
+            console.log("User doesn't login in fb");
+            checkLoginState();
+            return false;
+        }
 
-    $("div#PostRequestForm").slideDown();
+        var coords = d3.mouse(this);
+        console.log(coords);
 
-    var coords = d3.mouse(this);
-    console.log(coords);
-    // Normally we go from data to pixels, but here we're doing pixels to data
-    var newData= {
-        x: Math.round( xScale.invert(coords[0])),  // Takes the pixel number to convert to number
-        y: Math.round( yScale.invert(coords[1]))
-    };
-    
-    console.log(newData);
-    dataset.particles.push(newData);   // Push data to our array
+        var newData = {
+            x: Math.round( xScale.invert(coords[0]) ),
+            y: Math.round( yScale.invert(coords[1]) )
+        };
 
-    svg.selectAll("image")
-        .data(dataset.particles)
-        .enter().append('image')
-        .attr('width', '15px')
-        .attr('height', '15px')
-        .attr(circleAttrs)
-        .attr('xlink:href', "/picture/whitestar.png")
-        .on("mouseover", handleMouseOver)
-        .on("mouseout", handleMouseOut)
-        .on("click", handleMouseClick);
+        dataset.particles.push(newData);   // Push data to our array
 
+        svg.selectAll("image")
+            .data(dataset.particles)
+            .enter().append('image')
+            .attr('width', '15px')
+            .attr('height', '15px')
+            .attr(circleAttrs)
+            .attr('id', "addingParticle")
+            .attr('xlink:href', "/picture/whitestar.png")
+            .on("mouseover", handleMouseOver)
+            .on("mouseout", handleMouseOut)
+            .on("click", handleMouseClick);
 
+        $("div#PostForm").slideDown();
+        $("a.PostFormClose").click(function() {
+            $("div#PostForm").slideUp();
+            d3.select("#" + "addingParticle").remove();
+        });
+
+        $("form#Post").submit(function(event) {
+            event.preventDefault();
+            if ($("textarea#PostFormBox").val()==="") {
+                console.log($("textarea#PostFormBox".val()));
+                return false; }
+            else {
+                jsondata = JSON.stringify({ author_id:fbUserID,
+                    context:$("textarea#PostFormBox").val(),
+                    x: newData.x, y: newData.y });
+
+                var ajaxresult = ajaxQuery(type="post", apiURL="/particle", dataset=jsondata);
+                console.log(ajaxresult);
+                if(!ajaxresult) {
+                    $("div#PostForm").slideUp();
+                    $("form").trigger("reset");
+                }
+                else if(!ajaxresult) {
+                //error handling
+                    console.log("ajaxresult doesn't not exist");
+                    return false;
+                }
+            }
+        });
+    }
+
+    else {
+        //wrong request;
+        return false;
+    }
 })
 
 // Create Event Handlers for mouse
@@ -123,13 +159,16 @@ function handleMouseOver(d, i) {  // Add interactivity
 
     // Specify where to put label of text
     svg.append("text").attr({
-        id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
+        //id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
+        id: "t" + i,
         x: function() { return xScale(d.x) - 30; },
         y: function() { return yScale(d.y) - 15; }
     })
     .text(function() {
         return [d.x, d.y];  // Value of the text
     });
+
+    $("div#dummyDiv").show();
 }
 
 function handleMouseOut(d, i) {
@@ -138,10 +177,18 @@ function handleMouseOut(d, i) {
       .attr("xlink:href", "/picture/whitestar.png")
 
     // Select text by id and then remove
-    d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+    //d3.select("#t" + d.x + "-a" + d.y + "-" + i).remove();  // Remove text location
+    d3.select("#t" + i).remove();
+
+    $("div#dummyDiv").hide();
 }
 
 function handleMouseClick(d, i) {
-  $('p.letterContext').text(d.x, d.y);
-  $('div.letterForm').slideDown();
+  if ($("div#dummyDiv").is(':visible')){
+    $('p.letterContext').text(d.x, d.y);
+    $('div.letterForm').slideDown();
+  }
+  else {
+    return false;
+  }
 }

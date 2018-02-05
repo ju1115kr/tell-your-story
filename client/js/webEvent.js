@@ -8,6 +8,10 @@ $("div#PostRequestForm > input").click(function() {
   $("div#PostForm").slideDown();
 });
 
+$("a.PostFormClose").click(function() {
+  $("div#PostForm").slideUp();
+});
+
 /*
 $("Form").submit(function(e) {
 //  ajaxQuery(type='post', apiURL='', dataset=$("div#PostFormBox").serialize());

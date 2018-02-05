@@ -19,9 +19,13 @@ div#PostForm {
   position: fixed;
   bottom: 0;
   background-color: #e5dbff;
-  height: 40%;
+  height: 27%;
   width: 100%;
   padding-left: 5px;
+  padding-right: 10px;
+}
+
+form#Post {
   padding-right: 5px;
 }
 
@@ -32,11 +36,26 @@ div#PostForm img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+div#PostForm a.PostFormClose{
+  float: right;
+  top: 0;
+  right: 10px;
+  padding-right: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+} a.PostFormClose:hover {
+  cursor: pointer;
+}
+
 div#PostForm textarea {
   border: 0;
   padding: 10px;
-  margin-right:;
-  width: 100%;
-  height: 50%;
+  margin-right: 0px;
+  width: 96%;
+  height: 100px;
+  line-height: ;
   font-family: 'KoPub Dotum';
+  overflow-y: scroll;
+  resize: none;
 }

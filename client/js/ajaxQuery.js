@@ -7,7 +7,8 @@ function ajaxQuery(type, apiURL, dataset) {
         contentType: 'application/json; charset=utf-8',
         traditional: true,
         async: false,
-        data: JSON.stringify(dataset),
+        //data: JSON.stringify(dataset),
+        data: dataset,
         success: function(data){
             //console.log(data);
             result = data;

@@ -59,17 +59,19 @@
     </div>
 
     <div id="stardustForm">
-        <!--pattern id="image" x="0" y="0" height="40" width="40">
-            <image x="0" y="0" width="40" height="40" xlink:href="http://ju1115kr.iptime.org:3000/picture/yellowstar.png"></image>
-        </pattern-->
+        <div id="dummyDiv"></div>
     </div>
+
     <div id="PostRequestForm">
         <input type="text" id="PostRequestFormBox" placeholder="새 글을 작성해주세요!" autocomplete="off"/>
     </div>
     <div id="PostForm">
         <form id="Post">
-            <img id="PostFormImg" src="" alt="" /><br />
-            <textarea id="PostFormBox" placeholder="여기를 눌러서 글을 작성할 수 있습니다." autocomplete="off"></textarea>
+            <img id="PostFormImg" src="" alt="" />
+            <a class="PostFormClose">&times;</a>
+            <br />
+            <textarea id="PostFormBox" placeholder="여기를 눌러서 글을 작성할 수 있습니다.(280자 이내)" autocomplete="off" maxlength="280"></textarea>
+            <!--button type="submit">Send</button-->
             <input type="submit" value="보내기">
         <form>
     </div>

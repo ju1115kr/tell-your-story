@@ -1,4 +1,5 @@
 var fbLogin = false;
+var fbUserID;
 
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -28,6 +29,7 @@ function testAPI(userID) {
         //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
     });
     fbLogin = true;
+    fbUserID = userID;
     $("#FBlogin-button").hide();
     $("#navBarForm img.letterImg").show();
     $("img.letterImg")
