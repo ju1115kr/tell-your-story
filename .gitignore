@@ -3,7 +3,7 @@
 *.pyc
 *~
 venv/
-nohup*
+*nohup.out
 server/migrations/*
 .idea
 *.swo
