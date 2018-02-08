@@ -5,6 +5,49 @@ $("input[name='search']").keypress(function(e){
     console.log($("input[name='search']").val());
     console.log(result);
 
+    for(i=0; i < result.particle.length; i++) {
+        dataset.particles.push(result.particle[i]);
+    }
+
+    svg.selectAll("image")
+        .data(dataset.particles)
+        .enter()
+        .append("image")
+        .attr('width', '15px')
+        .attr('height', '15px')
+        .attr('x', function(d) {return d.x;})
+        .attr('y', function(d) {return d.y;})
+        .attr('xlink:href', "/picture/whitestar.png")
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+        .on("click", handleMouseClick);
+  }
+});
+
+$("button#searchButton").click(function() {
+    result = ajaxQuery(type='get', 
+        apiURL='/search/particle/'+$("input[name='search']").val());
+
+    console.log(result);
+
+    for(i=0; i < result.particle.length; i++) {
+        dataset.particles.push(result.particle[i]);
+    }
+
+    svg.selectAll("image")
+        .data(dataset.particles)
+        .enter()
+        .append("image")
+        .attr('width', '15px')
+        .attr('height', '15px')
+        .attr('x', function(d) {return d.x;})
+        .attr('y', function(d) {return d.y;})
+        .attr('xlink:href', "/picture/whitestar.png")
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+        .on("click", handleMouseClick);
+
+});
 /*    
     for(i=0; i<result.particle.length; i++) {
         
@@ -15,9 +58,6 @@ $("input[name='search']").keypress(function(e){
         result.particle[i].y += 30;
     }
 */
-    for(i=0; i < result.particle.length; i++) {
-        dataset.particles.push(result.particle[i]);
-    }
 
 /*    
     svg.selectAll("circle")
@@ -34,19 +74,6 @@ $("input[name='search']").keypress(function(e){
         .on("mouseout", handleMouseOut)
         .on("click", handleMouseClick);
 */
-    svg.selectAll("image")
-        .data(dataset.particles)
-        .enter()
-        .append("image")
-        .attr('width', '15px')
-        .attr('height', '15px')
-        .attr('x', function(d) {return d.x;})
-        .attr('y', function(d) {return d.y;})
-        .on("mouseover", handleMouseOver)
-        .on("mouseout", handleMouseOut)
-        .on("click", handleMouseClick);
-  }
-});
 
 /*
     d3.json(result, function(error, data) {

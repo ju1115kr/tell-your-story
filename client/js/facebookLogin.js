@@ -22,6 +22,7 @@ function checkLoginState() {
     });
 }
 
+
 function testAPI(userID) {
     console.log('Welcome! Fetching your information');
     FB.api('/me', function(response) {
@@ -52,9 +53,20 @@ function testAPI(userID) {
 
 window.fbAsyncInit = function() {
     FB.init({
-        appId : '1339808736124796',
+        appId: '406582053115617',
+        //appId : '1339808736124796',
         cookie : true,
         xfbml : true,
-        version : 'v2.11'
+        version : 'v2.12'
+    });
+    FB.Event.subscribe('auth.logout', logout_event);
+}
+
+var logout_event = function(response) {
+    FB.logout(function(response) {
+        console.log(response);
+        console.log("logout_event");
+        //console.log(response.status);
+        console.log(response);
     });
 }

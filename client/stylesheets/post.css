@@ -16,11 +16,16 @@ div#PostRequestForm input[type=text] {
 
 div#PostForm {
   display: none;
+  z-index: 998;
   position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
   bottom: 0;
   background-color: #e5dbff;
   height: 27%;
-  width: 100%;
+//  width: 100%;
+  max-width: 960px;
   padding-left: 5px;
   padding-right: 10px;
 }
