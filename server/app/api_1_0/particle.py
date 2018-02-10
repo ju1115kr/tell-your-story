@@ -3,6 +3,7 @@ from flask import request, jsonify, make_response, url_for, g
 from . import api
 from .. import db
 from ..models import Particle, Like, Comment
+from sqlalchemy.sql.expression import func
 from errors import not_found, forbidden, bad_request
 from flask_cors import cross_origin
 import os
@@ -11,6 +12,12 @@ import os
 @api.route('/particle', methods=['GET'])
 def get_all_particle():
     particles = Particle.query.all()
+    return jsonify({'particles': [particle.to_json() for particle in particles]})
+
+
+@api.route('/particle/random', methods=['GET'])
+def get_random_particle():
+    particles = Particle.query.order_by(func.random()).limit(30)
     return jsonify({'particles': [particle.to_json() for particle in particles]})
 
 
