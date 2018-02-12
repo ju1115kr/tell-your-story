@@ -10,7 +10,7 @@ var svg = d3.select("div#stardustForm").append("svg").attr({
     height: h
 });
 
-var dataset = ajaxQuery(type='get', apiURL='/particle');
+var dataset = ajaxQuery(type='get', apiURL='/particle/random');
 
 // We're passing in a function in d3.max to tell it what we're maxing (x value)
 var xScale = d3.scale.linear()
@@ -71,13 +71,14 @@ svg.on("click", function() {
 
     //if cursor does not pointing already exist particle
     if( $("div#dummyDiv").is(':hidden') ){
-        /*
+        
         if(!fbLogin) {
             console.log("User doesn't login in fb");
-            checkLoginState();
+            alert('페이스북 로그인이 필요합니다.');
+            //checkLoginState();
             return false;
         }
-        */
+        
         var coords = d3.mouse(this);
         console.log(coords);
 
@@ -150,8 +151,9 @@ svg.on("click", function() {
                 console.log($("textarea#PostFormBox").val());
                 return false; }
             else {
-                jsondata = JSON.stringify({ author_id:fbUserID,
-                    context:$("textarea#PostFormBox").val(),
+                jsondata = JSON.stringify({ author_id: fbUserID,
+                    googleUserImage: googleUserImage,
+                    context: $("textarea#PostFormBox").val(),
                     x: newData.x, y: newData.y });
 
                 var ajaxresult = ajaxQuery(type="post", apiURL="/particle", jsondata);
@@ -194,7 +196,7 @@ function handleMouseOver(d, i) {  // Add interactivity
         return [d.x, d.y];  // Value of the text
     });
 
-    tip.show();
+    //tip.show();
     $("div#dummyDiv").show();
 }
 
@@ -207,12 +209,14 @@ function handleMouseOut(d, i) {
     //d3.select("#t" + d.x + "-a" + d.y + "-" + i).remove();  // Remove text location
     d3.select("#t" + i).remove();
 
-    tip.hide();
+    //tip.hide();
     $("div#dummyDiv").hide();
 }
 
 function handleMouseClick(d, i) {
   if ($("div#dummyDiv").is(':visible')){
+    if (d.author != 'null') { $("img.letterImg").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
+    if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
     $('p.letterContext').text(d.context);
     $('div.letterForm').slideDown();
   }

@@ -7,6 +7,7 @@
 <meta property="og:title" content="조선의 먼찌들">
 <meta property="og:description" content="당신의 찌질했던 기억들을 담아주세요.">
 <meta property="og:image" content="">
+<meta name="google-signin-client_id" content="1073025271534-31s62ek21fkq89m2tifqnkh2qv0hstv8.apps.googleusercontent.com">
 <title>조선의 먼찌들</title>
 <script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -14,6 +15,7 @@
 <script src="./js/ajaxQuery.js"></script>
 <script src="./js/d3.js" charset="utf-8"></script>
 <script src="./js/facebookLogin.js" charset="utf-8"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <link href="http://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
@@ -32,12 +34,15 @@
 
 <div id="topMenu">
     <div id="navBarForm">
-        <button class="tablink" onclick="openPage('About' this)">
+        <!--button class="tablink" onclick="openPage('About', this)">
             <a target="_blank" href="https://fb.me/meonzzi">About</a></button>
-        <button class="tablink" onclick="openPage('News', this)">News</button>
+        <button class="tablink" onclick="openPage('News', this)">News</button-->
+        <a class="tablink" onclick="openPage('About', this)">About</a>
+        <a class="tablink" onclick="openPage('News', this)">News</a>
+        <img class="letterImg" src="" alt="" />
         <!--button class="tablink" onclick="openPage('Video', this)">Video</button-->
         <!--img class="letterImg" src="" alt="" onclick="logout_event();"/-->
-        <img class="letterImg" src="" alt="" onclick="javascript:FB.logout(function() { window.location.reload() }); return false;" />
+        <!--img class="letterImg" src="" alt="" onclick="javascript:FB.logout(function() { window.location.reload() }); return false;" /-->
         <!--a target="_blank" href="https://fb.me/meonzzi">
             <img src="/picture/fblogo.png" width="15px" height="15px"/></a-->
         <!--a target="_blank" href="http://youtube.com">
@@ -53,7 +58,8 @@
         data-use-continue-as="true"
         data-scope="public_profile, email" onlogin="checkLoginState();">
     </div>
-
+    <!--div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true"></div>
+    <a href='#' onclick="signOut();">Sign out</a-->
 </div>
 
 <div id="logoForm" style="float:center">
@@ -63,12 +69,16 @@
 </div>
 
 <div id="Universe" class="tabcontent">
-    <div id="searchBarForm">
-        <strong>태그 검색</strong><p>추천 키워드 #군대 #돈</p>
+        <div id="searchBarForm">
+        <div id="keywordBar">
+            <strong>키워드 검색</strong><p>추천 키워드 #군대 #돈</p>
+        </div>
         <hr />
-        <div >
-            <input type="text" id="searchBox" name="search" placeholder="태그 검색" autocomplete="off" />
-            <button id="searchButton">검색</button>
+        <div id="searchBar">
+            <div id="searchBarforCenter">
+                <input type="text" id="searchBox" name="search" placeholder="태그 검색" autocomplete="off" />
+                <button id="searchButton">검색</button>
+        </div>
         </div>
     </div>
 
@@ -93,29 +103,23 @@
 
 <div id="About" class="tabcontent">About</div>
 
-<div id="News" class="tabcontent">
+<div id="News" class="tabcontent" style="display: none;">
     <div class="news-main-content">
-        <a class="news-main-Close">&times;</a>
-        <p class="news-main-content-header-text">조선의 먼찌들<p>
-        <h2 class="news-main-content-header-title">기사 제목</h2>
-        <p class="news-main-content-date"></p>
-        <img class="news-main-content-img" src="" alt="" />
-        <hr />
-        <video class="news-main-video" controls controlsList="nodownload"/>
-            <source src="" type="video/mp4">
-        </video>
-        <p class="news-main-content-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elita. 
-        Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, 
-        nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
-        Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, 
-        justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. 
-        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. 
-        Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. 
-        Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. 
-        Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. 
-        Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut 
-        libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. 
-        Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+        <div class="news-main-content-header">
+            <a class="news-main-Close">&times;</a>
+            <p class="news-main-content-header-text">조선의 먼찌들<p>
+            <h2 class="news-main-content-header-title">기사 제목</h2>
+            <p class="news-main-content-date"></p>
+            <img class="news-main-content-img" src="" alt="" />
+            <hr />
+        </div>
+
+        <div class="news-main-content-body">
+            <video class="news-main-video" controls controlsList="nodownload"/>
+                <source src="" type="video/mp4">
+            </video>
+            <p class="news-main-content-text">Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+        </div>
     </div>
 
     <div class="news-wrapper">
@@ -225,7 +229,7 @@
 
 <!--div id="Video" class="tabcontent">Video</div-->
 
-<div class="letterForm">
+<div class="letterForm" style="display: none;">
     <div class="letterInfo">
         <img class="letterImg" src="" alt="" />
         <p class="createdDate">2018-01-28 17:16</p><br />
@@ -271,6 +275,7 @@
 <script src="./js/search.js" charset="utf-8"></script>
 <script src="./js/webEvent.js" charset="utf-8"></script>
 <script src="./js/news.js" charset="utf-8"></script>
+<script src="./js/google_login.js" charset="utf-8"></script>
 </body>
 </html>
 

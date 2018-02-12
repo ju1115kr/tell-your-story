@@ -1,8 +1,9 @@
 $("input[name='search']").keypress(function(e){
   if(e.keyCode == 13){
+    if($("input[name='search']").val() === ""){ return false; }
+
     result = ajaxQuery(type='get', 
         apiURL='/search/particle/'+$("input[name='search']").val());
-    console.log($("input[name='search']").val());
     console.log(result);
 
     for(i=0; i < result.particle.length; i++) {
@@ -15,8 +16,7 @@ $("input[name='search']").keypress(function(e){
         .append("image")
         .attr('width', '15px')
         .attr('height', '15px')
-        .attr('x', function(d) {return d.x;})
-        .attr('y', function(d) {return d.y;})
+        .attr(circleAttrs)
         .attr('xlink:href', "/picture/whitestar.png")
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
@@ -25,6 +25,7 @@ $("input[name='search']").keypress(function(e){
 });
 
 $("button#searchButton").click(function() {
+    if($("input[name='search']").val() === ""){ return false; }
     result = ajaxQuery(type='get', 
         apiURL='/search/particle/'+$("input[name='search']").val());
 
@@ -40,8 +41,7 @@ $("button#searchButton").click(function() {
         .append("image")
         .attr('width', '15px')
         .attr('height', '15px')
-        .attr('x', function(d) {return d.x;})
-        .attr('y', function(d) {return d.y;})
+        .attr(circleAttrs)
         .attr('xlink:href', "/picture/whitestar.png")
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)

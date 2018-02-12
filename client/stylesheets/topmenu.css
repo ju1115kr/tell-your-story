@@ -26,22 +26,26 @@
   font-size: 0.8rem;
 }
 
-#navBarForm button a {
+#navBarForm a {
   color: black;
 }
 
-#navBarForm button:hover {
+#navBarForm a:hover {
   background-color: rgba(0, 0, 0, 0);
   color: black;
   cursor: pointer;
   font-weight: bold;
 }
 
-#navBarForm button.active {
+#navBarForm a.active {
 //  background-color: #682B8F;
   background-color: rgba(0, 0, 0, 0);
   color: white;
   font-weight: bold;
+}
+
+#navBarForm a {
+  margin-left: 30px;
 }
 
 //#FBlogin-button {

@@ -32,7 +32,8 @@ function testAPI(userID) {
     fbLogin = true;
     fbUserID = userID;
     $("#FBlogin-button").hide();
-    $("#navBarForm img.letterImg").show();
+    //$("#navBarForm img.letterImg").show();
+    $("div.g-signin2").hide();
     $("img.letterImg")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
     $("img#PostFormImg")
