@@ -33,24 +33,26 @@
 </head>
 
 <body>
-
 <div id="topMenu">
     <div id="navBarForm">
-        <img class="menuLogo" src="./picture/meonzziLogo.png" alt="조선의 먼찌들"/>
-        <hr />
-        <div id="linktag">
-        <a class="tablink" id="defaultOpen" onclick="openPage('Galaxy', this)">Galaxy</a>
-        <a class="tablink" onclick="openPage('About', this)">About</a>
-        <a class="tablink" onclick="openPage('News', this)">News</a>
+        <div style="display: flex; align-items: center;">
+            <img class="menuLogo" src="./picture/meonzziLogo.png" alt="조선의 먼찌들" style="display: block; padding-right: 1rem; border-right: 1px solid #e1e1e7;"/>
+            <div id="linktag" style="margin-right: 2rem;">
+                <a class="tablink" id="defaultOpen" onclick="openPage('Galaxy', this)">Galaxy</a>
+                <a class="tablink" onclick="openPage('About', this)">About</a>
+                <a class="tablink" onclick="openPage('News', this)">News</a>
+            </div>
         </div>
-        <img class="letterImg" src="" alt="" />
-        <div id="FBlogin-button" class="fb-login-button"
-            data-max-rows="1" data-size="medium"
-            data-button-type="continue_with"
-            data-show-faces="false"
-            data-auto-logout-link="false"
-            data-use-continue-as="true"
-            data-scope="public_profile, email" onlogin="checkLoginState();">
+        <div style="display: flex; align-items: center; padding-right: 1rem;">
+            <img class="letterImg" src="" alt="" />
+            <div id="FBlogin-button" class="fb-login-button"
+                data-max-rows="1" data-size="medium"
+                data-button-type="continue_with"
+                data-show-faces="false"
+                data-auto-logout-link="false"
+                data-use-continue-as="true"
+                data-scope="public_profile, email" onlogin="checkLoginState();">
+            </div>
         </div>
     </div>
 </div>

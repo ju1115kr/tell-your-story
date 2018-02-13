@@ -12,8 +12,9 @@
 //  margin: 0 auto;
 //  display: inline-block;
 //  display: table-cell;
-  display: inline;
-  vertical-align: middle;
+  display: flex;
+//  vertical-align: middle;
+  align-items: center;
   height: 90px;
 //  position: relative;
 //  top: 50%;

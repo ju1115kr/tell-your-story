@@ -6,6 +6,8 @@ $("input[name='search']").keypress(function(e){
         apiURL='/search/particle/'+$("input[name='search']").val());
     console.log(result);
 
+    update(result);
+/*
     for(i=0; i < result.particle.length; i++) {
         dataset.particles.push(result.particle[i]);
     }
@@ -21,6 +23,8 @@ $("input[name='search']").keypress(function(e){
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
         .on("click", handleMouseClick);
+*/
+
   }
 });
 
@@ -117,3 +121,18 @@ function update(dataArray) {
     }); 
   }  
 });*/
+
+function handleMouseOver(d, i) {
+    d3.select(this)
+        .attr('xlink:href', "/picture/yellowstar.png")
+
+    svg.append("text").attr({
+        id: "t" + i,
+        x: function() { return xScale(d.x) - 30; },
+        y: function() { return yScale(d.y) - 15; }
+    })
+    .text(function() {
+        return [d.x, d.y];
+    });
+    $("div#dummyDiv").show();
+}

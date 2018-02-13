@@ -15,7 +15,7 @@ div#keywordBar {
 }
 
 #searchBarForm img {
-  width: 15px;
+  width: 17px;
   height: 15px;
   margin-right: 5px;
 }
@@ -66,9 +66,12 @@ input#searchBox[type=text] {
   box-sizing: border-box;
   margin: 5px 5px 5px 5px;
   border: 2px solid #ccc;
-  border-radius: 4px;
+//  border-radius: 4px;
+  border-radius: 15px;
   font-size: 15pt;
-  background-color: white;
+  color: #e8e6ec;
+//  background-color: white;
+  background-color: transparent;
   background-image: url('../picture/searchicon.png');
   background-size: 27px 27px;
   background-position: 10px 10px; 
@@ -76,7 +79,7 @@ input#searchBox[type=text] {
   padding: 12px 20px 12px 40px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 /* When the input field gets focus, change its width to 100% */
