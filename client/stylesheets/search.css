@@ -4,7 +4,7 @@ div#searchBarForm {
 
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
+//  margin-top: 20px;
   padding-top: 15px;
 }
 
@@ -14,11 +14,21 @@ div#keywordBar {
   padding-left: 5px;
 }
 
+#searchBarForm img {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
 #searchBarForm strong {
   margin-left: auto;
   margin-right: auto;
   float: center;
-  
+  color: #e8e6ec;
+}
+
+#searchBarForm p {
+  color: #756d7e;
 }
 
 #searchBarForm hr {
@@ -52,12 +62,12 @@ button#searchButton {
 }
 
 input#searchBox[type=text] {
-  width: 60%;
+  width: 100%;
   box-sizing: border-box;
   margin: 5px 5px 5px 5px;
   border: 2px solid #ccc;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 15pt;
   background-color: white;
   background-image: url('../picture/searchicon.png');
   background-size: 27px 27px;

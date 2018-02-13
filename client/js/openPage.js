@@ -1,4 +1,4 @@
-openPage("Universe", '',"");
+openPage("Galaxy", '',"");
 
 function openPage(pageName, elmnt, color) {
     var i, tabcontent, tablinks;
@@ -17,4 +17,4 @@ function openPage(pageName, elmnt, color) {
         elmnt.style.fontWeight = 'bold';
     }
 }
-//document.getElementById("defaultOpen").click();
+document.getElementById("defaultOpen").click();

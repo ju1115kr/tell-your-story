@@ -43,6 +43,6 @@ $("span#logoLink").click(function() {
   for(i=0; i < tablinks.length; i++){
     tablinks[i].style.backgroundColor = "";
   }
-  document.getElementById("Universe").style.display = "block";
+  document.getElementById("Galaxy").style.display = "block";
 });
 

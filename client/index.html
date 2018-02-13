@@ -8,6 +8,7 @@
 <meta property="og:description" content="당신의 찌질했던 기억들을 담아주세요.">
 <meta property="og:image" content="">
 <meta name="google-signin-client_id" content="1073025271534-31s62ek21fkq89m2tifqnkh2qv0hstv8.apps.googleusercontent.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>조선의 먼찌들</title>
 <script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -16,6 +17,7 @@
 <script src="./js/d3.js" charset="utf-8"></script>
 <script src="./js/facebookLogin.js" charset="utf-8"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" charset="utf-8"></script>
 <link href="http://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
@@ -34,51 +36,35 @@
 
 <div id="topMenu">
     <div id="navBarForm">
-        <!--button class="tablink" onclick="openPage('About', this)">
-            <a target="_blank" href="https://fb.me/meonzzi">About</a></button>
-        <button class="tablink" onclick="openPage('News', this)">News</button-->
+        <img class="menuLogo" src="./picture/meonzziLogo.png" alt="조선의 먼찌들"/>
+        <hr />
+        <div id="linktag">
+        <a class="tablink" id="defaultOpen" onclick="openPage('Galaxy', this)">Galaxy</a>
         <a class="tablink" onclick="openPage('About', this)">About</a>
         <a class="tablink" onclick="openPage('News', this)">News</a>
-        <img class="letterImg" src="" alt="" />
-        <!--button class="tablink" onclick="openPage('Video', this)">Video</button-->
-        <!--img class="letterImg" src="" alt="" onclick="logout_event();"/-->
-        <!--img class="letterImg" src="" alt="" onclick="javascript:FB.logout(function() { window.location.reload() }); return false;" /-->
-        <!--a target="_blank" href="https://fb.me/meonzzi">
-            <img src="/picture/fblogo.png" width="15px" height="15px"/></a-->
-        <!--a target="_blank" href="http://youtube.com">
-            <img src="/picture/youtubelogo.png" width="18px" height="15px"/></a-->
-    </div>
-
-    <!--div id="FBlogin-button" class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" onlogin="checkLoginState();"></div-->
-    <div id="FBlogin-button" class="fb-login-button"
-        data-max-rows="1" data-size="medium"
-        data-button-type="continue_with"
-        data-show-faces="false"
-        data-auto-logout-link="false"
-        data-use-continue-as="true"
-        data-scope="public_profile, email" onlogin="checkLoginState();">
-    </div>
-    <!--div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true"></div>
-    <a href='#' onclick="signOut();">Sign out</a-->
-</div>
-
-<div id="logoForm" style="float:center">
-    <span id="logoLink" onclick="openPage('Universe', this)">
-        <img id="logoImg" src="picture/meonzziLogo.png" alt="" />
-    </span>
-</div>
-
-<div id="Universe" class="tabcontent">
-        <div id="searchBarForm">
-        <div id="keywordBar">
-            <strong>키워드 검색</strong><p>추천 키워드 #군대 #돈</p>
         </div>
-        <hr />
+        <img class="letterImg" src="" alt="" />
+        <div id="FBlogin-button" class="fb-login-button"
+            data-max-rows="1" data-size="medium"
+            data-button-type="continue_with"
+            data-show-faces="false"
+            data-auto-logout-link="false"
+            data-use-continue-as="true"
+            data-scope="public_profile, email" onlogin="checkLoginState();">
+        </div>
+    </div>
+</div>
+
+<div id="Galaxy" class="tabcontent">
+    <div id="searchBarForm">
+        <div id="keywordBar">
+            <img src="./picture/yellowstar.png" alt=""/><strong>키워드 검색</strong><p>추천 키워드 #군대 #돈</p>
+        </div>
         <div id="searchBar">
             <div id="searchBarforCenter">
-                <input type="text" id="searchBox" name="search" placeholder="태그 검색" autocomplete="off" />
-                <button id="searchButton">검색</button>
-        </div>
+                <input type="text" id="searchBox" name="search" placeholder="검색" autocomplete="off" />
+                <!--button id="searchButton">검색</button-->
+            </div>
         </div>
     </div>
 
@@ -233,6 +219,7 @@
     <div class="letterInfo">
         <img class="letterImg" src="" alt="" />
         <p class="createdDate">2018-01-28 17:16</p><br />
+        <p class="letterLikeCount"></p>
     </div>
     <a class="letterClose">&times;</a>
     <hr class="letterBar" />

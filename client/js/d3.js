@@ -1,5 +1,6 @@
-var w = window.innerWidth,
-    h = window.innerHeight - 405,
+var w = window.innerWidth / 1.2,
+//    h = window.innerHeight - 405,
+    h = window.innerHeight - 210,
 //var w = $("body").width() * 1,
 //    h = $("body").height() * 1.1,
     margin = { top: 40, right: 20, bottom: 20, left: 40 },
@@ -26,11 +27,13 @@ var yScale = d3.scale.linear()
 var xAxis = d3.svg.axis().scale(xScale).orient("top");
 var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
+
 var circleAttrs = {
     x: function(d) { return xScale(d.x) - 7.5; },
     y: function(d) { return yScale(d.y) - 7.5; }
 };
 
+/*
 // Adds X-Axis as a 'g' element
 svg.append("g").attr({
     "class": "axis",  // Give class so we can style it
@@ -42,6 +45,7 @@ svg.append("g").attr({
     "class": "axis",
     transform: "translate(" + [margin.left, 0] + ")"
 }).call(yAxis);  // Call the yAxis function on the group
+*/
 
 var tip = d3.tip()
     .attr('class', 'tip')
@@ -217,10 +221,26 @@ function handleMouseClick(d, i) {
   if ($("div#dummyDiv").is(':visible')){
     if (d.author != 'null') { $("img.letterImg").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
     if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
+    $('p.createdDate').text(formatDate(d.created_at));
+    $('p.letterLikeCount').text(d.likes_count);
     $('p.letterContext').text(d.context);
     $('div.letterForm').slideDown();
   }
   else {
     return false;
   }
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+    hour = d.getHours();
+    minute = d.getMinutes();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-') + " " + [hour, minute].join(':');
 }

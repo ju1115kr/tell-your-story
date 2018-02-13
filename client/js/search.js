@@ -48,6 +48,35 @@ $("button#searchButton").click(function() {
         .on("click", handleMouseClick);
 
 });
+
+function update(dataArray) {
+    var t = d3.transition()
+        .duration(750);
+
+    var dataset = svg.selectAll("image")
+        .data(dataArray.particles)
+
+    dataset.exit()
+            .attr("class", "exit")
+        .transition(t)
+            .attr("y", 60)
+            .style("fill-opacity", 1e-6)
+            .remove();
+
+    dataset.enter().append("image")
+            .attr("class", "enter")
+            .style("fill-opacity", 1e-6)
+    .transition(t)
+        .style("fill-opacity", 1)
+        .attr('width', '15px')
+        .attr('height', '15px')
+        .attr(circleAttrs)
+        .attr('xlink:href', "/picture/whitestar.png")
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+        .on("click", handleMouseClick);
+}
+
 /*    
     for(i=0; i<result.particle.length; i++) {
         

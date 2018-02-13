@@ -1,18 +1,49 @@
 #topMenu {
-  position: absolute;
-  right: 34px;
-  top: 10px;
+  //position: absolute;
+  //right: 34px;
+  //top: 10px;
+  display: table;
+  height: 90px;
+  background-color: #D1CFD6;
+  width: 100%;
 }
 
 #navBarForm {
-  display: flex;
-//  border-radius: 35px;
-  background-color: rgba(0, 0, 0, 0);
-//  width: 328px;
-//  margin-top: 0px;
-//  margin-left: auto;
-//  margin-right: auto;
-  overflow: hidden;
+//  margin: 0 auto;
+//  display: inline-block;
+//  display: table-cell;
+  display: inline;
+  vertical-align: middle;
+  height: 90px;
+//  position: relative;
+//  top: 50%;
+//  transform: translateY(-50%);
+  //overflow: hidden;
+}
+
+#navBarForm img {
+//  position: relative;
+//  top: 50%;
+//  transform: translateY(-50%);
+  width: 152px;
+  height: 42px;
+}
+
+#navBarForm hr {
+  display: inline;
+  height: 100%;
+  width: 1px;
+  border none;
+
+/*  border: none;
+//  border-left: 1px solid hsla(200, 10%, 50%, 100);
+  height: 100%;
+  width: 1px;
+  */
+}
+
+#linktag {
+  display: inherit;
 }
 
 #navBarForm button {
@@ -23,11 +54,14 @@
   text-align: center;
   padding: 10px 10px;
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 #navBarForm a {
   color: black;
+  margin-left: 10px;
+  font-size: 1rem;
+  color: #1e0a28;
 }
 
 #navBarForm a:hover {
@@ -44,10 +78,6 @@
   font-weight: bold;
 }
 
-#navBarForm a {
-  margin-left: 30px;
-}
-
 //#FBlogin-button {
 //  position: absolute;
 //  right: 4px;
@@ -60,6 +90,12 @@
   width: 38px;
   height: 38px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div#FBlogin-button {
+  position: absolute;
+  right: 0;
+  vertical-align: middle;
 }
 
 span#logoLink {

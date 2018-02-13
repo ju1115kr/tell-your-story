@@ -1,11 +1,16 @@
-div#Universe {
-  background-color: #a79ab1;
+div#Galaxy {
+  background-color: #1b0c26;
   height: 100%;
+}
+
+.axis {
+  stroke: #e8e6ec;
 }
 
 .axis path, .axis line {
   file: none;
-  stroke: black;
+//  stroke: black;
+  stroke: #e8e6ec;
   shape-rendering: crispEdges;
 }
 
