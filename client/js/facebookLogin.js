@@ -34,12 +34,12 @@ function testAPI(userID) {
     $("#FBlogin-button").hide();
     //$("#navBarForm img.letterImg").show();
     $("div.g-signin2").hide();
-    $("img.FBlogin-Img").show();
-    //$("img.letterImg").attr("display","flex");
+        //$("img.letterImg").attr("display","flex");
     $("img.FBlogin-Img")
-        .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
+        .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=large");
+    $("img.FBlogin-Img").show();
     $("img#PostFormImg")
-        .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
+        .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=large");
     //$("div.letterForm").slideDown();
     //$("form#particleBroadcast").show();
 }

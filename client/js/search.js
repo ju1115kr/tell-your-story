@@ -128,14 +128,45 @@ function update(dataArray) {
 function handleMouseOver(d, i) {
     d3.select(this)
         .attr('xlink:href', "/picture/yellowstar.png")
-
-    svg.append("text").attr({
-        id: "t" + i,
-        x: function() { return xScale(d.x) - 30; },
-        y: function() { return yScale(d.y) - 15; }
-    })
-    .text(function() {
-        return [d.x, d.y];
-    });
     $("div#dummyDiv").show();
 }
+
+function handleMouseOut(d, i) {
+    d3.select(this)
+        .attr("xlink:href", "/picture/whitestar.png")
+    $("div#dummyDiv").hide();
+}
+
+function handleMouseClick(d, i) {
+    if( $("div#PostForm").is(':visible') ){
+        console.log("hu");
+        return false;
+    }
+    if ($("div#dummyDiv").is(':visible')){
+        if (d.author != 'null') { $("img.letterImg").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
+        if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
+
+        $('p.createdDate').text(formatDate(d.created_at));
+        $('p.letterLikeCount').text(d.likes_count);
+        $('p.letterContext').text(d.context);
+        $('div.letterForm').slideDown();
+    }
+   else {
+        return false;
+    }
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+    hour = d.getHours();
+    minute = d.getMinutes();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-') + " " + [hour, minute].join(':');
+}
+

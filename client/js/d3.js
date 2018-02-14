@@ -1,11 +1,11 @@
-$("h3#introment").slideUp(300).delay(500).fadeIn(1000);
+$("div#introdiv").css("margin-top", window.outerHeight / 17);
+$("h3#introment").slideUp(0).delay(500).fadeIn(1000);
 $("h3#introment").delay(2000).fadeOut(1000);
 
 // Galaxy script start
-
 var w = window.innerWidth / 1.2,
-//    h = window.innerHeight - 405,
     h = window.innerHeight - 230,
+//    h = window.innerHeight - 405,
 //var w = $("body").width() * 1,
 //    h = $("body").height() * 1.1,
     margin = { top: 40, right: 20, bottom: 20, left: 40 },
@@ -55,6 +55,19 @@ svg.append("g").attr({
 }).call(yAxis);  // Call the yAxis function on the group
 */
 
+svg.append('image')
+    .attr('id', 'refresh')
+    .attr('width', '90px')
+    .attr('height', '90px')
+
+    .attr('xlink:href', "/picture/refresh.png")
+    .on("click", function(d) {
+        dataset = ajaxQuery(type='get', apiURL='/particle/random');
+        svg.selectAll("image.particle").remove();
+        drawParticles(dataset);
+    });
+
+
 var tip = d3.tip()
     .attr('class', 'tip')
     .offset([-10, 0])
@@ -62,17 +75,7 @@ var tip = d3.tip()
 
 svg.call(tip);
 
-svg.selectAll("image")
-    .data(dataset.particles)
-    .enter().append('image')
-    .attr('width', size)
-    .attr('height', size)
-    .attr(circleAttrs)
-    .attr('xlink:href', "/picture/whitestar.png")
-    .on("mouseover", handleMouseOver)
-    .on("mouseout", handleMouseOut)
-    .on("click", handleMouseClick);
-
+drawParticles(dataset);
 
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
@@ -80,13 +83,16 @@ svg.on("click", function() {
         console.log("hu");
         return false;
     }
+    $("image#refresh").click(function(){
+        return false;
+    });
     if( $("div.letterForm").is(':visible') ){
         console.log();
         return false;
     }
 
     //if cursor does not pointing already exist particle
-    if( $("div#dummyDiv").is(':hidden') ){
+    if( !$("image#refresh").click() && $("div#dummyDiv").is(':hidden') ){
         
         if(!fbLogin) {
             console.log("User doesn't login in fb");
@@ -107,18 +113,8 @@ svg.on("click", function() {
         
         console.log(newData);
         dataset.particles.push(newData);   // Push data to our array
-        
-        svg.selectAll("image")
-            .data(dataset.particles)
-            .enter().append('image')
-            .attr('width', size)
-            .attr('height', size)
-            .attr(circleAttrs)
-            .attr('id', "addingParticle")
-            .attr('xlink:href', "/picture/whitestar.png")
-            .on("mouseover", handleMouseOver)
-            .on("mouseout", handleMouseOut)
-            .on("click", handleMouseClick);
+  
+        drawParticles(dataset);
 
         console.log('check log');
         $("div#PostForm").slideDown();
@@ -126,18 +122,9 @@ svg.on("click", function() {
             $("div#PostForm").slideUp();
             d3.select("#" + "addingParticle").remove();
             svg.selectAll("image").remove();
-
-            svg.selectAll("image")
-                .data(old_dataset.particles)
-                .enter().append('image')
-                .attr('width', size)
-                .attr('height', size)
-                .attr(circleAttrs)
-                .attr('xlink:href', "/picture/whitestar.png")
-                .on("mouseover", handleMouseOver)
-                .on("mouseout", handleMouseOut)
-                .on("click", handleMouseClick);
-
+            
+            drawParticles(old_dataset);
+            
             dataset = JSON.parse(JSON.stringify(old_dataset));
         });
         /*
@@ -264,4 +251,18 @@ function formatDate(date) {
     if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-') + " " + [hour, minute].join(':');
+}
+
+function drawParticles(dataset) {
+    svg.selectAll("image")
+        .data(dataset.particles)
+        .enter().append('image')
+        .attr('class', 'particle')
+        .attr('width', size)
+        .attr('height', size)
+        .attr(circleAttrs)
+        .attr('xlink:href', "/picture/whitestar.png")
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+        .on("click", handleMouseClick);
 }
