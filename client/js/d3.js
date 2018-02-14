@@ -92,7 +92,7 @@ svg.on("click", function() {
     }
 
     //if cursor does not pointing already exist particle
-    if( !$("image#refresh").click() && $("div#dummyDiv").is(':hidden') ){
+    if( $("div#dummyDiv").is(':hidden') ){
         
         if(!fbLogin) {
             console.log("User doesn't login in fb");
@@ -121,7 +121,7 @@ svg.on("click", function() {
         $("a.PostFormClose").click(function() {
             $("div#PostForm").slideUp();
             d3.select("#" + "addingParticle").remove();
-            svg.selectAll("image").remove();
+            svg.selectAll("image.particle").remove();
             
             drawParticles(old_dataset);
             

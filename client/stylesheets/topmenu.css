@@ -61,7 +61,7 @@
 
 #navBarForm a {
   color: black;
-  margin-left: 30px;
+  margin-left: 15px;
   font-size: 0.85rem;
   color: #1e0a28;
 }
@@ -113,5 +113,8 @@ span#logoLink {
     content:url("../picture/meonzziLogo.png");
     width: 152px;
     height: 42px;
+  }
+  #navBarForm a {
+    margin-left: 30px;
   }
 }
