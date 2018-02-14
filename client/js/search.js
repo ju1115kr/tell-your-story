@@ -35,6 +35,9 @@ $("button#searchButton").click(function() {
 
     console.log(result);
 
+    update(result);
+
+/*
     for(i=0; i < result.particle.length; i++) {
         dataset.particles.push(result.particle[i]);
     }
@@ -43,14 +46,14 @@ $("button#searchButton").click(function() {
         .data(dataset.particles)
         .enter()
         .append("image")
-        .attr('width', '15px')
-        .attr('height', '15px')
+        .attr('width', '20px')
+        .attr('height', '20px')
         .attr(circleAttrs)
         .attr('xlink:href', "/picture/whitestar.png")
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
         .on("click", handleMouseClick);
-
+*/
 });
 
 function update(dataArray) {

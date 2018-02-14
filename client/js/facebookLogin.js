@@ -34,7 +34,9 @@ function testAPI(userID) {
     $("#FBlogin-button").hide();
     //$("#navBarForm img.letterImg").show();
     $("div.g-signin2").hide();
-    $("img.letterImg")
+    $("img.FBlogin-Img").show();
+    //$("img.letterImg").attr("display","flex");
+    $("img.FBlogin-Img")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");
     $("img#PostFormImg")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=normal");

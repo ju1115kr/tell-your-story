@@ -8,7 +8,7 @@
 <meta property="og:description" content="당신의 찌질했던 기억들을 담아주세요.">
 <meta property="og:image" content="">
 <meta name="google-signin-client_id" content="1073025271534-31s62ek21fkq89m2tifqnkh2qv0hstv8.apps.googleusercontent.com">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
 <title>조선의 먼찌들</title>
 <script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -30,21 +30,22 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/topmenu.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/post.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/tooltip.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/introment.css" />
 </head>
 
 <body>
 <div id="topMenu">
     <div id="navBarForm">
-        <div style="display: flex; align-items: center;">
-            <img class="menuLogo" src="./picture/meonzziLogo.png" alt="조선의 먼찌들" style="display: block; padding-right: 1rem; border-right: 1px solid #e1e1e7;"/>
+        <div id="logo-link" style="display: flex; align-items: center; margin-left: 20px;">
+            <img class="menuLogo" src="" alt="조선의 먼찌들" style="display: block; padding-right: 2rem; border-right: 1px solid #e1e1e7;"/>
             <div id="linktag" style="margin-right: 2rem;">
-                <a class="tablink" id="defaultOpen" onclick="openPage('Galaxy', this)">Galaxy</a>
-                <a class="tablink" onclick="openPage('About', this)">About</a>
-                <a class="tablink" onclick="openPage('News', this)">News</a>
+                <a class="tablink" id="defaultOpen" onclick="openPage('Galaxy', this)">GALAXY</a>
+                <a class="tablink" onclick="openPage('About', this)">ABOUT</a>
+                <a class="tablink" onclick="openPage('News', this)">NEWS</a>
             </div>
         </div>
         <div style="display: flex; align-items: center; padding-right: 1rem;">
-            <img class="letterImg" src="" alt="" />
+            <img class="FBlogin-Img" src="" alt="" />
             <div id="FBlogin-button" class="fb-login-button"
                 data-max-rows="1" data-size="medium"
                 data-button-type="continue_with"
@@ -60,14 +61,16 @@
 <div id="Galaxy" class="tabcontent">
     <div id="searchBarForm">
         <div id="keywordBar">
-            <img src="./picture/yellowstar.png" alt=""/><strong>키워드 검색</strong><p>추천 키워드 #군대 #돈</p>
+            <img src="./picture/yellowstar.png" alt=""/>
+            <strong>검색</strong>
         </div>
         <div id="searchBar">
             <div id="searchBarforCenter">
-                <input type="text" id="searchBox" name="search" placeholder="검색" autocomplete="off" />
-                <!--button id="searchButton">검색</button-->
+                <input type="text" id="searchBox" name="search" placeholder="추천 키워드 &nbsp;&nbsp;#군대 #돈" autocomplete="off" />
+                <button id="searchButton">검색</button>
             </div>
         </div>
+        <h3 id="introment">우주를 클릭해<br />당신의 사연을 보내주세요.</h3>
     </div>
 
     <div id="stardustForm">
@@ -117,9 +120,9 @@
                 <hr />
             </div>
             <div class="news-container">
-                <h2 class="news-title">기사</h2>
-                <p class="news-date">18. 02. 01.</p>
-                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+                <h2 class="news-title">먼지가 모여,<br />우주가 되다</h2>
+                <p class="news-date">18. 02. 13. 06:34</p>
+                <p class="news-preview">청춘의 '찌질함'에 대해 얘기해볼까요. 외국에서는 quarter-life...</p>
             </div>
         </div>
 
@@ -265,7 +268,7 @@
 <script src="./js/webEvent.js" charset="utf-8"></script>
 <script src="./js/news.js" charset="utf-8"></script>
 <script src="./js/google_login.js" charset="utf-8"></script>
+<script src="./js/topmenu.js" charset="utf-8"></script>
 </body>
 </html>
-
 

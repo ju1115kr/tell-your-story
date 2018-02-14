@@ -13,6 +13,14 @@ function openPage(pageName, elmnt, color) {
         tablinks[i].style.fontWeight = 'normal';
     }
     document.getElementById(pageName).style.display = "block";
+
+    if(pageName == "Galaxy") {
+        $("body, html").css("background-color", "#1b0c26");
+    }
+    else {
+        $("body, html").css("background-color", "#ADA8B3");
+    }
+
     if(elmnt !== '') {
         elmnt.style.fontWeight = 'bold';
     }

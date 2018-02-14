@@ -1,0 +1,11 @@
+h3#introment {
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+svg {
+    display: block;
+}

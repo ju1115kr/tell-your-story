@@ -1,15 +1,20 @@
+div#News {
+  background-color: #ADA8B3;
+
+}
+
 div.news-wrapper {
   display: grid;
   grid-template-columns: 1fr;
-  grid-column-gap: 5px;
-  grid-row-gap: 10px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
 
   background-color: rgba(0, 0, 0, 0);
   width: 70%;
   float: inherit;
 
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 90px;
   padding: 3px;
 }
 
@@ -28,8 +33,8 @@ div.news-letter {
 }
 
 div.news-header {
-  height: 60%;
-  width: 100%;
+//  height: 60%;
+//  width: 100%;
 }
 
 img.news-header-img {
@@ -55,23 +60,42 @@ div.news-container {
 
 h2.news-title {
   margin-left: 5px;
+  font-family: 'KoPub Dotum';
+  font-weight: bold;
+  font-size: 15pt;
+  color: #1E0A28;
+  line-height: 21pt;
+  word-spacing: -5px;
+}
+
+p.news-date {
+  margin-top: 11px;
+  margin-left: 5px;
+  font-family: 'KoPub Dotum';
+  font-size: 12pt;
+  color: #4F4D51;
+
 }
 
 h2.news-title + p.news-date {
-  margin: 5px;
+//  margin-top: 11px;
 }
 
 div.news-container p.news-preview {
-  margin-top: 10px;
+  margin-top: 16px;
   display: block;
   overflow: hidden;
   font-family: 'KoPub Dotum';
-  font-size: 0.65em;
-  line-height: 1.4em;
-  margin-left: 3px;
+//  font-size: 0.65em;
+  font-size: 12pt;
+  margin-left: 5px;
   margin-right: 15px;
   padding-right: inherit;
-  color: rgba(0, 0, 0, 0.5);
+//  color: rgba(0, 0, 0, 0.5);
+  color: #706F72;
+  line-height: 18pt;
+  word-spacing: -5px;
+
 }
 
 @media screen and (min-width: 500px) {

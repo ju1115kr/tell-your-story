@@ -1,10 +1,19 @@
+$("h3#introment").slideUp(300).delay(500).fadeIn(1000);
+$("h3#introment").delay(2000).fadeOut(1000);
+//$("svg").delay(1200).fadeIn(400);
+
+// Galaxy script start
+
 var w = window.innerWidth / 1.2,
 //    h = window.innerHeight - 405,
-    h = window.innerHeight - 210,
+    h = window.innerHeight - 230,
 //var w = $("body").width() * 1,
 //    h = $("body").height() * 1.1,
     margin = { top: 40, right: 20, bottom: 20, left: 40 },
-    radius = 6;
+    radius = 6,
+    size = '11px';
+
+if(window.innerWidth < 960) { size = '20px'; }
 
 var svg = d3.select("div#stardustForm").append("svg").attr({
     width: w,
@@ -57,8 +66,8 @@ svg.call(tip);
 svg.selectAll("image")
     .data(dataset.particles)
     .enter().append('image')
-    .attr('width', '15px')
-    .attr('height', '15px')
+    .attr('width', size)
+    .attr('height', size)
     .attr(circleAttrs)
     .attr('xlink:href', "/picture/whitestar.png")
     .on("mouseover", handleMouseOver)
@@ -70,6 +79,10 @@ svg.selectAll("image")
 svg.on("click", function() {
     if( $("div#PostForm").is(':visible') ){
         console.log("hu");
+        return false;
+    }
+    if( $("div.letterForm").is(':visible') ){
+        console.log();
         return false;
     }
 
@@ -99,8 +112,8 @@ svg.on("click", function() {
         svg.selectAll("image")
             .data(dataset.particles)
             .enter().append('image')
-            .attr('width', '15px')
-            .attr('height', '15px')
+            .attr('width', size)
+            .attr('height', size)
             .attr(circleAttrs)
             .attr('id', "addingParticle")
             .attr('xlink:href', "/picture/whitestar.png")
@@ -118,8 +131,8 @@ svg.on("click", function() {
             svg.selectAll("image")
                 .data(old_dataset.particles)
                 .enter().append('image')
-                .attr('width', '15px')
-                .attr('height', '15px')
+                .attr('width', size)
+                .attr('height', size)
                 .attr(circleAttrs)
                 .attr('xlink:href', "/picture/whitestar.png")
                 .on("mouseover", handleMouseOver)
@@ -189,6 +202,7 @@ function handleMouseOver(d, i) {  // Add interactivity
     d3.select(this)
         .attr('xlink:href', "/picture/yellowstar.png")
 
+/*        
     // Specify where to put label of text
     svg.append("text").attr({
         //id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
@@ -199,7 +213,7 @@ function handleMouseOver(d, i) {  // Add interactivity
     .text(function() {
         return [d.x, d.y];  // Value of the text
     });
-
+*/
     //tip.show();
     $("div#dummyDiv").show();
 }
@@ -211,24 +225,29 @@ function handleMouseOut(d, i) {
 
     // Select text by id and then remove
     //d3.select("#t" + d.x + "-a" + d.y + "-" + i).remove();  // Remove text location
-    d3.select("#t" + i).remove();
+    //d3.select("#t" + i).remove();
 
     //tip.hide();
     $("div#dummyDiv").hide();
 }
 
 function handleMouseClick(d, i) {
-  if ($("div#dummyDiv").is(':visible')){
-    if (d.author != 'null') { $("img.letterImg").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
-    if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
-    $('p.createdDate').text(formatDate(d.created_at));
-    $('p.letterLikeCount').text(d.likes_count);
-    $('p.letterContext').text(d.context);
-    $('div.letterForm').slideDown();
-  }
-  else {
-    return false;
-  }
+    if( $("div#PostForm").is(':visible') ){
+        console.log("hu");
+        return false;
+    }
+    if ($("div#dummyDiv").is(':visible')){
+        if (d.author != 'null') { $("img.letterImg").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
+        if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
+
+        $('p.createdDate').text(formatDate(d.created_at));
+        $('p.letterLikeCount').text(d.likes_count);
+        $('p.letterContext').text(d.context);
+        $('div.letterForm').slideDown();
+    }
+   else {
+        return false;
+    }
 }
 
 function formatDate(date) {

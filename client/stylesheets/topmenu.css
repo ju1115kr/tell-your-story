@@ -23,11 +23,12 @@
 }
 
 #navBarForm img {
+  content:url("../picture/meonzziLogoSmall.png");
+  width: 42px;
+  height: 42px;
 //  position: relative;
 //  top: 50%;
 //  transform: translateY(-50%);
-  width: 152px;
-  height: 42px;
 }
 
 #navBarForm hr {
@@ -60,8 +61,8 @@
 
 #navBarForm a {
   color: black;
-  margin-left: 10px;
-  font-size: 1rem;
+  margin-left: 30px;
+  font-size: 0.85rem;
   color: #1e0a28;
 }
 
@@ -85,8 +86,10 @@
 //  top: 4px;
 //}
 
-#navBarForm img.letterImg {
+#navBarForm img.FBlogin-Img {
   display: none;
+  position: absolute;
+  right: 10px;
   margin: 3px 3px;
   width: 38px;
   height: 38px;
@@ -95,11 +98,20 @@
 
 div#FBlogin-button {
   position: absolute;
-  right: 0;
+  top: 60px;
+  right: 10px;
   vertical-align: middle;
 }
 
 span#logoLink {
   text-decoration: none;
   cursor: pointer;
+}
+
+@media screen and (min-width: 960px) {
+  #navBarForm img{
+    content:url("../picture/meonzziLogo.png");
+    width: 152px;
+    height: 42px;
+  }
 }
