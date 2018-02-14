@@ -1,6 +1,5 @@
 $("h3#introment").slideUp(300).delay(500).fadeIn(1000);
 $("h3#introment").delay(2000).fadeOut(1000);
-//$("svg").delay(1200).fadeIn(400);
 
 // Galaxy script start
 
@@ -194,6 +193,9 @@ svg.on("click", function() {
         return false;
     }
 })
+
+$("svg").hide();
+$("svg").delay(5000).fadeIn(400);
 
 // Create Event Handlers for mouse
 function handleMouseOver(d, i) {  // Add interactivity
