@@ -22,7 +22,7 @@
   //overflow: hidden;
 }
 
-#navBarForm img {
+#navBarForm img.menuLogo {
   content:url("../picture/meonzziLogoSmall.png");
   width: 42px;
   height: 42px;
@@ -109,7 +109,7 @@ span#logoLink {
 }
 
 @media screen and (min-width: 960px) {
-  #navBarForm img{
+  #navBarForm img.menuLogo{
     content:url("../picture/meonzziLogo.png");
     width: 152px;
     height: 42px;
