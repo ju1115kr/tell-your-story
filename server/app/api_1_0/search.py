@@ -18,5 +18,5 @@ def search_particle(context):
 
     if result is None:
         return not_found('Result does not exist')
-    return jsonify({'particle':[particle.to_json() for particle in result]})
+    return jsonify({'particles':[particle.to_json() for particle in result]})
 

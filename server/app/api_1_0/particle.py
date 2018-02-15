@@ -17,7 +17,7 @@ def get_all_particle():
 
 @api.route('/particle/random', methods=['GET'])
 def get_random_particle():
-    particles = Particle.query.order_by(func.random()).limit(30)
+    particles = Particle.query.order_by(func.random()).limit(20)
     return jsonify({'particles': [particle.to_json() for particle in particles]})
 
 
