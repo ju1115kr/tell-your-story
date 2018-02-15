@@ -81,5 +81,12 @@ var logout_event = function(response) {
     });
 }
 
-//$("div#FBlogin-before").on('click', checkLoginState(), false);
+//facebook logout with refresh cache
+$(document).ready(function() {
+    $("img.FBlogin-Img").click( function() {
+        if(window.confirm("로그아웃 하시겠습니까?")){
+            window.location.reload(true);
+        }
+    });
+});
 
