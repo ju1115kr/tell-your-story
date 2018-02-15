@@ -68,7 +68,6 @@
 */
 
 #linktag a {
-  color: black;
   margin-left: 15px;
   font-size: 0.85rem;
   color: #1e0a28;
@@ -103,12 +102,39 @@
 
 #fbtag img.FBlogin-Img {
   display: none;
-  position: absolute;
-  right: 10px;
+  //position: absolute;
+  //right: 10px;
   margin: 3px 3px;
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div#FBlogin-before {
+  border: 0;
+  border-radius: 50px;
+  padding: 0 10px;
+  background-color: #ada8b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+//  min-width: 120px;
+} div#FBlogin-before:hover {
+  cursor: pointer;
+}
+
+div#FBlogin-before img#FB-default-picture {
+  border: 1px solid #362540;
+  border-radius: 15px;
+  width: 30px;
+  height: 30px;
+}
+
+div#FBlogin-before p {
+  display: none;
+  font-size: 0.85rem;
+  color: #1e0a28;
 }
 
 div#FBlogin-button {
@@ -119,11 +145,6 @@ div#FBlogin-button {
   justify-content: center;
 }
 
-span#logoLink {
-  text-decoration: none;
-  cursor: pointer;
-}
-
 @media screen and (min-width: 960px) {
   #logo-link img.menuLogo{
     content:url("../picture/meonzziLogo.png");
@@ -132,5 +153,12 @@ span#logoLink {
   }
   #linktag a {
     margin-left: 50px;
+  }
+  div#FBlogin-before img#FB-default-picture {
+    margin-right: 10px;
+  }
+
+  div#FBlogin-before p {
+    display: block;
   }
 }

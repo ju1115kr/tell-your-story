@@ -1,6 +1,33 @@
 var fbLogin = false;
 var fbUserID;
 
+/*
+$("div#FBlogin-before").on('click', function() {
+    FB.login(statusChangeCallback, {scope: 'public_profile, email', return_scopes: true});
+    console.log(fbUserID);
+});
+*/
+
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id))
+    return; js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+window.fbAsyncInit = function() {
+    FB.init({
+        appId: '406582053115617',
+        //appId : '1339808736124796',
+        cookie : true,
+        xfbml : true,
+        version : 'v2.12'
+    });
+    FB.Event.subscribe('auth.logout', logout_event);
+}
+
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -34,7 +61,7 @@ function testAPI(userID) {
     $("#FBlogin-button").hide();
     //$("#navBarForm img.letterImg").show();
     $("div.g-signin2").hide();
-        //$("img.letterImg").attr("display","flex");
+    $("div#FBlogin-before").hide();
     $("img.FBlogin-Img")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=large");
     $("img.FBlogin-Img").show();
@@ -44,26 +71,6 @@ function testAPI(userID) {
     //$("form#particleBroadcast").show();
 }
 
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id))
-    return; js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/ko_KR/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-
-window.fbAsyncInit = function() {
-    FB.init({
-        appId: '406582053115617',
-        //appId : '1339808736124796',
-        cookie : true,
-        xfbml : true,
-        version : 'v2.12'
-    });
-    FB.Event.subscribe('auth.logout', logout_event);
-}
 
 var logout_event = function(response) {
     FB.logout(function(response) {
@@ -73,3 +80,6 @@ var logout_event = function(response) {
         console.log(response);
     });
 }
+
+//$("div#FBlogin-before").on('click', checkLoginState(), false);
+
