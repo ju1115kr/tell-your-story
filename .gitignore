@@ -11,3 +11,4 @@ server/migrations/*
 client/picture/*
 client/movie/*
 *.bak
+bak/
