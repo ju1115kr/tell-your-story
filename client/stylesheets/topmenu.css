@@ -22,7 +22,13 @@
   //overflow: hidden;
 }
 
-#navBarForm img.menuLogo {
+#logo-link {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#logo-link img.menuLogo {
   content:url("../picture/meonzziLogoSmall.png");
   width: 42px;
   height: 42px;
@@ -48,6 +54,7 @@
   display: inherit;
 }
 
+/*
 #navBarForm button {
   float:left;
 //  background-color: #e5dbff;
@@ -58,22 +65,23 @@
   text-decoration: none;
   font-size: 1rem;
 }
+*/
 
-#navBarForm a {
+#linktag a {
   color: black;
   margin-left: 15px;
   font-size: 0.85rem;
   color: #1e0a28;
 }
 
-#navBarForm a:hover {
+#linktag a:hover {
   background-color: rgba(0, 0, 0, 0);
   color: black;
   cursor: pointer;
   font-weight: bold;
 }
 
-#navBarForm a.active {
+#linktag a.active {
 //  background-color: #682B8F;
   background-color: rgba(0, 0, 0, 0);
   color: white;
@@ -86,7 +94,14 @@
 //  top: 4px;
 //}
 
-#navBarForm img.FBlogin-Img {
+#fbtag {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  margin: 0 auto;
+}
+
+#fbtag img.FBlogin-Img {
   display: none;
   position: absolute;
   right: 10px;
@@ -97,10 +112,11 @@
 }
 
 div#FBlogin-button {
-  position: absolute;
-  top: 60px;
+  position: inherit;
+  margin-left: 100%
   right: 10px;
   vertical-align: middle;
+  justify-content: center;
 }
 
 span#logoLink {
@@ -109,12 +125,12 @@ span#logoLink {
 }
 
 @media screen and (min-width: 960px) {
-  #navBarForm img.menuLogo{
+  #logo-link img.menuLogo{
     content:url("../picture/meonzziLogo.png");
     width: 152px;
     height: 42px;
   }
-  #navBarForm a {
-    margin-left: 30px;
+  #linktag a {
+    margin-left: 50px;
   }
 }

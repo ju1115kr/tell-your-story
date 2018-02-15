@@ -8,7 +8,8 @@ var w = window.innerWidth / 1.2,
 //    h = window.innerHeight - 405,
 //var w = $("body").width() * 1,
 //    h = $("body").height() * 1.1,
-    margin = { top: 40, right: 20, bottom: 20, left: 40 },
+    //margin = { top: 40, right: 20, bottom: 20, left: 40 },
+    margin = { top: 0, right: 0, bottom: 0, left: 0 },
     radius = 6,
     size = '11px';
 
@@ -59,7 +60,8 @@ svg.append('image')
     .attr('id', 'refresh')
     .attr('width', '90px')
     .attr('height', '90px')
-
+    .attr('x', $("svg").width()- 90)
+    .attr('y', 0)
     .attr('xlink:href', "/picture/refresh.png")
     .on("click", function(d) {
         dataset = ajaxQuery(type='get', apiURL='/particle/random');
