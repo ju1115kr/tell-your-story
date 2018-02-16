@@ -18,7 +18,6 @@ $("button#searchButton").click(function() {
     if($("input[name='search']").val() === ""){ return false; }
     result = ajaxQuery(type='get', 
         apiURL='/search/particle/'+$("input[name='search']").val());
-
     console.log(result);
 
     update(result);
@@ -30,7 +29,7 @@ function update(dataArray) {
         .duration(750);
 
     var dataset = svg.selectAll("image.particle")
-        .data(dataArray.particles);
+        .data(dataArray.particles, function(d) { return d; });
 
     dataset.exit()
             .attr("class", "exit")
@@ -49,7 +48,7 @@ function update(dataArray) {
             .attr('xlink:href', "/picture/whitestar.png")
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("click", handleMouseClick)
+            .on("click", handleMouseClick);
 //        .transition(t)
 //            .attr("x", function(d,i ) { return i; });
 
