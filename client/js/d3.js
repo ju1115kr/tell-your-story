@@ -52,10 +52,12 @@ svg.append('image')
     .attr('x', $("svg").width() - refresh_size)
     .attr('y', 0)
     .attr('xlink:href', "/picture/refresh.png")
+    .on("mouseover", function() { $("div#refreshDummy").show(); })
+    .on("mouseout", function() { $("div#refreshDummy").hide(); })
     .on("click", function(d) {
         dataset = ajaxQuery(type='get', apiURL='/particle/random');
         svg.selectAll("image.particle").remove();
-        drawParticles(dataset);
+        drawParticles(dataset, duration=750);
     });
 
 
@@ -74,16 +76,16 @@ svg.on("click", function() {
         console.log("hu");
         return false;
     }
-    $("image#refresh").click(function(){
+    if( $("div#refreshDummy").is(':visible') ){
         return false;
-    });
+    }
     if( $("div.letterForm").is(':visible') ){
         console.log();
         return false;
     }
 
     //if cursor does not pointing already exist particle
-    if( $("div#dummyDiv").is(':hidden') ){
+    if( $("div#particleDummy").is(':hidden') ){
         
         if(!fbLogin) {
             console.log("User doesn't login in fb");
@@ -163,7 +165,7 @@ function handleMouseOver(d, i) {  // Add interactivity
         .attr('xlink:href', "/picture/yellowstar.png")
 
     //tip.show();
-    $("div#dummyDiv").show();
+    $("div#particleDummy").show();
 }
 
 function handleMouseOut(d, i) {
@@ -172,7 +174,7 @@ function handleMouseOut(d, i) {
       .attr("xlink:href", "/picture/whitestar.png")
 
     //tip.hide();
-    $("div#dummyDiv").hide();
+    $("div#particleDummy").hide();
 }
 
 function handleMouseClick(d, i) {
@@ -180,7 +182,7 @@ function handleMouseClick(d, i) {
         console.log("hu");
         return false;
     }
-    if ($("div#dummyDiv").is(':visible')){
+    if ($("div#particleDummy").is(':visible')){
         if (d.author != 'null') { $("img.letterImg").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
         if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
 
@@ -208,7 +210,10 @@ function formatDate(date) {
     return [year, month, day].join('-') + " " + [hour, minute].join(':');
 }
 
-function drawParticles(dataset) {
+function drawParticles(dataset, duration=0) {
+    var t = d3.transition()
+        .duration(duration);
+
     svg.selectAll("image")
         .data(dataset.particles)
         .enter().append('image')
@@ -219,5 +224,8 @@ function drawParticles(dataset) {
         .attr('xlink:href', "/picture/whitestar.png")
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
-        .on("click", handleMouseClick);
+        .on("click", handleMouseClick)
+        .style("opacity", 0)
+    .transition(t)
+        .style("opacity", 1);
 }

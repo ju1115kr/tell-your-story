@@ -21,7 +21,7 @@ svg {
   margin-right: auto;
 }
 
-div#dummyDiv {
+div#particleDummy {
   display: none;
   margin: 0;
   padding: 0;
@@ -29,3 +29,10 @@ div#dummyDiv {
   height: 0;
 }
 
+div#refreshDummy {
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 0;
+  height: 0;
+}
