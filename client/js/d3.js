@@ -1,7 +1,7 @@
-/*$("div#introdiv").css("margin-top", window.outerHeight / 17);
+$("div#introdiv").css("margin-top", window.outerHeight / 17);
 $("h3#introment").slideUp(0).delay(500).fadeIn(1000);
 $("h3#introment").delay(2000).fadeOut(1000);
-*/
+
 // Galaxy script start
 var w = window.innerWidth / 1.2,
     h = window.innerHeight * 0.6,
@@ -152,8 +152,8 @@ svg.on("click", function() {
     }
 })
 
-/*$("svg").hide();
-$("svg").delay(5000).fadeIn(400);*/
+$("svg").hide();
+$("svg").delay(5000).fadeIn(400);
 
 // Create Event Handlers for mouse
 function handleMouseOver(d, i) {  // Add interactivity
