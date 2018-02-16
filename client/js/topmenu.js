@@ -5,3 +5,10 @@ var overlap = !( $("logo-link").right < $("img.FBlogin-Img").left ||
 
 if(overlap) { $("img.FBlogin-Img").hide(); }
 else if(!overlap) { $("img.FBlogin-Img").show(); }
+
+//alert($(window).height());
+$(document).ready(function() {
+    $("a#refresh").click(function() {
+        window.location.reload(true);
+    });
+});

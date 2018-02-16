@@ -28,6 +28,12 @@ window.fbAsyncInit = function() {
     FB.Event.subscribe('auth.logout', logout_event);
 }
 
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+}
+
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -38,17 +44,10 @@ function statusChangeCallback(response) {
         testAPI(userID);
     } else if (response.status === 'not_authorized') {
         //document.getElementById('status').innerHTML = 'Please log' + 'into this app.';
-    } else {
+    } else if (response.status === 'unknonwn') {
         //document.getElementById('status').innerHTML = 'Please log' + 'into Facebook.';
     }
 }
-
-function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
-}
-
 
 function testAPI(userID) {
     console.log('Welcome! Fetching your information');
