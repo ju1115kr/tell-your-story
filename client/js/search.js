@@ -14,46 +14,30 @@ $("input[name='search']").keypress(function(e){
   }
 });
 
-$("button#searchButton").click(function() {
-    if($("input[name='search']").val() === ""){ return false; }
-    result = ajaxQuery(type='get', 
-        apiURL='/search/particle/'+$("input[name='search']").val());
-    console.log(result);
-
-    update(result);
-
-});
-
 function update(dataArray) {
     var t = d3.transition()
         .duration(750);
 
     var dataset = svg.selectAll("image.particle")
-        .data(dataArray.particles, function(d) { return d; });
+        .data(dataArray.particles);
 
     dataset.exit()
-            .attr("class", "exit")
         .transition(t)
             .style("opacity", 0)
             .remove();
 
-    dataset.attr("class", "update")
-            .attr("class", "particle")
-            .style("opacity", 1)
-            .attr('width', size)
-            .attr('height', size)
-            .attr(circleAttrs)
-            .attr('xlink:href', "/picture/whitestar.png")
-            .on("mouseover", handleMouseOver)
-            .on("mouseout", handleMouseOut)
-            .on("click", handleMouseClick)
-
-    dataset.enter().append("image")
-            .attr("class", "enter")
-            .attr("class", "particle")
-            .style("opacity", 0)
+    dataset.data(dataArray.particles)
+        .enter().append('image')
+        .attr('class', "particle")
+        .attr('width', size)
+        .attr('height', size)
+        .attr(circleAttrs)
+        .attr('xlink:href', '/picture/whitestar.png')
+        .style("opacity", 0)
+        .on('mouseover', handleMouseOver)
+        .on('mouseout', handleMouseOut)
+        .on('click', handleMouseClick)
     .transition(t)
         .style("opacity", 1);
 }
-
 
