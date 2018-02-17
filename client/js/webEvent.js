@@ -15,22 +15,12 @@ $("a.PostFormClose").click(function() {
   $("div#PostForm").slideUp();
 });
 
-/*
-$("Form").submit(function(e) {
-//  ajaxQuery(type='post', apiURL='', dataset=$("div#PostFormBox").serialize());
-  $.ajax({
-      type: "POST",
-      url: "http://ju1115kr.iptime.org:9009/api/v1.0/particle",
-      data: $("div#PostFormBox").serialize(),
-      success: function(data) {
-        alert(data);
-      }
-  });
-
-  e.preventDefault();
+$(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+        $("div.letterForm").slideUp();
+        $("div#PostForm").slideUp();
+    }
 });
-
-*/
 
 $("span#logoLink").click(function() {
   var i, tabcontent, tablinks;
