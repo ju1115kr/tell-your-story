@@ -170,10 +170,12 @@ svg.on("click", function() {
                             newParticle = data;
                         }
                     });
+                    dataset.particles.pop(newData);
                     dataset.particles.push(newParticle);
                     old_dataset = dataset;
 
                     drawParticles(dataset);
+
                     twinkleParticle();
                 }
                 else if(!redirect_url) {
@@ -271,10 +273,21 @@ function twinkleParticle() {
     var t = d3.transition()
         .duration(750);
 
-    svg.select("image.particle")
-        .attr('xlink:href', "/picture/yellowstar.png")
+    svg.selectAll("image.particle").last()
         .style("opacity", 0)
     .transition(t)
-        .attr('xlink:href', "/picture/whitestar.png")
+        .style("opacity", 1)
+    .transition(t)
+        .style("opacity", 0)
+    .transition(t)
+        .style("opacity", 1)
+    .transition(t)
+        .style("opacity", 0)
+    .transition(t)
         .style("opacity", 1);
 }
+
+d3.selection.prototype.last = function() {
+    var last = this.size() - 1;
+    return d3.select(this[0][last]);
+};
