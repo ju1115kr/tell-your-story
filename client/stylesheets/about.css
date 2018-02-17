@@ -1,0 +1,27 @@
+div#About {
+
+}
+
+img#web-about-text {
+  display: block;
+  width: 400px;
+  height: 560px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+div#web-linkicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+img.web-icon {
+  width: 43px;
+  height: 43px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
