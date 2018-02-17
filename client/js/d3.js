@@ -109,8 +109,21 @@ svg.on("click", function() {
   
         drawParticles(dataset);
 
-        console.log('check log');
+        svg.select("image#addingParticle")
+            .attr('xlink:href', "/picture/yellowstar.png");
+        /*svg.append("image")
+            .attr('width', size)
+            .attr('height', size)
+            .attr(newData)
+            .attr('xlink:href', "/picture/yellowstar.png")
+            .transition()
+            .duration(750)
+            .attr('xlink:href', "/picture/whitestar.png")*/
+
+        //console.log('check log');
         $("div#PostForm").slideDown();
+
+        //if user cancle texting
         $("a.PostFormClose").click(function() {
             $("div#PostForm").slideUp();
             d3.select("#" + "addingParticle").remove();
@@ -125,22 +138,46 @@ svg.on("click", function() {
             event.preventDefault();
             if ($("textarea#PostFormBox").val()==="") {
                 console.log($("textarea#PostFormBox").val());
-                return false; }
+                return false;
+            }
             else {
-                jsondata = JSON.stringify({ author_id: fbUserID,
-                    googleUserImage: googleUserImage,
-                    context: $("textarea#PostFormBox").val(),
-                    x: newData.x, y: newData.y });
+                jsondata = JSON.stringify({ author_id: fbUserID, googleUserImage: googleUserImage,
+                    context: $("textarea#PostFormBox").val(), x: newData.x, y: newData.y
+                });
 
-                var ajaxresult = ajaxQuery(type="post", apiURL="/particle", jsondata);
-                console.log(ajaxresult);
-                if(!ajaxresult) {
+                $.ajax({type: "post",
+                    url: API + "/particle",
+                    contentType: 'application/json; charset=utf-8',
+                    traditional: true,
+                    async: false,
+                    data: jsondata,
+                    complete: function(xhr) {
+                        if (xhr.status == 201) {
+                            redirect_url = xhr.getResponseHeader("location");
+                        }
+                    }
+                });
+
+                if(redirect_url) { // if posting success
                     $("div#PostForm").slideUp();
                     $("form").trigger("reset");
+                    $.ajax({type: "get",
+                        url: redirect_url,
+                        contentType: "apllication/json; charset=utf-8",
+                        traditional: true,
+                        async: false,
+                        success: function(data) {
+                            newParticle = data;
+                        }
+                    });
+                    dataset.particles.push(newParticle);
                     old_dataset = dataset;
+
+                    drawParticles(dataset);
+                    twinkleParticle();
                 }
-                else if(ajaxresult) {
-                //error handling
+                else if(!redirect_url) {
+                    //error handling
                     console.log("Something wrong :0");
                     return false;
                 }
@@ -227,5 +264,17 @@ function drawParticles(dataset, duration=0) {
         .on("click", handleMouseClick)
         .style("opacity", 0)
     .transition(t)
+        .style("opacity", 1);
+}
+
+function twinkleParticle() {
+    var t = d3.transition()
+        .duration(750);
+
+    svg.select("image.particle")
+        .attr('xlink:href', "/picture/yellowstar.png")
+        .style("opacity", 0)
+    .transition(t)
+        .attr('xlink:href', "/picture/whitestar.png")
         .style("opacity", 1);
 }
