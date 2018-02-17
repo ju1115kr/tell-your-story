@@ -73,14 +73,12 @@ drawParticles(dataset);
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
     if( $("div#PostForm").is(':visible') ){
-        console.log("hu");
         return false;
     }
     if( $("div#refreshDummy").is(':visible') ){
         return false;
     }
     if( $("div.letterForm").is(':visible') ){
-        console.log();
         return false;
     }
 
@@ -95,7 +93,6 @@ svg.on("click", function() {
         }
         
         var coords = d3.mouse(this);
-        console.log(coords);
 
         var newData = {
             x: Math.round( xScale.invert(coords[0]) ),
@@ -104,34 +101,30 @@ svg.on("click", function() {
 
         old_dataset = JSON.parse(JSON.stringify(dataset));
         
-        console.log(newData);
         dataset.particles.push(newData);   // Push data to our array
-  
         drawParticles(dataset);
 
-        svg.select("image#addingParticle")
-            .attr('xlink:href', "/picture/yellowstar.png");
-        /*svg.append("image")
-            .attr('width', size)
-            .attr('height', size)
-            .attr(newData)
-            .attr('xlink:href', "/picture/yellowstar.png")
-            .transition()
-            .duration(750)
-            .attr('xlink:href', "/picture/whitestar.png")*/
-
-        //console.log('check log');
         $("div#PostForm").slideDown();
 
-        //if user cancle texting
+        //if user cancle texting clicked X
         $("a.PostFormClose").click(function() {
             $("div#PostForm").slideUp();
-            d3.select("#" + "addingParticle").remove();
             svg.selectAll("image.particle").remove();
-            
+            dataset.particles.pop(newData);
             drawParticles(old_dataset);
             
             dataset = JSON.parse(JSON.stringify(old_dataset));
+        });
+        // if user cancle texting press escape key
+        $(document).keyup(function(e) {
+            if (e.keyCode == 27) {
+                $("div#PostForm").slideUp();
+                svg.selectAll("image.particle").remove();
+                dataset.particles.pop(newData);
+                drawParticles(old_dataset);
+
+                dataset = JSON.parse(JSON.stringify(old_dataset));
+            }
         });
 
         $("form#Post").submit(function(event) {
