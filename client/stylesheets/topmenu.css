@@ -73,12 +73,12 @@
 div#FBlogin-before {
   border: 0;
   border-radius: 50px;
-  padding: 0 13px;
+  padding: 0 7px;
   background-color: #ada8b3;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90px;
+  height: 72px;
 } div#FBlogin-before:hover {
   cursor: pointer;
 }
@@ -86,8 +86,8 @@ div#FBlogin-before {
 div#FBlogin-before img#FB-default-picture {
   border: 1px solid #362540;
   border-radius: 90px;
-  width: 60px;
-  height: 60px;
+  width: 54px;
+  height: 54px;
 }
 
 div#FBlogin-before p {

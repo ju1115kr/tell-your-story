@@ -1,4 +1,4 @@
-$("div#introdiv").css("margin-top", window.outerHeight / 17);
+$("div#introdiv").css("margin-top", window.outerHeight / 15);
 $("h3#introment").slideUp(0).delay(500).fadeIn(1000);
 $("h3#introment").delay(2000).fadeOut(1000);
 

@@ -100,27 +100,6 @@ div.news-container p.news-preview {
 
 }
 
-@media screen and (min-width: 500px) {
-  div.news-wrapper {
-      grid-template-columns: 1fr 1fr;
-  }
-  div.news-main-content {
-      width: 90%;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  div.news-wrapper {
-      grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  div.news-wrapper {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
-
 div.news-main-content {
   display: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -134,11 +113,7 @@ div.news-main-content {
   width: 70%;
 }
 
-@media screen and (min-width: 500px) {
-  div.news-main-content {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
+
 
 a.news-main-Close {
   float:right;
@@ -162,11 +137,11 @@ div.news-main-content-header hr {
 div.news-main-content-header p.news-main-content-header-text {
   display: block;
   color: rgba(0, 0, 0, 0.5);
-  font-size: 0.7rem;
+  font-size: 0.98rem;
 }
 
 p.news-main-content-text > * {
-  font-size: 0.8rem;
+  font-size: 1.12rem;
   line-height: 1.38rem;
   display: block;
   color: #1e0a28;
@@ -186,7 +161,7 @@ div.news-main-content-header h2.news-main-content-header-title {
 }
 
 div.news-main-content-header p.news-main-content-date {
-  font-size: 0.8rem;
+  font-size: 1.12rem;
   color: #2d2d2d;
   margin-top: 5px;
 }
@@ -224,10 +199,49 @@ div.news-main-content-body video + div.news-main-content-body p {
 
 div.news-main-content-body p {
   font-family: 'KoPub Dotum';
-  line-height: 1.4em;
+  line-height: 1.96em;
   margin: 30px;
 }
 
 div.news-main-content-body p + div.news-main-content-body p {
   margin-top: 5px;
 }
+
+@media screen and (min-width: 500px) {
+  div.news-wrapper {
+      grid-template-columns: 1fr 1fr;
+  }
+  div.news-main-content {
+      width: 90%;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  div.news-wrapper {
+      grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  div.news-wrapper {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  div.news-main-content-header p.news-main-content-header-text {
+      font-size: 0.7rem;
+  }
+
+  p.news-main-content-text > * {
+    font-size: 0.8rem;
+  }
+
+  div.news-main-content-header p.news-main-content-date {
+    font-size: 0.8rem;
+  }
+
+  div.news-main-content-body p {
+    line-height: 1.4em;
+  }
+}
+

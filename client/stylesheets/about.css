@@ -4,8 +4,8 @@ div#About {
 
 img#web-about-text {
   display: block;
-  width: 400px;
-  height: 560px;
+  width: 560px;
+  height: 784px;
   margin: 0 auto;
   margin-top: 50px;
 }
@@ -19,9 +19,23 @@ div#web-linkicon {
 }
 
 img.web-icon {
-  width: 43px;
-  height: 43px;
-  margin-left: 25px;
-  margin-right: 25px;
+  width: 60px;
+  height: 60px;
+  margin-left: 35px;
+  margin-right: 35px;
 }
 
+@media screen and (min-width: 1000px) {
+  img#web-about-text {
+    display: block;
+    width: 400px;
+    height: 560px;
+  }
+
+  img.web-icon {
+    width: 43px;
+    height: 43px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+}
