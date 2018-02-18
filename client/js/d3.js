@@ -220,7 +220,7 @@ function handleMouseClick(d, i) {
 
         $('p.createdDate').text(formatDate(d.created_at));
         $('p.letterLikeCount').text(d.likes_count);
-        $('p.letterContext').text(d.context);
+        $('p.letterContextmessage').text(d.context);
         $('div.letterForm').slideDown();
     }
    else {

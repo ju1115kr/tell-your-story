@@ -105,6 +105,31 @@
             <input type="submit" value="보내기">
         <form>
     </div>
+
+    <div class="letterForm" style="display: none;">
+        <div class="letterHeader">
+            <img class="letterPicture" src="" alt="" />
+            <p>우주에 도착한 먼지들</p>
+        </div>
+
+        <div class="letterBody">
+            <div class="letterInfo">
+                <img class="letterImg" src="" alt="" />
+                <p class="createdDate">2018-01-28 17:16</p><br />
+            </div>
+
+            <div class="letterContext">
+                <p class="letterContextmessage"></p>
+                <div class="letterLike">
+                    <img class="letterStar" src="" alt=""/>
+                    <p class="letterLikeCount"></p>
+                </div>
+            </div>
+        </div>
+        <a class="letterClose">&times;</a>
+    </div>
+
+
 </div>
 
 
@@ -119,12 +144,12 @@
 
 <div id="News" class="tabcontent" style="display: none;">
     <div class="news-main-content">
+        <a class="news-main-Close">&times;</a>
         <div class="news-main-content-header">
-            <a class="news-main-Close">&times;</a>
             <p class="news-main-content-header-text">조선의 먼찌들<p>
             <h2 class="news-main-content-header-title">기사 제목</h2>
             <p class="news-main-content-date"></p>
-            <img class="news-main-content-img" src="" alt="" />
+            <!--img class="news-main-content-img" src="" alt="" /-->
             <hr />
         </div>
 
@@ -137,6 +162,7 @@
     </div>
 
     <div class="news-wrapper">
+        <!--
         <div class="news-letter" id="news-8">
             <div class="news-header">
                 <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
@@ -198,29 +224,29 @@
                 <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
             </div>
         </div>
-
+        -->
         <div class="news-letter" id="news-3">
              <div class="news-header">
-                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <img class="news-header-img" src="picture/kbk.jpg" alt="" />
                 <hr />
             </div>
             <div class="news-container">
-                <h2 class="news-title">기사</h2>
-                <p class="news-date">18. 02. 01.</p>
-                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+                <h2 class="news-title">사람을&nbsp;끌어당기는<br />힘은&nbsp;뭘까?</h2>
+                <p class="news-date">18.02.11</p>
+                <p class="news-preview">한번도&nbsp;클럽을&nbsp;가본&nbsp;적&nbsp;없다는,&nbsp;자칭&nbsp;최고존엄&nbsp;국범근의&nbsp;이야기</p>
             </div>
         
         </div>
 
         <div class="news-letter" id="news-2">
             <div class="news-header">
-                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <img class="news-header-img" src="picture/kju.jpg" alt="" />
                 <hr />
             </div>
             <div class="news-container">
-                <h2 class="news-title">기사</h2>
-                <p class="news-date">18. 02. 01.</p>
-                <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
+                <h2 class="news-title">Fake&nbsp;it&nbsp;&apos;til&nbsp;you<br />make&nbsp;it</h2>
+                <p class="news-date">18.02.10</p>
+                <p class="news-preview">&quot;자연스러운&nbsp;게&nbsp;좋잖아요.&quot;&nbsp;파란&nbsp;가죽&nbsp;자켓과.&nbsp;푹&nbsp;눌러쓴&nbsp;비니,&nbsp;김종우의&nbsp;이야기</p>
             </div>
 
         </div>
@@ -231,9 +257,9 @@
                 <hr />
             </div>
             <div class="news-container">
-                <h2 class="news-title">혹시, 대2병이라고 들어봤어? (김정아 편)</h2>
-                <p class="news-date">18. 01. 31.</p>
-                <p class="news-preview">&quot;요즘엔&nbsp;좀&nbsp;괜찮아졌어요.&quot;&nbsp;담담하게&nbsp;이야기를&nbsp;풀어내는,&nbsp;생글생글&nbsp;웃는&nbsp;얼굴의&nbsp;러블리한&nbsp;스물&nbsp;일곱.</p>
+                <h2 class="news-title">혹시,&nbsp;대2병이라고<br />들어봤어?</h2>
+                <p class="news-date">18.01.31</p>
+                <p class="news-preview">&quot;요즘엔&nbsp;좀&nbsp;괜찮아졌어요.&quot;&nbsp;러블리한&nbsp;스물일곱,&nbsp;김정아의&nbsp;이야기</p>
             </div>
         </div>
 
@@ -242,28 +268,6 @@
 </div>
 
 <!--div id="Video" class="tabcontent">Video</div-->
-
-<div class="letterForm" style="display: none;">
-    <div class="letterInfo">
-        <img class="letterImg" src="" alt="" />
-        <p class="createdDate">2018-01-28 17:16</p><br />
-        <p class="letterLikeCount"></p>
-    </div>
-    <a class="letterClose">&times;</a>
-    <hr class="letterBar" />
-    <p class="letterContext">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
-    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
-    ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, 
-    vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. 
-    Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, 
-    consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. 
-    Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. 
-    Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, 
-    sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. 
-    Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. 
-    Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. 
-    Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
-</div>
 
 <!--div class="broadcast">
     <div id="facebookLoginForm">
@@ -293,6 +297,8 @@
 <script src="./js/google_login.js" charset="utf-8"></script>
 <script src="./js/topmenu.js" charset="utf-8"></script>
 <script src="./js/kja.js" charset="utf-8"></script>
+<script src="./js/kju.js" charset="utf-8"></script>
+<script src="./js/kbk.js" charset="utf-8"></script>
 </body>
 </html>
 

@@ -2,9 +2,9 @@
     z-index: 999;
 //    display: none;
 //    display: block;
-    display: flex;
+    display: block;
     margin: auto;
-    background: #e5dbff;
+    background: #e4e4e6;
     padding: 3px;
     position: fixed;
     bottom: 0;
@@ -12,11 +12,18 @@
     right: 0;
 //    width: 80%;
 //    max-width: 960px;
+    min-height: 25%;
     max-height: 50%;
 }
 
-.letterForm .letterImg {
-    margin: 3px 3px;
+.letterBody {
+    display: flex;
+}
+
+.letterInfo .letterImg {
+    //margin: 3px 3px;
+    display: block;
+    margin: 0 auto;
     width: 38px;
     height: 38px;
 
@@ -28,15 +35,9 @@
 
 }
 
-.letterForm hr {
-    border: none;
-    width: 3px;
-    height: 50vh;
-}
-
-.letterForm p.letterContext {
-  background-color: #eee;
-  text-color: yellow;
+.letterForm p.letterContextmessage {
+  background-color: #f9f9f9;
+  color: #2f1d3b;
   padding: 10px;
 //  min-height: 30px;
   min-height: 100%;

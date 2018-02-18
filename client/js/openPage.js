@@ -20,6 +20,11 @@ function openPage(pageName, elmnt, color) {
     else {
         $("body, html").css("background-color", "#ADA8B3");
     }
+    if(pageName == "News") {
+        if($("div.news-main-content").is(':visible')){
+            $("div.news-main-content").fadeOut();
+        }
+    }
 
     if(elmnt !== '') {
         elmnt.style.fontWeight = 'bold';
