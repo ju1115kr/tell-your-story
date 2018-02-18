@@ -6,6 +6,12 @@ $("a.letterClose").click(function() {
   $("div.letterForm").slideUp();
 });
 
+$(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+        $("div.letterForm").slideUp();
+    }
+});
+
 $("div#PostRequestForm > input").click(function() {
   $("div#PostRequestForm").hide();
   $("div#PostForm").slideDown();
@@ -13,13 +19,6 @@ $("div#PostRequestForm > input").click(function() {
 
 $("a.PostFormClose").click(function() {
   $("div#PostForm").slideUp();
-});
-
-$(document).keyup(function(e) {
-    if (e.keyCode == 27) {
-        $("div.letterForm").slideUp();
-        $("div#PostForm").slideUp();
-    }
 });
 
 $("span#logoLink").click(function() {

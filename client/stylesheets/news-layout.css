@@ -151,7 +151,15 @@ div.news-main-content-header a.news-main-Close {
 }
 
 div.news-main-content-header p.news-main-content-header-text {
+  display: block;
+}
 
+p.news-main-content-text > * {
+  display: block;
+}
+p.news-main-content-text iframe {
+  width: 100%;
+  height: width;
 }
 
 div.news-main-content-header h2.news-main-content-header-title {
