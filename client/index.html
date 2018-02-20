@@ -21,6 +21,7 @@
 <link href="https://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/aside.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/broadcast.css" />
@@ -71,64 +72,72 @@
 </div>
 
 <div id="Galaxy" class="tabcontent">
-    <div id="searchBarForm">
-        <div id="keywordBar">
-            <img src="./picture/yellowstar.png" alt=""/>
-            <strong>검색</strong>
-        </div>
-        <div id="searchBar">
-            <div id="searchBarforCenter">
-                <input type="text" id="searchBox" name="search" placeholder="추천 키워드 &nbsp;&nbsp;#군대&nbsp;#돈" autocomplete="off" />
-                <!--button id="searchButton">&nbsp;</button-->
-            </div>
-        </div>
-        <div id="introdiv">
-            <h3 id="introment">우주를 클릭해<br />당신의 사연을 보내주세요.</h3>
-        </div>
-    </div>
-
     <div id="stardustForm">
         <div id="particleDummy"></div>
         <div id="refreshDummy"></div>
-    </div>
+        <!--div id="introdiv">
+            <h3 id="introment">우주를 클릭해<br />당신의 사연을 보내주세요.</h3>
+        </div-->
 
-    <div id="PostRequestForm">
-        <input type="text" id="PostRequestFormBox" placeholder="새 글을 작성해주세요!" autocomplete="off"/>
     </div>
-    <div id="PostForm">
-        <form id="Post">
-            <img id="PostFormImg" src="" alt="" />
-            <a class="PostFormClose">&times;</a>
-            <br />
-            <textarea id="PostFormBox" placeholder="여기를 눌러서 글을 작성할 수 있습니다.(280자 이내)" autocomplete="off" maxlength="280"></textarea>
-            <!--button type="submit">Send</button-->
-            <input type="submit" value="보내기">
-        <form>
-    </div>
-
-    <div class="letterForm" style="display: none;">
-        <div class="letterHeader">
-            <img class="letterPicture" src="" alt="" />
-            <p>우주에 도착한 먼지들</p>
+    <!------------------- -->
+    <div id="aside">
+        <div id="refreshBar">
+            <img id="refresh" src="./picture/refresh_new.png" alt="" onclick="javascript:refreshData()"/>
+            <hr />
         </div>
 
-        <div class="letterBody">
-            <div class="letterInfo">
-                <img class="letterImg" src="" alt="" />
-                <p class="createdDate">2018-01-28 17:16</p><br />
+        <div id="searchBarForm">
+            <div id="keywordBar">
+                <!--img src="./picture/yellowstar.png" alt=""/-->
+                <strong>키워드 검색</strong>
             </div>
-
-            <div class="letterContext">
-                <p class="letterContextmessage"></p>
-                <div class="letterLike">
-                    <img class="letterStar" src="" alt=""/>
-                    <p class="letterLikeCount"></p>
+            <div id="searchBar">
+                <div id="searchBarforCenter">
+                    <input type="text" id="searchBox" name="search" placeholder="추천 키워드 &nbsp;&nbsp;#군대&nbsp;#돈" autocomplete="off" />
                 </div>
             </div>
         </div>
-        <a class="letterClose">&times;</a>
-    </div>
 
+
+        <div id="introduceBar">
+            <p>우주를 클릭해<br />당신의 사연을 보내보세요.</p>
+        </div>
+
+        <div class="letterForm">
+             <div class="letterHeader">
+                <img class="letterPicture" src="./picture/defaultProfileFB.jpg" alt="" />
+                <div class="letterInfo">
+                    <p>우주에 도착한 먼지들</p>
+                    <p class="createdDate"></p>
+                </div>
+            </div>
+
+           <div class="letterBody">
+               <p class="letterContextmessage"></p>
+               <hr />
+                <div class="letterLike">
+                    <img class="letterStar" src="./picture/yellowstar.png" alt=""/>
+                    <p class="letterLikeCount"></p>
+                    <img class="letterStarplus" src="./picture/sympathy.png" alt=""/>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="PostForm">
+            <div class="PostHeader">
+                <img class="PostPicture" src="./picture/defaultProfileFB.jpg" alt="" />
+                <p>우주에 먼지 보내기</p>
+            </div>
+            <form class="PostBody">
+                <textarea id="PostBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
+                <hr />
+                <input type="submit" value="보내기">
+            </form>
+
+        </div>
+    </div>
 
 </div>
 
@@ -186,20 +195,20 @@
                 <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
             </div>
         </div>        
-
+-->
         <div class="news-letter" id="news-6">
              <div class="news-header">
-                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <img class="news-header-img" src="picture/yjh.jpg" alt="" />
                 <hr />
             </div>
             <div class="news-container">
-                <h2 class="news-title">기사</h2>
-                <p class="news-date">18. 02. 01.</p>
+                <h2 class="news-title">네-니오로 남겠습니다.</h2>
+                <p class="news-date">18.02.19</p>
                 <p class="news-preview">포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용 포스팅 내용</p>
             </div>
-        
+
         </div>
-        -->
+
         <div class="news-letter" id="news-5">
              <div class="news-header">
                 <img class="news-header-img" src="picture/yks.jpg" alt="" />
@@ -207,7 +216,7 @@
             </div>
             <div class="news-container">
                 <h2 class="news-title">꼭, 나비가 되지 않아도</h2>
-                <p class="news-date">18.02.17</p>
+                <p class="news-date">18.02.18</p>
                 <p class="news-preview">"애초에 달성할 수 없는 거라고 알고 있어요." 아직은 번데기인 염규상의 이야기</p>
             </div>
         
@@ -220,7 +229,7 @@
             </div>
             <div class="news-container">
                 <h2 class="news-title">완벽하게 틀에 맞지 않는 방법</h2>
-                <p class="news-date">18.02.11</p>
+                <p class="news-date">18.02.14</p>
                 <p class="news-preview">완벽하게 그 틀에 맞지는 않았던 것 같았던 전유나의 이야기</p>
             </div>
         </div>
@@ -232,7 +241,7 @@
             </div>
             <div class="news-container">
                 <h2 class="news-title">사람을&nbsp;끌어당기는<br />힘은&nbsp;뭘까?</h2>
-                <p class="news-date">18.02.11</p>
+                <p class="news-date">18.02.12</p>
                 <p class="news-preview">한번도&nbsp;클럽을&nbsp;가본&nbsp;적&nbsp;없다는,&nbsp;자칭&nbsp;최고존엄&nbsp;국범근의&nbsp;이야기</p>
             </div>
         
@@ -258,7 +267,7 @@
             </div>
             <div class="news-container">
                 <h2 class="news-title">혹시,&nbsp;대2병이라고<br />들어봤어?</h2>
-                <p class="news-date">18.01.31</p>
+                <p class="news-date">18.02.08</p>
                 <p class="news-preview">&quot;요즘엔&nbsp;좀&nbsp;괜찮아졌어요.&quot;&nbsp;러블리한&nbsp;스물일곱,&nbsp;김정아의&nbsp;이야기</p>
             </div>
         </div>
@@ -301,6 +310,7 @@
 <script src="./js/kbk.js" charset="utf-8"></script>
 <script src="./js/jun.js" charset="utf-8"></script>
 <script src="./js/yks.js" charset="utf-8"></script>
+<script src="./js/yjh.js" charset="utf-8"></script>
 </body>
 </html>
 

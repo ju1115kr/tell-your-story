@@ -4,7 +4,7 @@ $("div#news-5").click(function() {
     var date = `18.02.17`;
     var context = `
     <br />
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/6YzK3Pz-DWs" frame    border="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lQhZLRS0iDc" frame    border="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />
     <strong>어어. 음악하는 사람이에요?</strong><br />
 
     <span>그런가. 네. (웃음) 오늘 촬영 때 쓰려고 기타도 일부러 들고 왔는데.</span><br /><br />

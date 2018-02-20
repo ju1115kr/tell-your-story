@@ -1,14 +1,16 @@
 $("div#introdiv").css("margin-top", window.outerHeight / 15);
-$("h3#introment").slideUp(0).delay(500).fadeIn(1000);
-$("h3#introment").delay(2000).fadeOut(1000);
+//$("h3#introment").slideUp(0).delay(500).fadeIn(1000);
+//$("h3#introment").delay(2000).fadeOut(1000);
 
 // Galaxy script start
-var w = window.innerWidth / 1.2,
+var //w = window.innerWidth / 1.2,
+    w = $("div#stardustForm").width() / 1.2,
     h = window.innerHeight * 0.6,
     margin = { top: 0, right: 0, bottom: 0, left: 0 },
     radius = 6,
     refresh_size = 90,
-    size = '11px';
+    size = '11px',
+    newData;
 
 //Mobile View Respons
 if(window.innerWidth <= 1000  && $(window).height() >= 1000) {
@@ -45,7 +47,12 @@ var circleAttrs = {
     y: function(d) { return yScale(d.y) - 7.5; }
 };
 
-svg.append('image')
+d3.selection.prototype.last = function() {
+    var last = this.size() - 1;
+    return d3.select(this[0][last]);
+};
+
+/*svg.append('image')
     .attr('id', 'refresh')
     .attr('width', refresh_size + 'px')
     .attr('height', refresh_size + 'px')
@@ -58,8 +65,13 @@ svg.append('image')
         dataset = ajaxQuery(type='get', apiURL='/particle/random');
         svg.selectAll("image.particle").remove();
         drawParticles(dataset, duration=750);
-    });
+    });*/
 
+function refreshData() {
+    dataset = ajaxQuery(type='get', apiURL='/particle/random');
+    svg.selectAll("image.particle").remove();
+    drawParticles(dataset, duration=750);
+}
 
 var tip = d3.tip()
     .attr('class', 'tip')
@@ -73,15 +85,17 @@ drawParticles(dataset);
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
     if( $("div#PostForm").is(':visible') ){
+        console.log('a');
         return false;
     }
+/*
     if( $("div#refreshDummy").is(':visible') ){
         return false;
     }
     if( $("div.letterForm").is(':visible') ){
         return false;
     }
-
+*/
     //if cursor does not pointing already exist particle
     if( $("div#particleDummy").is(':hidden') ){
         
@@ -94,7 +108,7 @@ svg.on("click", function() {
         
         var coords = d3.mouse(this);
 
-        var newData = {
+        newData = {
             x: Math.round( xScale.invert(coords[0]) ),
             y: Math.round( yScale.invert(coords[1]) )
         };
@@ -105,6 +119,8 @@ svg.on("click", function() {
         drawParticles(dataset);
 
         $("div#PostForm").slideDown();
+        $("div.letterForm").slideUp();
+        $("div#introduceBar").hide();
 
         //if user cancle texting clicked X
         $("a.PostFormClose").click(function() {
@@ -116,6 +132,7 @@ svg.on("click", function() {
             dataset = JSON.parse(JSON.stringify(old_dataset));
         });
         // if user cancle texting press escape key
+        /*
         $(document).keyup(function(e) {
             if (e.keyCode == 27) {
                 $("div#PostForm").slideUp();
@@ -125,17 +142,18 @@ svg.on("click", function() {
 
                 dataset = JSON.parse(JSON.stringify(old_dataset));
             }
-        });
+        });*/
 
-        $("form#Post").submit(function(event) {
+        $("form.PostBody").submit(function(event) {
             event.preventDefault();
-            if ($("textarea#PostFormBox").val()==="") {
-                console.log($("textarea#PostFormBox").val());
+            if ($("textarea#PostBox").val()==="") {
+                console.log('empty text');
+                console.log($("textarea#PostBox").val());
                 return false;
             }
             else {
                 jsondata = JSON.stringify({ author_id: fbUserID, googleUserImage: googleUserImage,
-                    context: $("textarea#PostFormBox").val(), x: newData.x, y: newData.y
+                    context: $("textarea#PostBox").val(), x: newData.x, y: newData.y
                 });
 
                 $.ajax({type: "post",
@@ -168,8 +186,10 @@ svg.on("click", function() {
                     old_dataset = dataset;
 
                     drawParticles(dataset);
-
                     twinkleParticle();
+
+                    $("div#PostForm").slideUp();
+                    $("div.letterForm").slideDown();
                 }
                 else if(!redirect_url) {
                     //error handling
@@ -187,7 +207,9 @@ svg.on("click", function() {
 })
 
 $("svg").hide();
-$("svg").delay(5000).fadeIn(400);
+$("svg").delay(800).fadeIn(1000);
+//$("svg").delay(5000).fadeIn(400);
+//setTimeout(twinkleParticle, 5500);
 
 // Create Event Handlers for mouse
 function handleMouseOver(d, i) {  // Add interactivity
@@ -210,17 +232,33 @@ function handleMouseOut(d, i) {
 }
 
 function handleMouseClick(d, i) {
-    if( $("div#PostForm").is(':visible') ){
+    /*if( $("div#PostForm").is(':visible') ){
         console.log("hu");
         return false;
-    }
-    if ($("div#particleDummy").is(':visible')){
-        if (d.author != 'null') { $("img.letterImg").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
-        if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
+    }*/
 
-        $('p.createdDate').text(formatDate(d.created_at));
-        $('p.letterLikeCount').text(d.likes_count);
-        $('p.letterContextmessage').text(d.context);
+    if ($("div#particleDummy").is(':visible')){
+        //if (d.author != 'null') { $("img.letterPicture").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
+        //if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
+        if ( $("div#introduceBar").is(':visible')) { $("div#introduceBar").slideUp(); }
+        if ( $("div#PostForm").is(':visible')) {
+            $("div#PostForm").slideUp();
+            $("div#PostForm").hide();
+            svg.selectAll("image.particle").remove();
+            dataset.particles.pop(newData);
+            drawParticles(dataset);
+            dataset = JSON.parse(JSON.stringify(old_dataset));
+        }
+
+        if(d.context) {
+            $("img.letterPicture").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");
+            $('p.createdDate').text(formatDate(d.created_at));
+            $('p.letterLikeCount').text(d.likes_count);
+            $('p.letterContextmessage').text(d.context);
+        }
+        else {
+            $("div#particleDummy").hide();
+        }
         $('div.letterForm').slideDown();
     }
    else {
@@ -280,7 +318,3 @@ function twinkleParticle() {
         .style("opacity", 1);
 }
 
-d3.selection.prototype.last = function() {
-    var last = this.size() - 1;
-    return d3.select(this[0][last]);
-};

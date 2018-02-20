@@ -1,6 +1,14 @@
 div#Galaxy {
   background-color: #1b0c26;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+#stardustForm {
+  width: 80%
 }
 
 .axis {

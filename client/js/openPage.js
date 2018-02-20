@@ -16,6 +16,7 @@ function openPage(pageName, elmnt, color) {
 
     if(pageName == "Galaxy") {
         $("body, html").css("background-color", "#1b0c26");
+        document.getElementById(pageName).style.display = "flex";
     }
     else {
         $("body, html").css("background-color", "#ADA8B3");

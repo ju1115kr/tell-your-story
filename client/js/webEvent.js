@@ -1,16 +1,18 @@
 //처음 웹 렌더링 시 letterForm 숨기기
-$("div.letterForm").hide();
+//$("div.letterForm").hide();
 
 //letter close 버튼 클릭 시
 $("a.letterClose").click(function() {
   $("div.letterForm").slideUp();
 });
 
+/*
 $(document).keyup(function(e) {
     if (e.keyCode == 27) {
         $("div.letterForm").slideUp();
     }
 });
+*/
 
 $("div#PostRequestForm > input").click(function() {
   $("div#PostRequestForm").hide();

@@ -142,14 +142,16 @@ div.news-main-content-header p.news-main-content-header-text {
 
 p.news-main-content-text > * {
   font-size: 1.12rem;
-  line-height: 1.38rem;
+  line-height: 160%;
   display: block;
   color: #1e0a28;
 }
 p.news-main-content-text iframe {
   display: block;
   margin: 0 auto;
-  width: 37%;
+  //width: 37%;
+  width: 320px;
+  height: 570px
 }
 
 div.news-main-content-header {

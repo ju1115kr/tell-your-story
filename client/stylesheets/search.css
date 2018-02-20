@@ -4,15 +4,14 @@ div#searchBarForm {
 
   margin-left: auto;
   margin-right: auto;
-//  margin-top: 20px;
-  padding-top: 70px;
+  margin-top: 20px;
 }
 
 div#keywordBar {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 580px;
+  width: 85%;
   margin: 0 auto;
   padding-left: 5px;
   margin-bottom: 10px;
@@ -28,7 +27,7 @@ div#keywordBar {
   margin-left: 0;
   margin-right: auto;
   font-size: 1.5rem;
-  color: #e8e6ec;
+  color: rgba(30, 10, 40, 1);
 }
 
 #searchBar p {
@@ -57,15 +56,15 @@ div#searchBarforCenter {
   margin: 0 auto;
 }
 
-input#searchBox[type=text] {
-  width: 580px;
+input#searchBox[type="text"] {
+  width: 85%;
   box-sizing: border-box;
   display: block;
   margin: 0;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(30, 10, 40, 1);
   border-radius: 12px;
   font-size: 21px;
-  color: #e8e6ec;
+  color: rgba(134, 123, 141, 1);
   background: url('../picture/searchSJ.png') no-repeat center;
   background-position: 95% center; 
   background-size: 30px;
@@ -77,7 +76,7 @@ input#searchBox[type=text] {
 }
 
 input#searchBox[type=text]:focus {
-  color: white;
+  color: rgba(30, 10, 40, 1);
 }
 
 @media screen and (min-width: 1000px) {
@@ -85,7 +84,7 @@ input#searchBox[type=text]:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 290px;
+    width: 85%;
     margin: 0 auto;
     padding-left: 5px;
     margin-bottom: 10px;
@@ -101,8 +100,8 @@ input#searchBox[type=text]:focus {
     font-size: 1rem;
   }
 
-  input#searchBox[type=text] {
-    width: 290px;
+  input#searchBox[type="text"] {
+    width: 85%;
     border: 1px solid #ccc;
     border-radius: 12px;
     font-size: 11.5pt;

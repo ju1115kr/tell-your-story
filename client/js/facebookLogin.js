@@ -64,7 +64,7 @@ function testAPI(userID) {
     $("img.FBlogin-Img")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=large");
     $("img.FBlogin-Img").show();
-    $("img#PostFormImg")
+    $("img.PostPicture")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=large");
     //$("div.letterForm").slideDown();
     //$("form#particleBroadcast").show();

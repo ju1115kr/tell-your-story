@@ -1,0 +1,55 @@
+#aside {
+  width: 20%;
+  height: 600px;
+//  position: absolute;
+//  margin-top: 50px;
+  margin-right: 50px;
+//  margin-top: 0;
+//  margin-right: 0;
+  background-color: rgba(238,237,242, 1);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#refreshBar {
+  display: block;
+  margin: 0 auto;
+}
+
+#refreshBar img#refresh {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: 30px auto;
+} img#refresh:hover {
+  cursor: pointer;
+}
+
+#refreshBar hr {
+  width: 90%;
+}
+
+#introduceBar {
+  text-align: center;
+  font-size: ;
+  font-weight: bold;
+  color: rgba(51, 27, 61, 1);
+  width: 85%;
+  height: 58%;
+  display: flex;
+  margin: auto;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(206, 202, 211, 1);
+  border-radius: 15px;
+}
+
+@media screen and (min-width: 1000px) {
+  #aside {
+    width: 20%;
+    height: 600px;
+    top: 150px;
+    right: 100px;
+    background-color: rgba(238,237,242, 1);
+  }
+}
