@@ -55,7 +55,8 @@
 }
 
 .PostBody input[type="submit"] {
-  margin-left: 73%;
+//  margin-left: 73%;
+  float: right;
   border: 0;
   border-radius: 2px;
   padding: 5px 15px;

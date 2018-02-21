@@ -1,5 +1,6 @@
 div#Galaxy {
-  background-color: #1b0c26;
+//  background-image: url("../picture/web-background.jpg");
+//  background-color: #1b0c26;
   height: 100%;
   display: flex;
   justify-content: center;

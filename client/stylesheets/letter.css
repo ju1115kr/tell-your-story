@@ -69,6 +69,7 @@
 }
 
 .letterBody .letterLike img.letterStar {
+  margin-left: 50%;
   width: 20px;
   height: 20px;
 }
@@ -78,7 +79,9 @@
 }
 
 .letterBody .letterLike img.letterStarplus {
-  margin-left: 20px;
+  margin-left: 0px;
   width:  90.5px;
   height: 20px;
+} img.letterStarplus:hover {
+  cursor: pointer;
 }

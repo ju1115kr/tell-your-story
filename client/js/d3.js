@@ -4,13 +4,14 @@ $("div#introdiv").css("margin-top", window.outerHeight / 15);
 
 // Galaxy script start
 var //w = window.innerWidth / 1.2,
-    w = $("div#stardustForm").width() / 1.2,
+    w = $("div#stardustForm").width() / 2,
     h = window.innerHeight * 0.6,
     margin = { top: 0, right: 0, bottom: 0, left: 0 },
     radius = 6,
     refresh_size = 90,
     size = '11px',
-    newData;
+    newData,
+    particleData;
 
 //Mobile View Respons
 if(window.innerWidth <= 1000  && $(window).height() >= 1000) {
@@ -19,6 +20,12 @@ if(window.innerWidth <= 1000  && $(window).height() >= 1000) {
     refresh_size = 150,
     size = '45px';
 }
+
+var bgi = d3.select("div#stardustForm").append("image").attr({
+    width: w,
+    height: h
+    })
+    .attr('xlink:href', "/picture/refresh.png");
 
 var svg = d3.select("div#stardustForm").append("svg").attr({
     width: w,
@@ -70,22 +77,14 @@ d3.selection.prototype.last = function() {
 function refreshData() {
     dataset = ajaxQuery(type='get', apiURL='/particle/random');
     svg.selectAll("image.particle").remove();
-    drawParticles(dataset, duration=750);
+    fadeParticles(dataset, duration=750);
 }
-
-var tip = d3.tip()
-    .attr('class', 'tip')
-    .offset([-10, 0])
-    .html(function(d) { console.log(d); return d; });
-
-svg.call(tip);
 
 drawParticles(dataset);
 
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
     if( $("div#PostForm").is(':visible') ){
-        console.log('a');
         return false;
     }
 /*
@@ -100,7 +99,6 @@ svg.on("click", function() {
     if( $("div#particleDummy").is(':hidden') ){
         
         if(!fbLogin) {
-            console.log("User doesn't login in fb");
             alert('페이스북 로그인이 필요합니다.');
             //checkLoginState();
             return false;
@@ -147,7 +145,6 @@ svg.on("click", function() {
         $("form.PostBody").submit(function(event) {
             event.preventDefault();
             if ($("textarea#PostBox").val()==="") {
-                console.log('empty text');
                 console.log($("textarea#PostBox").val());
                 return false;
             }
@@ -202,6 +199,7 @@ svg.on("click", function() {
 
     else {
         //Handling wrong request;
+        console.log("particleDummy is visible");
         return false;
     }
 })
@@ -241,6 +239,7 @@ function handleMouseClick(d, i) {
         //if (d.author != 'null') { $("img.letterPicture").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
         //if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
         if ( $("div#introduceBar").is(':visible')) { $("div#introduceBar").slideUp(); }
+
         if ( $("div#PostForm").is(':visible')) {
             $("div#PostForm").slideUp();
             $("div#PostForm").hide();
@@ -251,19 +250,25 @@ function handleMouseClick(d, i) {
         }
 
         if(d.context) {
+            particleData = d;
             $("img.letterPicture").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");
             $('p.createdDate').text(formatDate(d.created_at));
             $('p.letterLikeCount').text(d.likes_count);
             $('p.letterContextmessage').text(d.context);
+            check_Like(d);
+
+            $('div.letterForm').slideDown();
         }
         else {
             $("div#particleDummy").hide();
+            return false;
         }
-        $('div.letterForm').slideDown();
     }
-   else {
+    else {
         return false;
     }
+
+    //$("img.letterStarplus").click(d, like(d));
 }
 
 function formatDate(date) {
@@ -280,7 +285,7 @@ function formatDate(date) {
     return [year, month, day].join('-') + " " + [hour, minute].join(':');
 }
 
-function drawParticles(dataset, duration=0) {
+function fadeParticles(dataset, duration) {
     var t = d3.transition()
         .duration(duration);
 
@@ -298,6 +303,21 @@ function drawParticles(dataset, duration=0) {
         .style("opacity", 0)
     .transition(t)
         .style("opacity", 1);
+}
+
+function drawParticles(dataset) {
+
+    svg.selectAll("image")
+        .data(dataset.particles)
+        .enter().append('image')
+        .attr('class', 'particle')
+        .attr('width', size)
+        .attr('height', size)
+        .attr(circleAttrs)
+        .attr('xlink:href', "/picture/whitestar.png")
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+        .on("click", handleMouseClick);
 }
 
 function twinkleParticle() {

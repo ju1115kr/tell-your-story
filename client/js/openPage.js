@@ -15,13 +15,15 @@ function openPage(pageName, elmnt, color) {
     document.getElementById(pageName).style.display = "block";
 
     if(pageName == "Galaxy") {
-        $("body, html").css("background-color", "#1b0c26");
+        $("body, html").css("background-image", "url('../picture/web-background.jpg')");
         document.getElementById(pageName).style.display = "flex";
     }
-    else {
+    if(pageName == "About") {
+        $("body, html").css("background-image", 'none');
         $("body, html").css("background-color", "#ADA8B3");
     }
     if(pageName == "News") {
+        $("body, html").css("background-image", 'none');
         if($("div.news-main-content").is(':visible')){
             $("div.news-main-content").fadeOut();
         }
