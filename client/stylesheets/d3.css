@@ -9,7 +9,13 @@ div#Galaxy {
 }
 
 #stardustForm {
-  width: 80%
+  width: 76%;
+}
+
+#stardustForm svg {
+  background: url("../picture/web-circle.png") no-repeat;
+  background-size: contain;
+  background-position: center center;
 }
 
 .axis {

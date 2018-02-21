@@ -21,12 +21,6 @@ if(window.innerWidth <= 1000  && $(window).height() >= 1000) {
     size = '45px';
 }
 
-var bgi = d3.select("div#stardustForm").append("image").attr({
-    width: w,
-    height: h
-    })
-    .attr('xlink:href', "/picture/refresh.png");
-
 var svg = d3.select("div#stardustForm").append("svg").attr({
     width: w,
     height: h
@@ -78,6 +72,10 @@ function refreshData() {
     dataset = ajaxQuery(type='get', apiURL='/particle/random');
     svg.selectAll("image.particle").remove();
     fadeParticles(dataset, duration=750);
+    $("img#refresh").rotate({
+        angle: 0,
+        animateTo: 180
+    });
 }
 
 drawParticles(dataset);

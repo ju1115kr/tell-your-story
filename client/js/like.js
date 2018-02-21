@@ -12,10 +12,8 @@ function check_Like(d) {
 }
 
 function like(d) {
-    console.log("called like function");
     if(!fbUserID) {
         alert("페이스북 로그인이 필요합니다.");
-        console.log("like needs fb Login");
         return false;
     }
 
@@ -24,7 +22,6 @@ function like(d) {
         $("img.letterStarplus").css('opacity', '1');
 
         var jsondata = JSON.stringify({userID: fbUserID});
-        console.log(jsondata);
 
         var result;
         $.ajax({type: "post",
@@ -51,7 +48,6 @@ function like(d) {
 
         var jsondata = JSON.stringify({userID: fbUserID});
         var result;
-        console.log(jsondata);
         $.ajax({type: "delete",
             url: API + "/particle/" + d.id + "/like",
             contentType: 'application/json; charset=utf-8',
