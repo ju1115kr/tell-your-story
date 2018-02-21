@@ -14,7 +14,7 @@ function check_Like(d) {
 function like(d) {
     console.log("called like function");
     if(!fbUserID) {
-        //alert("페이스북 로그인이 필요합니다.");
+        alert("페이스북 로그인이 필요합니다.");
         console.log("like needs fb Login");
         return false;
     }

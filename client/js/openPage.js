@@ -15,7 +15,9 @@ function openPage(pageName, elmnt, color) {
     document.getElementById(pageName).style.display = "block";
 
     if(pageName == "Galaxy") {
-        $("body, html").css("background-image", "url('../picture/web-background.jpg')");
+        $("html").css("background-image", "url('../picture/web-background.jpg')");
+        $("body").css("background-color", "rgba(0, 0, 0, 0)");
+        $("body, html").css("background-repeat", "no-repeat");
         document.getElementById(pageName).style.display = "flex";
     }
     if(pageName == "About") {
