@@ -20,6 +20,14 @@ body, html {
   font-family: 'KoPub Dotum';
 }
 
+body {
+  height: calc(100%-90px);
+}
+
+@media screen and (min-width: 1000px) {
+  height: auto;
+}
+
 @font-face {
   font-family: 'KoPub Dotum';
   font-style: normal;

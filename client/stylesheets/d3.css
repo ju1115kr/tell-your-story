@@ -1,14 +1,13 @@
 div#Galaxy {
-//  background-image: url("../picture/web-background.jpg");
-//  background-color: #1b0c26;
   height: 100%;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
 }
 
 #stardustForm {
+  margin: 0 auto;
   width: 76%;
 }
 
@@ -50,4 +49,14 @@ div#refreshDummy {
   padding: 0;
   width: 0;
   height: 0;
+}
+
+@media screen and (min-width: 1000px) {
+  div#Galaxy {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
 }

@@ -1,3 +1,14 @@
+if(window.location.search.includes("news")){
+  search = window.location.search.substr(1);
+
+  openPage("News", '', "");
+  if( !search !== "news") {
+      document.getElementById(search).click();
+  }
+  //if {
+  //  $("div#" + search).click();
+  //}
+}
 //처음 웹 렌더링 시 letterForm 숨기기
 //$("div.letterForm").hide();
 

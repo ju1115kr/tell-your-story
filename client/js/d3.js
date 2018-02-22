@@ -1,10 +1,7 @@
 $("div#introdiv").css("margin-top", window.outerHeight / 15);
-//$("h3#introment").slideUp(0).delay(500).fadeIn(1000);
-//$("h3#introment").delay(2000).fadeOut(1000);
 
 // Galaxy script start
-var //w = window.innerWidth / 1.2,
-    w = $("div#stardustForm").width() / 2,
+var w = $("div#stardustForm").width() / 2,
     h = window.innerHeight * 0.6,
     margin = { top: 0, right: 0, bottom: 0, left: 0 },
     radius = 6,
@@ -14,11 +11,12 @@ var //w = window.innerWidth / 1.2,
     particleData;
 
 //Mobile View Respons
-if(window.innerWidth <= 1000  && $(window).height() >= 1000) {
-    w = window.innerWidth / 1,
-    h = window.innerHeight * 0.8,
+//if(window.innerWidth <= 1000  && $(window).height() >= 1000) {
+if(window.innerWidth < 1000) {
+    w = window.innerWidth / 1.5,
+    h = window.innerHeight * 0.5,
     refresh_size = 150,
-    size = '45px';
+    size = '35px';
 }
 
 var svg = d3.select("div#stardustForm").append("svg").attr({
@@ -53,28 +51,14 @@ d3.selection.prototype.last = function() {
     return d3.select(this[0][last]);
 };
 
-/*svg.append('image')
-    .attr('id', 'refresh')
-    .attr('width', refresh_size + 'px')
-    .attr('height', refresh_size + 'px')
-    .attr('x', $("svg").width() - refresh_size)
-    .attr('y', 0)
-    .attr('xlink:href', "/picture/refresh.png")
-    .on("mouseover", function() { $("div#refreshDummy").show(); })
-    .on("mouseout", function() { $("div#refreshDummy").hide(); })
-    .on("click", function(d) {
-        dataset = ajaxQuery(type='get', apiURL='/particle/random');
-        svg.selectAll("image.particle").remove();
-        drawParticles(dataset, duration=750);
-    });*/
-
 function refreshData() {
     dataset = ajaxQuery(type='get', apiURL='/particle/random');
     svg.selectAll("image.particle").remove();
     fadeParticles(dataset, duration=750);
     $("img#refresh").rotate({
         angle: 0,
-        animateTo: 180
+        animateTo: 180,
+        easing: $.easing.easeInOutElastic
     });
 }
 
@@ -83,6 +67,7 @@ drawParticles(dataset);
     // On Click, we want to add data to the array and chart
 svg.on("click", function() {
     if( $("div#PostForm").is(':visible') ){
+        console.log("PostForm is visible");
         return false;
     }
 /*
@@ -117,6 +102,7 @@ svg.on("click", function() {
         $("div#PostForm").slideDown();
         $("div.letterForm").slideUp();
         $("div#introduceBar").hide();
+        $("#particleDummy").hide();
 
         //if user cancle texting clicked X
         $("a.PostFormClose").click(function() {
@@ -127,18 +113,6 @@ svg.on("click", function() {
             
             dataset = JSON.parse(JSON.stringify(old_dataset));
         });
-        // if user cancle texting press escape key
-        /*
-        $(document).keyup(function(e) {
-            if (e.keyCode == 27) {
-                $("div#PostForm").slideUp();
-                svg.selectAll("image.particle").remove();
-                dataset.particles.pop(newData);
-                drawParticles(old_dataset);
-
-                dataset = JSON.parse(JSON.stringify(old_dataset));
-            }
-        });*/
 
         $("form.PostBody").submit(function(event) {
             event.preventDefault();
@@ -204,6 +178,11 @@ svg.on("click", function() {
 
 $("svg").hide();
 $("svg").delay(800).fadeIn(1000);
+$("div#aside").hide();
+$("div#aside").delay(800).fadeIn(1000);
+$("div#introduceBar").hide();
+$("div#introduceBar").delay(1000).fadeIn(1000);
+//
 //$("svg").delay(5000).fadeIn(400);
 //setTimeout(twinkleParticle, 5500);
 

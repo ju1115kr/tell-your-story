@@ -34,6 +34,7 @@
 }
 
 .letterHeader .letterInfo p.createdDate {
+  margin-top: 2.5px;
   font-size: 10px;
   font-weight: normal;
 }
@@ -49,7 +50,7 @@
   color: #2f1d3b;
 //  padding: 10px;
   padding: 0;
-  min-height: 150px;
+  min-height: 163px;
 //  min-height: 100%;
 //  max-height: 30%;
 //  min-width: 85%;
@@ -59,7 +60,10 @@
 }
 
 .letterBody hr {
-  width: 93%;
+  width: 100%;
+  border: 0;
+  border-top: 1px #CCC solid;
+  height: 1px;
 }
 
 .letterBody .letterLike {
@@ -69,19 +73,20 @@
 }
 
 .letterBody .letterLike img.letterStar {
-  margin-left: 30%;
-  width: 20px;
-  height: 20px;
+  margin-left: 60%;
+  width: 16px;
+  height: 16px;
 }
 
 .letterBody .letterLike p.letterLikeCount {
-  margin-left: 8px;
+  margin-left: 7px;
+  font-size: 0.85rem;
 }
 
 .letterBody .letterLike img.letterStarplus {
   margin-left: 0px;
-  width:  90.5px;
-  height: 20px;
+  width:  66.5px;
+  height: 14.5px;
 } img.letterStarplus:hover {
   cursor: pointer;
 }

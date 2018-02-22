@@ -31,7 +31,7 @@ function like(d) {
             async: false,
             data: jsondata,
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 result = data;
                 d.likes.push(parseInt(fbUserID));
             },
@@ -55,7 +55,7 @@ function like(d) {
             async: false,
             data: jsondata,
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 result = data;
                 d.likes.pop(parseInt(fbUserID));
             },
