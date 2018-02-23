@@ -74,7 +74,7 @@ def delete_particle(particle_id):
     if int(request.json.get('author_id')) != particle.author_id:
         return forbidden('Cannot delete other user\'s particle')
 
-    Like.query.fileter(Like.particle_id == particle.id).delete()
+    Like.query.filter(Like.particle_id == particle.id).delete()
     db.session.delete(particle)
     db.session.commit()
     return '', 204
