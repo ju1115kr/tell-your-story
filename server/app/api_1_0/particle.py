@@ -53,7 +53,7 @@ def put_particle(particle_id):
         return bad_request('JSON Request is invaild')
     if request.json.get('author_id') is None:
         return bad_request('author`s ID is invaild')
-    if request.json.get('author_id') != old_particle.author_id:
+    if int(request.json.get('author_id')) != old_particle.author_id:
         return forbidden('Cannot delete other user\'s particle')
     if old_particle is None:
         return not_found('Particle does not exist')
@@ -71,10 +71,10 @@ def delete_particle(particle_id):
         return bad_request('JSON Request is invaild')
     if request.json.get('author_id') is None:
         return bad_request('author`s ID is invaild')
-    if request.json.get('author_id') != particle.author_id:
+    if int(request.json.get('author_id')) != particle.author_id:
         return forbidden('Cannot delete other user\'s particle')
     db.session.delete(particle)
-    db.seesion.commit()
+    db.session.commit()
     return '', 204
 
 
