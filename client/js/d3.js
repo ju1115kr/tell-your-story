@@ -60,6 +60,11 @@ function refreshData() {
         animateTo: 180,
         easing: $.easing.easeInOutElastic
     });
+    if( $("div.letterForm").is(":visible") ) {
+        $("div.letterForm").slideUp();
+        $("div#introduceBar").slideDown();
+    }
+    
 }
 
 drawParticles(dataset);
@@ -101,6 +106,8 @@ svg.on("click", function() {
 
     $("div#PostForm").slideDown();
     $("div.letterForm").slideUp();
+    //$("div.letterForm").hide();
+    //$("div#PostForm").slideDown();
     $("div#introduceBar").hide();
     $("#particleDummy").hide();
 
@@ -210,7 +217,6 @@ function handleMouseClick(d, i) {
 
         if ( $("div#PostForm").is(':visible')) {
             $("div#PostForm").slideUp();
-            $("div#PostForm").hide();
             svg.selectAll("image.particle").remove();
             dataset.particles.pop(newData);
             drawParticles(dataset);

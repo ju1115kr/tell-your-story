@@ -5,7 +5,7 @@ canvas#circle {
   height: 50px;
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (min-width: 990px) {
   canvas#circle {
     margin-top: 4px;
     margin-right: 10px;
