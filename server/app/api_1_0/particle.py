@@ -73,6 +73,8 @@ def delete_particle(particle_id):
         return bad_request('author`s ID is invaild')
     if int(request.json.get('author_id')) != particle.author_id:
         return forbidden('Cannot delete other user\'s particle')
+
+    Like.query.fileter(Like.particle_id == particle.id).delete()
     db.session.delete(particle)
     db.session.commit()
     return '', 204
