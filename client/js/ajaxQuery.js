@@ -1,5 +1,5 @@
-//var API = 'https://meonzzi.newslabfellows.com:9000/api/v1.0';
-var API = 'http://ju1115kr.iptime.org:9009/api/v1.0';
+var API = 'https://meonzzi.newslabfellows.com:9000/api/v1.0';
+//var API = 'http://ju1115kr.iptime.org:9009/api/v1.0';
 
 
 function ajaxQuery(type, apiURL, dataset) {
