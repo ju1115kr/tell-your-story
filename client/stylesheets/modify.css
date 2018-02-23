@@ -1,0 +1,93 @@
+#ModifyForm {
+  display: none;
+  margin: 30px auto;
+  background-color: #D4CFD9;
+  width: 85%;
+  height: 56%;
+  min-height: 320px;
+  max-width: 960px;
+  padding: 3px;
+  border-radius: 15px;
+}
+
+.ModifyHeader {
+  display: flex;
+  margin: 10px 20px;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.ModifyHeader img.ModifyPicture {
+  margin: 5px 5px;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.19);
+}
+
+.ModifyHeader p {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-left: 15px;
+  color: rgba(51, 27, 61, 1);
+}
+
+.ModifyBody {
+  margin: 10px 20px;
+}
+
+.ModifyBody textarea#ModifyBox {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  padding: 10px;
+  margin-right: 0px;
+  width: 96%;
+  height: 109px;
+  line-height: 3rem;
+  font-family: 'KoPub Dotum';
+  font-size: 2rem;
+  color: rgba(138, 125, 145, 1);
+  overflow: hidden;
+  resize: none;
+  outline: 0;
+}
+
+.ModifyBody hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px #B3ABBA solid;
+}
+
+.ModifyBody input[type="submit"] {
+//  margin-left: 73%;
+  float: right;
+  border: 0;
+  border-radius: 2px;
+  padding: 5px 15px;
+  background-color: #B3ABBA;
+  font-family: 'kopub dotum';
+  font-size: 30px;
+  font-weight: bold;
+  color: rgba(51, 27, 61, 1);
+  outline: 0;
+} .ModifyBody input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1000px) {
+  #ModifyForm {
+    min-height: 0;
+  }
+ .ModifyBody textarea#ModifyBox {
+    line-height: 160%;
+    font-size: 0.9rem;
+    height: 209px;
+  }
+  .ModifyBody input[type="submit"] {
+    font-size: 15px;
+  }
+  .ModifyHeader p {
+    font-size: 1rem;
+  }
+}

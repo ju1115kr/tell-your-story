@@ -230,6 +230,8 @@ function handleMouseClick(d, i) {
             $('p.createdDate').html(formatDate(d.created_at));
             $('p.letterLikeCount').text(d.likes_count);
             $('p.letterContextmessage').text(d.context);
+
+            check_me(d);
             check_Like(d);
 
             $('div.letterForm').slideDown();
@@ -324,3 +326,13 @@ function twinkleParticle() {
         .style("opacity", 1);
 }
 
+function check_me(d) {
+    if( parseInt(fbUserID) == d.author ) {
+        $("img.option").show();
+        $("div.popup").hide();
+    }
+    else {
+        $("img.option").hide();
+        $("div.popup").hide();
+    }
+}

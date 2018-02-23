@@ -71,7 +71,13 @@ function testAPI(userID) {
     $("img.FBlogin-Img").show();
     $("img.PostPicture")
         .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=large");
-    if(particleData) {check_Like(particleData);}
+    $("img.ModifyPicture")
+        .attr("src",""+ "https://graph.facebook.com/" + userID + "/picture?type=large");
+
+    if(particleData) {
+        check_me(particleData);
+        check_Like(particleData);
+    }
     //$("div.letterForm").slideDown();
     //$("form#particleBroadcast").show();
 }

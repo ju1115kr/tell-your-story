@@ -31,6 +31,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/news-layout.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/topmenu.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/post.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/modify.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/tooltip.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/introment.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/about.css" />
@@ -113,6 +114,11 @@
                     <p>우주에 도착한 먼지들</p>
                     <p class="createdDate"></p>
                 </div>
+                <img class="option" src="../picture/option.png" alt="" />
+                <div class="popup">
+                    <p id="modify">수정</p>
+                    <p id="delete">삭제</p>
+                </div>
             </div>
 
            <div class="letterBody">
@@ -140,13 +146,24 @@
             <form class="PostBody">
                 <textarea id="PostBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
                 <hr />
-                <input type="submit" value="보내기">
+                <input id="PostSubmit" type="submit" value="보내기">
                 <canvas id="circle" width="29" height="29"></canvas>
             </form>
+        </div>
 
+        <div id="ModifyForm">
+            <div class="ModifyHeader">
+                <img class="ModifyPicture" src="./picture/defaultProfileFB.png" alt="" />
+                <p>우주에 먼지 보내기</p>
+            </div>
+            <form class="ModifyBody">
+                <textarea id="ModifyBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
+                <hr />
+                <input id="ModifySubmit" type="submit" value="수정">
+                <canvas id="circle" width="29" height="29"></canvas>
+            </form>
         </div>
     </div>
-
 </div>
 
 
@@ -314,6 +331,8 @@
 <script src="./js/topmenu.js" charset="utf-8"></script>
 <script src="./js/circle.js" charset="utf-8"></script>
 <script src="./js/like.js" charset="utf-8"></script>
+<script src="./js/delete.js" charset="utf-8"></script>
+<script src="./js/modify.js" charset="utf-8"></script>
 <script src="./js/kja.js" charset="utf-8"></script>
 <script src="./js/kju.js" charset="utf-8"></script>
 <script src="./js/kbk.js" charset="utf-8"></script>

@@ -11,6 +11,17 @@ if(window.location.search.includes("news")){
 }
 //처음 웹 렌더링 시 letterForm 숨기기
 //$("div.letterForm").hide();
+/*$(document).ready(function() {
+    $("img.option").click(function() {
+        if ( $("div.popup").is(':visible') ) {$("div.popup").show();}
+        else $("div.popup").hide();
+    });
+})*/
+
+$("img.option").click(function() {
+   if( $("div.popup").is(':visible') ) $("div.popup").hide();
+   else $("div.popup").show();
+});
 
 //letter close 버튼 클릭 시
 $("a.letterClose").click(function() {
