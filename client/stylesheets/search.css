@@ -26,7 +26,7 @@ div#keywordBar {
 #keywordBar strong {
   margin-left: 0;
   margin-right: auto;
-  font-size: 0.9rem;
+  font-size: 2rem;
   color: #1e0a28;
 }
 
@@ -63,7 +63,8 @@ input#searchBox[type="text"] {
   margin: 0;
   border: 1px solid rgba(30, 10, 40, 1);
   border-radius: 12px;
-  font-size: 21px;
+  //font-size: 21px;
+  font-size: 2rem;
   color: rgba(134, 123, 141, 1);
   background: url('../picture/searchSJ.png') no-repeat center;
   background-position: 95% center; 
@@ -80,7 +81,7 @@ input#searchBox[type=text]:focus {
   color: rgba(30, 10, 40, 1);
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 990px) {
   div#keywordBar {
     display: flex;
     align-items: center;
@@ -112,6 +113,6 @@ input#searchBox[type=text]:focus {
     background-position: 95% center; 
     //padding: 10px 20px 12px 15px;
     opacity: 0.5;
-    letter-spacing: -1.3px;
+    letter-spacing: -0.6px;
   }
 }

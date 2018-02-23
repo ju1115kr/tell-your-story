@@ -8,7 +8,7 @@ div#Galaxy {
 
 #stardustForm {
   margin: 0 auto;
-  width: 76%;
+  width: 50%;
 }
 
 #stardustForm svg {
@@ -51,7 +51,7 @@ div#refreshDummy {
   height: 0;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 990px) {
   div#Galaxy {
     height: 100%;
     display: flex;

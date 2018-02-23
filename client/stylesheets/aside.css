@@ -1,13 +1,15 @@
 #aside {
   width: 100%;
-  height: 630px;
+  height: 670px;
 //  position: absolute;
 //  margin-top: 20px;
   margin-right: 150px;
 //  margin-top: 0;
 //  margin-right: 0;
   background-color: rgba(238,237,242, 1);
+  font-size: 2rem;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+//  overflow: scroll;
 }
 
 #refreshBar {
@@ -16,8 +18,8 @@
 }
 
 #refreshBar img#refresh {
-  width: 60px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   display: block;
   margin: auto;
   padding: 30px;
@@ -28,17 +30,17 @@
 #refreshBar hr {
   width: 85%;
   border: 0;
-  border-top: 1px #ccc solid;
+  border-top: 1px #B3ABBA solid;
   height: 1px;
 }
 
 #introduceBar {
   text-align: center;
-  font-size: ;
+  font-size: 2rem;
   font-weight: bold;
   color: rgba(51, 27, 61, 1);
   width: 85%;
-  height: 58%;
+  height: 50%;
   display: flex;
   margin: auto;
   margin-top: 15px;
@@ -48,13 +50,13 @@
   border-radius: 15px;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 990px) and (max-width: 1080px) {
   #aside {
-    width: 33%;
-    height: 590px;
-    top: 150px;
-    right: 100px;
-    background-color: rgba(238,237,242, 1);
+    width: 40%;
+    max-width: 480px;
+    margin: auto;
+    margin-right: 50px;
+    font-size: 1rem;
   }
   #refreshBar img#refresh {
     width: 60px;
@@ -62,5 +64,37 @@
     display: block;
     margin: 30px auto;
     padding: 0;
+  }
+  div#introuduceBar {
+    height: 58%;
+  }
+  div#introduceBar p{
+    font-size: 1rem;
+    line-height: 175%;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  #aside {
+    width: 27%;
+//    margin: 0 auto;
+    margin: auto;
+//    height: 590px;
+//    height: 90%;
+    top: 150px;
+    right: 100px;
+    background-color: #DDD9E2;
+    font-size: 1rem;
+  }
+  #refreshBar img#refresh {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 30px auto;
+    margin-top: 40px;
+    padding: 0;
+  }
+  div#introduceBar {
+    height: 58%;
   }
 }

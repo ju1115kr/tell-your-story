@@ -1,14 +1,14 @@
 $(document).ready(function() {
-    $("img.letterStarplus").click(function() {
+    $("div.letterStarplus").click(function() {
         like(particleData);
     });
 });
 
 function check_Like(d) {
     if(d.likes.includes(parseInt(fbUserID))) {
-        $("img.letterStarplus").css('opacity', '1');
+        $("div.letterStarplus").css('opacity', '1');
     }
-    else { $("img.letterStarplus").css('opacity', '0.3'); }
+    else { $("div.letterStarplus").css('opacity', '0.3'); }
 }
 
 function like(d) {
@@ -19,7 +19,7 @@ function like(d) {
 
     if(!d.likes.includes(parseInt(fbUserID))) {
         $("p.letterLikeCount").text( parseInt($("p.letterLikeCount").text()) + 1);
-        $("img.letterStarplus").css('opacity', '1');
+        $("div.letterStarplus").css('opacity', '1');
 
         var jsondata = JSON.stringify({userID: fbUserID});
 
@@ -44,7 +44,7 @@ function like(d) {
 
     else if(d.likes.includes(parseInt(fbUserID))) {
         $("p.letterLikeCount").text( parseInt($("p.letterLikeCount").text()) - 1);
-        $("img.letterStarplus").css('opacity', '0.3');
+        $("div.letterStarplus").css('opacity', '0.3');
 
         var jsondata = JSON.stringify({userID: fbUserID});
         var result;

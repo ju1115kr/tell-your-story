@@ -34,6 +34,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/tooltip.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/introment.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/about.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/circle.css" />
 </head>
 
 <body>
@@ -57,7 +58,7 @@
                 data-auto-logout-link="false"
                 data-use-continue-as="true"
                 data-scope="public_profile, email" onclick="checkLoginState();">
-                <img id="FB-default-picture" src="./picture/defaultProfileFB.jpg" alt="프로필"/>
+                <img id="FB-default-picture" src="./picture/defaultProfileFB.png" alt="프로필"/>
                 <p><b id="FB-realname"></b><b>페이스북</b>으로&nbsp;로그인</p>
             </div>
             <!--div id="FBlogin-button" class="fb-login-button"
@@ -107,7 +108,7 @@
 
         <div class="letterForm">
              <div class="letterHeader">
-                <img class="letterPicture" src="./picture/defaultProfileFB.jpg" alt="" />
+                <img class="letterPicture" src="./picture/defaultProfileFB.png" alt="" />
                 <div class="letterInfo">
                     <p>우주에 도착한 먼지들</p>
                     <p class="createdDate"></p>
@@ -118,9 +119,14 @@
                <p class="letterContextmessage"></p>
                <hr />
                 <div class="letterLike">
-                    <img class="letterStarplus" src="./picture/sympathy.png" alt=""/>
-                    <img class="letterStar" src="./picture/purplestar.png" alt=""/>
-                    <p class="letterLikeCount"></p>
+                    <div class="letterStarplus" style="justify-content:center; align-items: center; display:flex;">
+                        <img class="letterStarplusImage" src="./picture/starplus.png" alt=""/>
+                        <p class="letterStarplusText">공감하기</p>
+                    </div>
+                    <div style="justify-content:center; align-items: center; display:flex;">
+                        <img class="letterStar" src="./picture/purplestar.png" alt=""/>
+                        <p class="letterLikeCount"></p>
+                    </div>
                 </div>
             </div>
 
@@ -128,13 +134,14 @@
 
         <div id="PostForm">
             <div class="PostHeader">
-                <img class="PostPicture" src="./picture/defaultProfileFB.jpg" alt="" />
+                <img class="PostPicture" src="./picture/defaultProfileFB.png" alt="" />
                 <p>우주에 먼지 보내기</p>
             </div>
             <form class="PostBody">
                 <textarea id="PostBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
                 <hr />
                 <input type="submit" value="보내기">
+                <canvas id="circle" width="29" height="29"></canvas>
             </form>
 
         </div>
@@ -172,19 +179,18 @@
     </div>
 
     <div class="news-wrapper">
-        <!--
         <div class="news-letter" id="news-8">
             <div class="news-header">
-                <img class="news-header-img" src="picture/meonzziLogo.png" alt="" />
+                <img class="news-header-img" src="picture/khm.jpg" alt="" />
                 <hr />
             </div>
             <div class="news-container">
-                <h2 class="news-title">먼지가 모여,<br />우주가 되다</h2>
-                <p class="news-date">18. 02. 13. 06:34</p>
-                <p class="news-preview">청춘의 '찌질함'에 대해 얘기해볼까요. 외국에서는 quarter-life...</p>
+                <h2 class="news-title">왜 남들 눈치 보며 살아야 돼?</h2>
+                <p class="news-date">18.02.22</p>
+                <p class="news-preview">구현모의 이야기</p>
             </div>
         </div>
--->
+
         <div class="news-letter" id="news-7">
             <div class="news-header">
                 <img class="news-header-img" src="picture/kuj.jpg" alt="" />
@@ -192,7 +198,7 @@
             </div>
             <div class="news-container">
                 <h2 class="news-title">미안하지만, 난 캔디가 아닌걸</h2>
-                <p class="news-date">18. 02. 21</p>
+                <p class="news-date">18.02.21</p>
                 <p class="news-preview">고은정의 이야기</p>
             </div>
         </div>        
@@ -306,6 +312,7 @@
 <script src="./js/news.js" charset="utf-8"></script>
 <script src="./js/google_login.js" charset="utf-8"></script>
 <script src="./js/topmenu.js" charset="utf-8"></script>
+<script src="./js/circle.js" charset="utf-8"></script>
 <script src="./js/like.js" charset="utf-8"></script>
 <script src="./js/kja.js" charset="utf-8"></script>
 <script src="./js/kju.js" charset="utf-8"></script>
@@ -314,6 +321,7 @@
 <script src="./js/yks.js" charset="utf-8"></script>
 <script src="./js/yjh.js" charset="utf-8"></script>
 <script src="./js/kuj.js" charset="utf-8"></script>
+<script src="./js/khm.js" charset="utf-8"></script>
 </body>
 </html>
 

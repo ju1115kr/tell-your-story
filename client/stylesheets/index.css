@@ -18,11 +18,12 @@ body, html {
   background-color: #ADA8B3;
   //background-image: url("../picture/web-background.jpg");
   font-family: 'KoPub Dotum';
+  height: calc(100% - 90px);
 }
 
-body {
-  height: calc(100%-90px);
-}
+/*body {
+  height: calc(100% - 90px);
+}*/
 
 @media screen and (min-width: 1000px) {
   height: auto;

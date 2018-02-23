@@ -1,9 +1,9 @@
 #PostForm {
   display: none;
   margin: 30px auto;
-  background-color: #e4e4e6;
+  background-color: #D4CFD9;
   width: 85%;
-  height: 50%;
+  height: 56%;
   max-width: 960px;
   padding: 3px;
   border-radius: 15px;
@@ -42,7 +42,7 @@
   padding: 10px;
   margin-right: 0px;
   width: 96%;
-  height: 130px;
+  height: 209px;
   line-height: 3rem;
   font-family: 'KoPub Dotum';
   font-size: 2rem;
@@ -53,7 +53,9 @@
 }
 
 .PostBody hr {
-
+  height: 1px;
+  border: 0;
+  border-top: 1px #B3ABBA solid;
 }
 
 .PostBody input[type="submit"] {
@@ -62,7 +64,7 @@
   border: 0;
   border-radius: 2px;
   padding: 5px 15px;
-  background-color: rgba(191, 188, 195, 1);
+  background-color: #B3ABBA;
   font-size: 30px;
   font-weight: bold;
   color: rgba(51, 27, 61, 1);
@@ -73,8 +75,8 @@
 
 @media screen and (min-width: 1000px) {
  .PostBody textarea#PostBox {
-  line-height: 1.3rem;
-  font-size: 1rem;
+  line-height: 160%;
+  font-size: 0.9rem;
 }
 
 .PostBody input[type="submit"] {

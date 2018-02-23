@@ -1,3 +1,4 @@
+/*
 $("div#news-8").click(function() {
   $("h2.news-main-content-header-title").text("8번 째 기사");
   $("p.news-main-content-text").text("8번 째 기사의 내용");
@@ -12,7 +13,7 @@ $("div#news-8").click(function() {
   //$("div.news-letter").fadeOut();
   //$("div.news-main-content").fadeIn();
 });
-
+*/
 
 $("div.news-letter").click(function() {
 //  $("div.news-letter").fadeOut();
@@ -32,3 +33,4 @@ $("div.logoForm").click(function() {
 //  $("div.news-main-content video")[0].pause();
   $("div.news-main-content").hide();
 });
+
