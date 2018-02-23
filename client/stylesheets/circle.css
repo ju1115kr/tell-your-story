@@ -7,8 +7,9 @@ canvas#circle {
 
 @media screen and (min-width: 980px) {
   canvas#circle {
-    margin-right: 5px;
-    width: 29px;
-    height: 29px;
+    margin-top: 4px;
+    margin-right: 10px;
+    width: 21px;
+    height: 21px;
   }
 }

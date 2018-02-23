@@ -4,6 +4,7 @@
   background-color: #D4CFD9;
   width: 85%;
   height: 56%;
+  min-height: 320px;
   max-width: 960px;
   padding: 3px;
   border-radius: 15px;
@@ -42,7 +43,7 @@
   padding: 10px;
   margin-right: 0px;
   width: 96%;
-  height: 209px;
+  height: 109px;
   line-height: 3rem;
   font-family: 'KoPub Dotum';
   font-size: 2rem;
@@ -74,16 +75,18 @@
 }
 
 @media screen and (min-width: 1000px) {
+  #PostForm {
+    min-height: 0;
+  }
  .PostBody textarea#PostBox {
-  line-height: 160%;
-  font-size: 0.9rem;
-}
-
-.PostBody input[type="submit"] {
-  font-size: 15px;
-}
-
-.PostHeader p {
-  font-size: 1rem;
-}
+    line-height: 160%;
+    font-size: 0.9rem;
+    height: 209px;
+  }
+  .PostBody input[type="submit"] {
+    font-size: 15px;
+  }
+  .PostHeader p {
+    font-size: 1rem;
+  }
 }

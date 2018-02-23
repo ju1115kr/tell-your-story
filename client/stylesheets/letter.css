@@ -6,7 +6,7 @@
   background: #D4CFD9;
   padding: 3px;
   width: 85%;
-  height: 56%;
+  min-height: 56%;
   border-radius: 15px;
 }
 

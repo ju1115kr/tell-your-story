@@ -53,6 +53,7 @@ $("div#news-2").click(function() {
     <div></div>
     <div></div>
     <div></div>
+    <br /><br />
     `;
 
     $("h2.news-main-content-header-title").text(title);

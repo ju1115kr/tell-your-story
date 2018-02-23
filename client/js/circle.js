@@ -25,7 +25,7 @@ function fillCircle(text) {
 
     context.strokeStyle = '#B0A9B5';
     if(text >= 240) {
-        context.strokeStyle = 'pink';
+        context.strokeStyle = '#331B3D';
     }
 //    context.strokeStyle = '#B3ABBA';
 //    context.strokeStyle = 'white';

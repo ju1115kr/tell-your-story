@@ -142,7 +142,7 @@ div.news-main-content-header p.news-main-content-header-text {
 
 p.news-main-content-text > * {
   font-size: 1.12rem;
-  line-height: 160%;
+  line-height: 185%;
   display: block;
   color: #1e0a28;
 }
@@ -236,7 +236,7 @@ div.news-main-content-body p + div.news-main-content-body p {
   }
 
   p.news-main-content-text > * {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   div.news-main-content-header p.news-main-content-date {

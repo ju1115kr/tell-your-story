@@ -134,6 +134,7 @@ $("div#news-8").click(function() {
     <div></div>
     </div>
     <div>[출처: <a href="https://twitter.com/zzalmachine/status/683205544060911617">짤장고 트위터 ]</a></div>
+    <br /><br />
     `;
 
 

@@ -104,7 +104,7 @@ svg.on("click", function() {
     $("div#introduceBar").hide();
     $("#particleDummy").hide();
 
-    if( $(window).innerWidth < 990 ) {
+    if( $(window).innerWidth() < 990 ) {
         var body = $("html, body");
         body.stop().animate({scrollTop: $("div#PostForm").prop('scrollHeight')});
     }

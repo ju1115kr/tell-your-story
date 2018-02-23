@@ -43,8 +43,13 @@ function statusChangeCallback(response) {
         userID = response.authResponse.userID;
         testAPI(userID);
     } else if (response.status === 'not_authorized') {
+        FB.login(function(response) {
+            userID = response.authResponse.userID;
+            testAPI(userID);
         //document.getElementById('status').innerHTML = 'Please log' + 'into this app.';
+        });
     } else if (response.status === 'unknonwn') {
+        //document.getElementById('status').innerHTML = 'Please log' + 'into this app.';
         //document.getElementById('status').innerHTML = 'Please log' + 'into Facebook.';
     }
 }

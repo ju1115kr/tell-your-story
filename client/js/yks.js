@@ -73,7 +73,7 @@ $("div#news-5").click(function() {
     <strong><span class="s1">으, 맞아요. 마지막으로. 규상씨에게 청춘이란?</span></strong><br />
 
     <span class="s1">그냥 지나가는 시간 중 하나다. 딱히 뭐 청춘이라고 뭐, 인생의 하이라이트가 되어야하나 싶어요.</span>
-
+    <br /><br />
     `;
 
 
