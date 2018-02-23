@@ -60,6 +60,7 @@ def put_particle(particle_id):
 
     particle = Particle.from_json(request.json)
     old_particle.context = particle.context
+    old_particle.parsed_context = particle.parsed_context
     db.session.commit()
     return jsonify(old_particle.to_json())
 
