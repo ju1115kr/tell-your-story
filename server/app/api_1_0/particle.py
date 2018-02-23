@@ -66,7 +66,7 @@ def put_particle(particle_id):
 
 @api.route('/particle/<int:particle_id>', methods=['DELETE'])
 def delete_particle(particle_id):
-    particle = Partticle.query.filter_by(id=particle_id).first()
+    particle = Particle.query.filter_by(id=particle_id).first()
     if request.json is None:
         return bad_request('JSON Request is invaild')
     if request.json.get('author_id') is None:
