@@ -47,15 +47,35 @@ def post_particle():
 
 @api.route('/particle/<int:particle_id>', methods=['PUT'])
 def put_particle(particle_id):
+    old_particle = Particle.query.filter_by(id=particle_id).first()
+
     if request.json is None:
         return bad_request('JSON Request is invaild')
-    old_particle = Particle.query.filter_by(id=particle_id).first()
+    if request.json.get('author_id') is None:
+        return bad_request('author`s ID is invaild')
+    if request.json.get('author_id') != old_particle.author_id:
+        return forbidden('Cannot delete other user\'s particle')
     if old_particle is None:
         return not_found('Particle does not exist')
+
     particle = Particle.from_json(request.json)
     old_particle.context = particle.context
     db.session.commit()
     return jsonify(old_particle.to_json())
+
+
+@api.route('/particle/<int:particle_id>', methods=['DELETE'])
+def delete_particle(particle_id):
+    particle = Partticle.query.filter_by(id=particle_id).first()
+    if request.json is None:
+        return bad_request('JSON Request is invaild')
+    if request.json.get('author_id') is None:
+        return bad_request('author`s ID is invaild')
+    if request.json.get('author_id') != particle.author_id:
+        return forbidden('Cannot delete other user\'s particle')
+    db.session.delete(particle)
+    db.seesion.commit()
+    return '', 204
 
 
 @api.route('/particle/<int:particle_id>/like', methods=['POST'])
