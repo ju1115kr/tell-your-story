@@ -54,8 +54,6 @@ def put_particle(particle_id):
         return not_found('Particle does not exist')
     particle = Particle.from_json(request.json)
     old_particle.context = particle.context
-    old_particle.x = particle.x
-    old_particle.y = particle.y
     db.session.commit()
     return jsonify(old_particle.to_json())
 
