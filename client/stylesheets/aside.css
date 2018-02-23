@@ -97,4 +97,7 @@
   div#introduceBar {
     height: 58%;
   }
+  div#introduceBar p {
+    font-size: 1rem;
+  }
 }
