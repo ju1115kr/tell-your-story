@@ -1,5 +1,6 @@
 $("p#delete").click(function() {
     $("div.popup").hide();
+    $("div.arrow").hide();
 
     if (window.confirm("정말로 이 글을 삭제하시겠습니까?")) {
         var jsondata = JSON.stringify({ author_id: fbUserID });

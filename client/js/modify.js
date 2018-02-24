@@ -1,5 +1,6 @@
 $("p#modify").click(function() {
     $("div.popup").hide();
+    $("div.arrow").hide();
 
 //    $("div.letterForm").slideUp();
     $("div.letterForm").hide();

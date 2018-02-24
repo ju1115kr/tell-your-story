@@ -113,6 +113,7 @@ svg.on("click", function() {
     drawParticles(dataset);
 
     $("div#PostForm").slideDown();
+    canvas = document.getElementById('Postcircle');
     $("div.letterForm").slideUp();
     //$("div.letterForm").hide();
     //$("div#PostForm").slideDown();
@@ -346,9 +347,11 @@ function check_me(d) {
     if( parseInt(fbUserID) == d.author ) {
         $("img.option").show();
         $("div.popup").hide();
+        $("div.arrow").hide();
     }
     else {
         $("img.option").hide();
         $("div.popup").hide();
+        $("div.arrow").hide();
     }
 }

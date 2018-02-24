@@ -19,8 +19,14 @@ if(window.location.search.includes("news")){
 })*/
 
 $("img.option").click(function() {
-   if( $("div.popup").is(':visible') ) $("div.popup").hide();
-   else $("div.popup").show();
+   if( $("div.popup").is(':visible') ) {
+       $("div.popup").hide();
+       $("div.arrow").hide();
+   }
+   else {
+       $("div.popup").show();
+       $("div.arrow").show();
+   }
 });
 
 //letter close 버튼 클릭 시
