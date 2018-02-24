@@ -3,6 +3,7 @@ from flask import request, jsonify, make_response, url_for, g
 from . import api
 from .. import db
 from ..models import Particle, Like, Comment
+from sqlalchemy.sql.expression import func
 from errors import not_found, forbidden, bad_request
 from flask_cors import cross_origin
 import os
@@ -11,6 +12,12 @@ import os
 @api.route('/particle', methods=['GET'])
 def get_all_particle():
     particles = Particle.query.all()
+    return jsonify({'particles': [particle.to_json() for particle in particles]})
+
+
+@api.route('/particle/random', methods=['GET'])
+def get_random_particle():
+    particles = Particle.query.order_by(func.random()).limit(20)
     return jsonify({'particles': [particle.to_json() for particle in particles]})
 
 
@@ -40,17 +47,38 @@ def post_particle():
 
 @api.route('/particle/<int:particle_id>', methods=['PUT'])
 def put_particle(particle_id):
+    old_particle = Particle.query.filter_by(id=particle_id).first()
+
     if request.json is None:
         return bad_request('JSON Request is invaild')
-    old_particle = Particle.query.filter_by(id=particle_id).first()
+    if request.json.get('author_id') is None:
+        return bad_request('author`s ID is invaild')
+    if int(request.json.get('author_id')) != old_particle.author_id:
+        return forbidden('Cannot delete other user\'s particle')
     if old_particle is None:
         return not_found('Particle does not exist')
+
     particle = Particle.from_json(request.json)
     old_particle.context = particle.context
-    old_particle.x = particle.x
-    old_particle.y = particle.y
+    old_particle.parsed_context = particle.parsed_context
     db.session.commit()
     return jsonify(old_particle.to_json())
+
+
+@api.route('/particle/<int:particle_id>', methods=['DELETE'])
+def delete_particle(particle_id):
+    particle = Particle.query.filter_by(id=particle_id).first()
+    if request.json is None:
+        return bad_request('JSON Request is invaild')
+    if request.json.get('author_id') is None:
+        return bad_request('author`s ID is invaild')
+    if int(request.json.get('author_id')) != particle.author_id:
+        return forbidden('Cannot delete other user\'s particle')
+
+    Like.query.filter(Like.particle_id == particle.id).delete()
+    db.session.delete(particle)
+    db.session.commit()
+    return '', 204
 
 
 @api.route('/particle/<int:particle_id>/like', methods=['POST'])

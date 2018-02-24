@@ -23,6 +23,11 @@ def not_found(e):
     return jsonify({'description': str(e)}), 404
 
 
+@api.errorhandler(500)
+def serverError(e):
+    return jsonify({'description': str(e)}), 500
+
+
 @api.errorhandler(ValidationError)
 def validation_error(e):
     return bad_request(e.args[0])
