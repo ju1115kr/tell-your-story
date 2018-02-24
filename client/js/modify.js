@@ -1,10 +1,14 @@
 $("p#modify").click(function() {
     $("div.popup").hide();
 
-    $("div.letterForm").slideUp();
+//    $("div.letterForm").slideUp();
+    $("div.letterForm").hide();
     $("textarea#ModifyBox").val(particleData.context);
-    $("div#ModifyForm").slideDown();
+//    $("div#ModifyForm").slideDown();
+    $("div#ModifyForm").show();
     $("textarea#ModifyBox").focus();
+    fillCircle( particleData.context.length, document.getElementById('Modifycircle'));
+    canvas = document.getElementById('Modifycircle');
 });
 
 $("form.ModifyBody").submit(function(event) {
@@ -33,6 +37,8 @@ $("form.ModifyBody").submit(function(event) {
             $("p.letterContextmessage").text(data.context);
             $("div#ModifyForm").slideUp();
             $("div.letterForm").slideDown();
+
+            $("textarea#ModifyBox").val(data.context);
         },
         error: function(xhr, ajaxOptions, thrownError) {
             console.log(xhr.status, ajaxOptions, thrownError);

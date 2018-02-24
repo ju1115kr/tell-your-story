@@ -80,6 +80,14 @@ svg.on("click", function() {
 //        return false;
     }
 
+    if( $("div#ModifyForm").is(":visible") ) {
+        if( window.confirm("수정 중인 글이 저장되지 않았습니다. 계속하시겠습니까?") ) {
+            $("div#ModifyForm").slideUp();
+            svg.selectAll("image.particle").remove();
+            drawParticles(dataset);
+        } else return false;
+    }
+
     //if cursor does not pointing already exist particle
     if( $("div#particleDummy").is(':visible') ){
         console.log("particleDummy is visible");
@@ -156,6 +164,9 @@ svg.on("click", function() {
                 dataset.particles.push(newParticle);
                 old_dataset = dataset;
 
+                if( $(window).innerWidth() < 990 ) { 
+                    $("html, body").stop().animate({ scrollTop: 0 }, 1000);
+                }
                 drawParticles(dataset);
                 twinkleParticle();
 
@@ -214,6 +225,11 @@ function handleMouseClick(d, i) {
         //if (d.author != 'null') { $("img.letterPicture").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");}
         //if (d.googleUserImg != 'null') { $("img.letterImg").attr("src", d.googleUserImg); }
         if ( $("div#introduceBar").is(':visible')) { $("div#introduceBar").slideUp(); }
+        if ( $("div#ModifyForm").is(":visible")) {
+            if ( window.confirm("수정 중인 글이 저장되지 않았습니다. 계속하시겠습니까?") ) {
+                $("div#ModifyForm").slideUp();
+            } else return false;
+        }
 
         if ( $("div#PostForm").is(':visible')) {
             $("div#PostForm").slideUp();
@@ -222,9 +238,9 @@ function handleMouseClick(d, i) {
             drawParticles(dataset);
             dataset = JSON.parse(JSON.stringify(old_dataset));
         }
-
+        particleData = d;
         if(d.context) {
-            particleData = d;
+            //particleData = d;
             $("img.letterPicture").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");
             //$('p.createdDate').text(formatDate(d.created_at));
             $('p.createdDate').html(formatDate(d.created_at));
@@ -236,9 +252,9 @@ function handleMouseClick(d, i) {
 
             $('div.letterForm').slideDown();
             
-            if( $(window).innerWidth < 990 ) {
+            if( $(window).innerWidth() < 990 ) {
                 var body = $("html, body");
-                body.stop().animate({scrollTop: $("div.letterForm").prop('scrollHeight')});
+                body.stop().animate({scrollTop: $(document).height() }, 1000);
             }
         }
         else {

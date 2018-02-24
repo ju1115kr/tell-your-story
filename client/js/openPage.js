@@ -27,12 +27,14 @@ function openPage(pageName, elmnt, color) {
 
         if( $("div.letterForm").is(':visible') ) { $("div.letterForm").slideUp(); }
         if( $("div#PostForm").is(':visible') ) {
-            if(window.confirm("작성 중인 글이 저장되지 않았습니다. 계속하시겠습니까?")) {
-                svg.selectAll("image.particle").remove();
-                dataset.particles.pop(newData);
-                drawParticles(dataset);
-                dataset = JSON.parse(JSON.stringify(old_dataset));
-                $("div#PostForm").slideUp();
+            if ( $("div#Galaxy").is(':visible') ) {
+                if(window.confirm("작성 중인 글이 저장되지 않았습니다. 계속하시겠습니까?")) {
+                    svg.selectAll("image.particle").remove();
+                    dataset.particles.pop(newData);
+                    drawParticles(dataset);
+                    dataset = JSON.parse(JSON.stringify(old_dataset));
+                    $("div#PostForm").slideUp();
+                }
             }
             else {return false;}
         }

@@ -1,8 +1,5 @@
-var canvas = document.getElementById('circle');
-var context = canvas.getContext('2d');
+var canvas;
 
-var x = canvas.width / 2;
-var y = canvas.height / 2;
 var radius = 12.8;
 var lineWidth = 3;
 
@@ -10,10 +7,18 @@ var lineWidth = 3;
 var counterClockwise = false;
 
 $("textarea#PostBox").on('change textInput input', function(e) {
-    fillCircle($("textarea").val().length)
+    fillCircle($("textarea#PostBox").val().length, canvas)
 });
 
-function fillCircle(text) {
+$("textarea#ModifyBox").on('change textInput input', function(e) {
+    fillCircle($("textarea#ModifyBox").val().length, canvas)
+});
+
+function fillCircle(text, canvas) {
+    var context = canvas.getContext('2d');
+    var x = canvas.width / 2;
+    var y = canvas.height / 2;
+
     var startAngle = Math.PI * -0.5;
     var endAngle = startAngle + (text * (Math.PI * 2) / 280);
 
@@ -27,7 +32,7 @@ function fillCircle(text) {
     if(text >= 240) {
         context.strokeStyle = '#331B3D';
     }
-//    context.strokeStyle = '#B3ABBA';
-//    context.strokeStyle = 'white';
+    //    context.strokeStyle = '#B3ABBA';
+    //    context.strokeStyle = 'white';
     context.stroke();
 }

@@ -1,4 +1,4 @@
-canvas#circle {
+canvas#Postcircle, canvas#Modifycircle{
   float: right;
   margin-right: 15px;
   width: 50px;
@@ -6,7 +6,7 @@ canvas#circle {
 }
 
 @media screen and (min-width: 990px) {
-  canvas#circle {
+  canvas#Postcircle, canvas#Modifycircle {
     margin-top: 4px;
     margin-right: 10px;
     width: 21px;
