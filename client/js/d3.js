@@ -62,6 +62,7 @@ d3.selection.prototype.last = function() {
 
 function refreshData() {
     dataset = ajaxQuery(type='get', apiURL='/particle/random');
+
     svg.selectAll("image.particle").remove();
     fadeParticles(dataset, duration=750);
     $("img#refresh").rotate({
@@ -80,6 +81,19 @@ drawParticles(dataset);
 
 // On Click, we want to add data to the array and chart
 svg.on("click", function() {
+    for( i = 0; i < svg.selectAll("image")[0].length; i++ ) {
+        if ( $(svg.selectAll("image")[0][i]).attr('href') == "/picture/yellowstar.png" ) {
+            console.log("yellow star is exist");
+            return false;
+        }
+    }
+    //if cursor does not pointing already exist particle
+    //if( $("div#particleDummy").is(':visible') ){
+    if( $("div#particleDummy").is(':visible') ){
+        console.log("particleDummy is visible");
+        return false;
+    }
+ 
     if( $("div#PostForm").is(':visible') ){
         console.log("PostForm is visible");
         svg.selectAll("image.particle").remove();
@@ -97,11 +111,7 @@ svg.on("click", function() {
         } else return false;
     }*/
 
-    //if cursor does not pointing already exist particle
-    if( $("div#particleDummy").is(':visible') ){
-        console.log("particleDummy is visible");
-        return false;
-    }
+   
         
     if(!fbLogin) {
         alert('페이스북 로그인이 필요합니다.');
