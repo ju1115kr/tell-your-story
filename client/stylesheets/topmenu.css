@@ -105,7 +105,7 @@ div#FBlogin-button {
   justify-content: center;
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 990px){
   #topMenu {
     height: 90px;
   }

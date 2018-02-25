@@ -1,8 +1,35 @@
-h3#introment {
-    color: white;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    //margin-top: 50px;
+div#introduceBar {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  display: block;
+  //margin-top: 50px;
 }
 
+img#howto_text {
+  height: 84px;
+  margin: 10% auto 5%;
+}
+
+div#introduceBar hr {
+  border: 0;
+  margin: 0 auto;
+  border-top: 1px #B2A7B7 solid;
+  width: 85%;
+}
+
+img#howto_picture {
+  height: 308px;
+  margin: 10% auto;
+}
+
+@media screen and (min-width: 990px) {
+  img#howto_text {
+    height: 38px;
+  }
+
+  img#howto_picture {
+    height: 256px;
+  }
+}
