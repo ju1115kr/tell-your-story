@@ -14,6 +14,7 @@
   display: flex;
   margin: 20px;
   align-items: center;
+  position: relative;
 }
 
 .letterHeader img.letterPicture {
@@ -42,38 +43,37 @@
 }
 
 .letterHeader img.option {
-  position: relative;
+  position: absolute;
   width: 30px;
   height: 30px;
   right: 0;
-  top: -19px;
-  left: 29%;
+  top: 6px;
+  //left: 29%;
   bottom: 100px;
 } img.option:hover {
   cursor: pointer;
 }
 
 .letterHeader div.arrow {
-  position: relative;
+  position: absolute;
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid #EEEDF2;
-  top: -5px;
-  left: 24.5%;
+  right: 5px;
 }
 
 .letterHeader div.popup {
-  position: relative;
-  top: -33px;
-  bottom: 0;
-  right: -9%;
+  position: absolute;
+//  top: -33px;
+  bottom: -48px;
+  right: -5px;
   width: 22%;
   text-align: center;
   font-size: 1.4rem;
   background-color: #EEEDF2;
-  transform: translateY(100%);
+//  transform: translateY(100%);
   border-radius: 7px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.19);
 }
@@ -170,25 +170,22 @@ div.popup p:hover {
     width: 15px;
     height: 15px;
     right: 0;
-    top: -12px;
-    left: 19%;
+    top: 6px;
     bottom: 100px;
   }
 
   .letterHeader div.arrow {
-    position: relative;
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-bottom: 5px solid #EEEDF2;
-    top: -5px;
-    left: 14%;
+    top: 20px;
+    right: 1.5px;
   }
   .letterHeader div.popup {
-    top: -25px;
-    bottom: 0;
-    right: 0;
+    bottom: -30px;
+    right: -5px;
     width: 18%;
     font-size: 0.8rem;
     border-radius: 7px;
