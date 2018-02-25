@@ -40,10 +40,6 @@ function openPage(pageName, elmnt, color) {
             $("body").css("background-color", "rgba(0, 0, 0, 0)");
             $("body, html").css("background-repeat", "no-repeat");
             $("#"+pageName).show();
-
-            if( $(window).innerWidth() >= 1000 ) {document.getElementById(pageName).style.display = "flex";}
-            else {document.getElementById(pageName).style.display = "block";}
-
         }
     }
 
