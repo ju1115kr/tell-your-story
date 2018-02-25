@@ -1,7 +1,7 @@
 function lsj() {
 
     var title = `우물 안 개구리가 되진 않을래`;
-    var date = `18.02.25`;
+    var date = `18.02.24`;
     var context = `
     &nbsp;
     <iframe width="560" height="315" src="https://youtube.com/embed/n8FXS4s8VSA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />

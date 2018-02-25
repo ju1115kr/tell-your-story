@@ -7,6 +7,8 @@ $("div#news-6").on('click', yjh);
 $("div#news-7").on('click', kuj);
 $("div#news-8").on('click', khm);
 $("div#news-9").on('click', lsj);
+$("div#news-10").on('click', kmd);
+
 
 $("div.news-letter").click(function() {
   $("div.news-main-content").fadeIn();
