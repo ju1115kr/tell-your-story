@@ -62,6 +62,7 @@ d3.selection.prototype.last = function() {
 
 function refreshData() {
     dataset = ajaxQuery(type='get', apiURL='/particle/random');
+    old_dataset = JSON.parse(JSON.stringify(dataset));
 
     svg.selectAll("image.particle").remove();
     fadeParticles(dataset, duration=750);
