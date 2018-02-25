@@ -1,36 +1,33 @@
-/*
-$("div#news-8").click(function() {
-  $("h2.news-main-content-header-title").text("8번 째 기사");
-  $("p.news-main-content-text").text("8번 째 기사의 내용");
-  $("p.news-main-content-date").text("2018. 2. 4. 21:59");
-
-  $("div.news-main-content img").attr('src', '/picture/together.jpg');
-  $("div.news-main-content video source").attr('src', '/movie/prototype.mp4');
-  $("div.news-main-content video")[0].load();
-  //comment for autoplay
-  //$("div.news-main-content video")[0].play();
-
-  //$("div.news-letter").fadeOut();
-  //$("div.news-main-content").fadeIn();
-});
-*/
+$("div#news-1").on('click', kja);
+$("div#news-2").on('click', kju);
+$("div#news-3").on('click', kbk);
+$("div#news-4").on('click', jun);
+$("div#news-5").on('click', yks);
+$("div#news-6").on('click', yjh);
+$("div#news-7").on('click', kuj);
+$("div#news-8").on('click', khm);
+$("div#news-9").on('click', lsj);
 
 $("div.news-letter").click(function() {
-//  $("div.news-letter").fadeOut();
   $("div.news-main-content").fadeIn();
 });
 
-
-
 $("a.news-main-Close").click(function() {
   $("div.news-letter").fadeIn();
-//  $("div.news-main-content video")[0].pause();
   $("div.news-main-content").fadeOut();
 });
 
 $("div.logoForm").click(function() {
   $("div.news-letter").show();
-//  $("div.news-main-content video")[0].pause();
   $("div.news-main-content").hide();
 });
 
+if(window.location.search.includes("news")){
+    search = window.location.search.substr(1);
+
+    openPage("News", '', "");
+    if( search !== "news") {
+        $("div#"+search).trigger('click');
+        //document.getElementById(search).click();
+    }
+}

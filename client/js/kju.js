@@ -1,4 +1,4 @@
-$("div#news-2").click(function() {
+function kju() {
 
     var title = `Fake it 'til you Make it`;
     var date = `18.02.10`;
@@ -62,5 +62,5 @@ $("div#news-2").click(function() {
 
     var body = $("html, body");
     body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 

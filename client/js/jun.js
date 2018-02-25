@@ -1,4 +1,4 @@
-$("div#news-4").click(function() {
+function jun() {
 
     var title = `완벽하게 틀에 맞지 않는 방법`;
     var date = `18.02.11`;
@@ -58,5 +58,5 @@ $("div#news-4").click(function() {
 
     var body = $("html, body");
     body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 

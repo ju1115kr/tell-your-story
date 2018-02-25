@@ -1,4 +1,4 @@
-$("div#news-9").click(function() {
+function lsj() {
 
     var title = `우물 안 개구리가 되진 않을래`;
     var date = `18.02.25`;
@@ -71,5 +71,5 @@ $("p.news-main-content-text").html(context);
 
 var body = $("html, body");
 body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 

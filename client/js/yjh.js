@@ -1,4 +1,4 @@
-$("div#news-6").click(function() {
+function yjh() {
 
     var title = `네-니오로 남겠습니다.`;
     var date = `18.02.19`;
@@ -58,5 +58,5 @@ $("p.news-main-content-text").html(context);
 
 var body = $("html, body");
 body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 

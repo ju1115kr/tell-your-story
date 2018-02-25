@@ -1,4 +1,4 @@
-$("div#news-5").click(function() {
+function yks() {
 
     var title = `꼭 나비가 되지 않아도`;
     var date = `18.02.17`;
@@ -83,5 +83,5 @@ $("p.news-main-content-text").html(context);
 
 var body = $("html, body");
 body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 

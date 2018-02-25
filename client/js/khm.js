@@ -1,4 +1,4 @@
-$("div#news-8").click(function() {
+function khm() {
 
     var title = `왜 남들 눈치 보며 살아야 돼?`;
     var date = `18.02.22`;
@@ -144,5 +144,5 @@ $("p.news-main-content-text").html(context);
 
 var body = $("html, body");
 body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 

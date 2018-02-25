@@ -17,8 +17,10 @@ function openPage(pageName, elmnt, color) {
     //document.getElementById(pageName).style.display = "block";
 
     if(pageName == "Galaxy") {
-//        if ( $("svg").is(":visible") ) {
-        if( $("#Galaxy").css('display') != 'none') {
+
+//        if ( !$("#Galaxy").is(":hidden") ) {
+        if( $("#Galaxy").css('display') !== 'none') {
+//        if ( $("#About").is(":hidden") || $("#News").is(":hidden") ) {
             console.log("Galaxy is visible");
             if( $("div.letterForm").is(':visible') ) { $("div.letterForm").slideUp(); }
             if( $("div#PostForm").is(':visible') ) {

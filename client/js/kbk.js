@@ -1,5 +1,4 @@
-$("div#news-3").click(function() {
-
+function kbk() {
     var title = `큰 행성이 뿜어내는 매력같은 것`;
     var date = `18.02.11`;
     var context = `
@@ -66,5 +65,5 @@ $("div#news-3").click(function() {
 
     var body = $("html, body");
     body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 

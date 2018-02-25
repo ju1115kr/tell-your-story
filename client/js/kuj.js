@@ -1,4 +1,4 @@
-$("div#news-7").click(function() {
+function kuj() {
 
     var title = `미안하지만, 난 캔디가 아닌걸`;
     var date = `18.02.21`;
@@ -52,5 +52,4 @@ $("p.news-main-content-text").html(context);
 
 var body = $("html, body");
 body.stop().animate({scrollTop:0}, 500, 'swing');
-});
-
+};
