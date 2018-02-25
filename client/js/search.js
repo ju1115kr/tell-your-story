@@ -11,6 +11,7 @@ $("input[name='search']").keypress(function(e){
 
     update(result);
     dataset = result;
+    old_dataset = result;
 
     if( $(window).innerWidth() < 990 ) {
         $("html, body").stop().animate({ scrollTop: 0 }, 1000);
