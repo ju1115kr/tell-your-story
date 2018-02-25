@@ -25,6 +25,7 @@ function openPage(pageName, elmnt, color) {
         //if( window >= 1000 ) {document.getElementById(pageName).style.display = "flex";}
         //else {document.getElementById(pageName).style.display = "block";}
 
+
         if( $("div.letterForm").is(':visible') ) { $("div.letterForm").slideUp(); }
         if( $("div#PostForm").is(':visible') ) {
             if ( $("div#Galaxy").is(':visible') ) {
@@ -35,6 +36,9 @@ function openPage(pageName, elmnt, color) {
                     dataset = JSON.parse(JSON.stringify(old_dataset));
                     $("div#PostForm").slideUp();
                 }
+            }
+            else if ( $("#About").is(":visible") || $("#News").is(":visible") ) {
+                return false;
             }
             else {return false;}
         }
