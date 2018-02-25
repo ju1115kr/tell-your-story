@@ -3,7 +3,6 @@ function lsj() {
     var title = `우물 안 개구리가 되진 않을래`;
     var date = `18.02.24`;
     var context = `
-    <div class="fb-share-button" data-href="https://meonzzi.newslabfellows.com/?news-9" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmeonzzi.newslabfellows.com%2F%3Fnews-9&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>
     <br />
     <iframe width="560" height="315" src="https://youtube.com/embed/n8FXS4s8VSA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />
     &nbsp;

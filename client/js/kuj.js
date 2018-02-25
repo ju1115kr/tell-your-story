@@ -3,7 +3,6 @@ function kuj() {
     var title = `미안하지만, 난 캔디가 아닌걸`;
     var date = `18.02.21`;
     var context = `
-    <div class="fb-share-button" data-href="https://meonzzi.newslabfellows.com/?news-7" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmeonzzi.newslabfellows.com%2F%3Fnews-7&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>
     <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/Ar4RQUFU61M" frame    border="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />
 

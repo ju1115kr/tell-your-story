@@ -3,7 +3,6 @@ function yjh() {
     var title = `네-니오로 남겠습니다.`;
     var date = `18.02.19`;
     var context = `
-    <div class="fb-share-button" data-href="https://meonzzi.newslabfellows.com/?news-6" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmeonzzi.newslabfellows.com%2F%3Fnews-6&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>
     <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/lInuGzfo5YM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br />
 

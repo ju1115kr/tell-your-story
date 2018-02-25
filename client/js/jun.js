@@ -3,7 +3,6 @@ function jun() {
     var title = `완벽하게 틀에 맞지 않는 방법`;
     var date = `18.02.11`;
     var context = `
-    <div class="fb-share-button" data-href="https://meonzzi.newslabfellows.com/?news-4" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmeonzzi.newslabfellows.com%2F%3Fnews-4&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>
     <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/QPz60P0EyJA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 

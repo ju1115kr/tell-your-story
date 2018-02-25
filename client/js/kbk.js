@@ -2,7 +2,6 @@ function kbk() {
     var title = `큰 행성이 뿜어내는 매력같은 것`;
     var date = `18.02.11`;
     var context = `
-    <div class="fb-share-button" data-href="https://meonzzi.newslabfellows.com/?news-3" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmeonzzi.newslabfellows.com%2F%3Fnews-3&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>
     <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/6YzK3Pz-DWs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
