@@ -153,6 +153,9 @@ p.news-main-content-text iframe {
   width: 320px;
   height: 570px
 }
+p.news-main-content-text div.fb-share-button {
+  float: right;
+}
 
 div.news-main-content-header {
   margin: 30px;

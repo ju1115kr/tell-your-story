@@ -3,7 +3,8 @@ function yjh() {
     var title = `네-니오로 남겠습니다.`;
     var date = `18.02.19`;
     var context = `
-    &nbsp;
+    <div class="fb-share-button" data-href="https://meonzzi.newslabfellows.com/?news-6" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmeonzzi.newslabfellows.com%2F%3Fnews-6&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>
+    <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/lInuGzfo5YM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br />
 
 <em>고막남친, 누텔라보이스, 소셜스타...... 가 아닌 "서른 살 찌질이"로 오늘 모셨습니다. 파⭐️워 <a href="https://www.youtube.com/user/nutellavoice">유튜브 크리에이터</a> 유준호씨.  </em><br /><br />

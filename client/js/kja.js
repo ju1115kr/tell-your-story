@@ -2,6 +2,7 @@ function kja() {
     var title = `혹시, 대2병이라고 들어봤어? (김정아 편)`;
     var date = `18.01.31`;
     var context = `
+    <div class="fb-share-button" data-href="https://meonzzi.newslabfellows.com/?news-1" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmeonzzi.newslabfellows.com%2F%3Fnews-1&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>
     <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/hZBHTpLMaTc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
