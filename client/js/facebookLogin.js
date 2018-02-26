@@ -51,7 +51,6 @@ function statusChangeCallback(response) {
 }
 
 function testAPI(userID) {
-    console.log('Welcome! Fetching your information');
     FB.api('/me', function(response) {
         //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
     });
