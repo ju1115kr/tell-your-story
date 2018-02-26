@@ -21,6 +21,8 @@
   content:url("../picture/meonzziLogoSmall.png");
   width: 61px;
   height: 61px;
+} img.menuLogo:hover {
+  cursor: pointer;
 }
 
 #navBarForm hr {

@@ -14,9 +14,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
 <script src="./js/ajaxQuery.js"></script>
-<script src="./js/d3.js" charset="utf-8"></script>
 <script src="./js/facebookLogin.js" charset="utf-8"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" charset="utf-8"></script>
 <script src="https://rawgit.com/wilq32/jqueryrotate/master/jQueryRotate.js" charset="utf-8"></script>
 <link href="https://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
@@ -43,7 +41,8 @@
 <div id="topMenu">
     <div id="navBarForm">
         <div id="logo-link">
-            <img class="menuLogo" src="" alt="조선의 먼찌들" style="display: block; padding-right: 2rem; border-right: 1px solid #e1e1e7;"/>
+            <img class="menuLogo" src="" alt="조선의 먼찌들" style="display: block; padding-right: 2rem; border-right: 1px solid #e1e1e7;"
+                onclick="openPage('Galaxy', document.getElementById('defaultOpen'))"/>
             <div id="linktag" style="margin-right: 2rem;">
                 <a class="tablink" id="defaultOpen" onclick="openPage('Galaxy', this)">GALAXY</a>
                 <a class="tablink" onclick="openPage('About', this)">ABOUT</a>

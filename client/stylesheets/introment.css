@@ -1,5 +1,6 @@
 img#howto_text {
-  height: 84px;
+//  height: 84px;
+  width: 90%;
   margin: 10% auto 5%;
 }
 
@@ -11,16 +12,19 @@ div#introduceBar hr {
 }
 
 img#howto_picture {
-  height: 308px;
+//  height: 308px;
+  width: 90%;
   margin: 5% auto;
 }
 
 @media screen and (min-width: 990px) {
   img#howto_text {
     height: 38px;
+    width: auto;
   }
 
   img#howto_picture {
     height: 256px;
+    width: auto;
   }
 }
