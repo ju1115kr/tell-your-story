@@ -34,7 +34,6 @@ $("form.ModifyBody").submit(function(event) {
             svg.selectAll("image.particle").remove();
             drawParticles(dataset);
 
-            console.log(data);
             $("p.letterContextmessage").text(data.context);
             $("div#ModifyForm").slideUp();
             $("div.letterForm").slideDown();

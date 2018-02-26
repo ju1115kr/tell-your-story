@@ -13,7 +13,6 @@ $("p#delete").click(function() {
             async: false,
             data: jsondata,
             success: function(data) {
-                console.log(data);
                 result = data;
             },
             error: function(xhr, ajaxOptions, thrownError) {
