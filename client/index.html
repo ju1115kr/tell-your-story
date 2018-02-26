@@ -21,6 +21,7 @@
 <script src="https://rawgit.com/wilq32/jqueryrotate/master/jQueryRotate.js" charset="utf-8"></script>
 <link href="https://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/aside.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
@@ -78,12 +79,7 @@
     <div id="stardustForm">
         <div id="particleDummy"></div>
         <div id="refreshDummy"></div>
-        <!--div id="introdiv">
-            <h3 id="introment">우주를 클릭해<br />당신의 사연을 보내주세요.</h3>
-        </div-->
-
     </div>
-    <!------------------- -->
     <div id="aside">
         <div id="refreshBar">
             <img id="refresh" src="./picture/refresh_new.png" alt="" onclick="javascript:refreshData()"/>
@@ -92,24 +88,26 @@
 
         <div id="searchBarForm">
             <div id="keywordBar">
-                <!--img src="./picture/yellowstar.png" alt=""/-->
                 <strong>키워드 검색</strong>
             </div>
             <div id="searchBar">
                 <div id="searchBarforCenter">
-                    <input type="text" id="searchBox" name="search" placeholder="추천 키워드 &nbsp;&nbsp;#군대&nbsp;#돈" autocomplete="off" />
+                    <input type="text" id="searchBox" name="search" placeholder="추천 키워드 &nbsp;&nbsp;#친구&nbsp;#돈" autocomplete="off" />
                 </div>
             </div>
         </div>
 
 
         <div id="introduceBar">
-            <p>우주를 클릭해<br />당신의 사연을 보내보세요.</p>
+            <!--p>우주를 클릭해<br />당신의 사연을 보내보세요.</p-->
+            <img id="howto_text" src="./picture/howto_text.png" alt="" />
+            <hr />
+            <img id="howto_picture" src="./picture/howto_picture.png" alt="" />
         </div>
 
         <div class="letterForm">
              <div class="letterHeader">
-                <img class="letterPicture" src="./picture/defaultProfileFB.png" alt="" />
+                <img class="letterPicture" src="./picture/defaultProfileFB.png" alt="" onerror="this.src='./picture/fb_man_image.jpg'"/>
                 <div class="letterInfo">
                     <p>우주에 도착한 먼지들</p>
                     <p class="createdDate"></p>
@@ -197,6 +195,31 @@
     </div>
 
     <div class="news-wrapper">
+        <div class="news-letter" id="news-10">
+            <div class="news-header">
+                <img class="news-header-img" src="picture/kmd.jpg" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">도망가고 싶을 땐 도망가, 프레임 밖으로!</h2>
+                <p class="news-date">18.02.25</p>
+                <p class="news-preview">김문독의 이야기</p>
+            </div>
+        </div>
+
+        <div class="news-letter" id="news-9">
+            <div class="news-header">
+                <img class="news-header-img" src="picture/lsj.jpg" alt="" />
+                <hr />
+            </div>
+            <div class="news-container">
+                <h2 class="news-title">우물 안 개구리가 되진 않을래</h2>
+                <p class="news-date">18.02.24</p>
+                <p class="news-preview">이수종의 이야기</p>
+            </div>
+        </div>
+
+
         <div class="news-letter" id="news-8">
             <div class="news-header">
                 <img class="news-header-img" src="picture/khm.jpg" alt="" />
@@ -327,7 +350,6 @@
 <script src="./js/d3.js" charset="utf-8"></script>
 <script src="./js/search.js" charset="utf-8"></script>
 <script src="./js/webEvent.js" charset="utf-8"></script>
-<script src="./js/news.js" charset="utf-8"></script>
 <script src="./js/google_login.js" charset="utf-8"></script>
 <script src="./js/topmenu.js" charset="utf-8"></script>
 <script src="./js/circle.js" charset="utf-8"></script>
@@ -342,6 +364,10 @@
 <script src="./js/yjh.js" charset="utf-8"></script>
 <script src="./js/kuj.js" charset="utf-8"></script>
 <script src="./js/khm.js" charset="utf-8"></script>
+<script src="./js/lsj.js" charset="utf-8"></script>
+<script src="./js/kmd.js" charset="utf-8"></script>
+<script src="./js/news.js" charset="utf-8"></script>
 </body>
 </html>
+
 

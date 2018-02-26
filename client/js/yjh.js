@@ -1,9 +1,9 @@
-$("div#news-6").click(function() {
+function yjh() {
 
     var title = `네-니오로 남겠습니다.`;
     var date = `18.02.19`;
     var context = `
-    &nbsp;
+    <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/lInuGzfo5YM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br />
 
 <em>고막남친, 누텔라보이스, 소셜스타...... 가 아닌 "서른 살 찌질이"로 오늘 모셨습니다. 파⭐️워 <a href="https://www.youtube.com/user/nutellavoice">유튜브 크리에이터</a> 유준호씨.  </em><br /><br />
@@ -58,5 +58,5 @@ $("p.news-main-content-text").html(context);
 
 var body = $("html, body");
 body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 

@@ -17,17 +17,13 @@ function openPage(pageName, elmnt, color) {
     //document.getElementById(pageName).style.display = "block";
 
     if(pageName == "Galaxy") {
-        $("html").css("background-image", "url('../picture/web-background.jpg')");
-        $("body").css("background-color", "rgba(0, 0, 0, 0)");
-        $("body, html").css("background-repeat", "no-repeat");
-        
-        $("#"+pageName).show();
-        //if( window >= 1000 ) {document.getElementById(pageName).style.display = "flex";}
-        //else {document.getElementById(pageName).style.display = "block";}
 
-        if( $("div.letterForm").is(':visible') ) { $("div.letterForm").slideUp(); }
-        if( $("div#PostForm").is(':visible') ) {
-            if ( $("div#Galaxy").is(':visible') ) {
+//        if ( !$("#Galaxy").is(":hidden") ) {
+        if( $("#Galaxy").css('display') !== 'none') {
+//        if ( $("#About").is(":hidden") || $("#News").is(":hidden") ) {
+            console.log("Galaxy is visible");
+            if( $("div.letterForm").is(':visible') ) { $("div.letterForm").slideUp(); }
+            if( $("div#PostForm").is(':visible') ) {
                 if(window.confirm("작성 중인 글이 저장되지 않았습니다. 계속하시겠습니까?")) {
                     svg.selectAll("image.particle").remove();
                     dataset.particles.pop(newData);
@@ -36,9 +32,15 @@ function openPage(pageName, elmnt, color) {
                     $("div#PostForm").slideUp();
                 }
             }
-            else {return false;}
+            $("div#introduceBar").slideDown();
         }
-        $("div#introduceBar").slideDown();
+
+        else {
+            $("html").css("background-image", "url('../picture/web-background.jpg')");
+            $("body").css("background-color", "rgba(0, 0, 0, 0)");
+            $("body, html").css("background-repeat", "no-repeat");
+            $("#"+pageName).show();
+        }
     }
 
     if(pageName == "About") {

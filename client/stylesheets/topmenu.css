@@ -41,8 +41,8 @@
 }
 
 #linktag a:hover {
-  background-color: rgba(0, 0, 0, 0);
-  color: black;
+//  background-color: rgba(0, 0, 0, 0);
+  color: #877693;
   cursor: pointer;
   font-weight: bold;
 }
@@ -105,7 +105,7 @@ div#FBlogin-button {
   justify-content: center;
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 990px){
   #topMenu {
     height: 90px;
   }

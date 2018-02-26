@@ -1,9 +1,9 @@
-$("div#news-8").click(function() {
+function khm() {
 
     var title = `왜 남들 눈치 보며 살아야 돼?`;
     var date = `18.02.22`;
     var context = `
-    &nbsp;
+    <br />
     <iframe width="560" height="315" src="https://youtube.com/embed/ySLZgGkfKGE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />
 
     <div><strong>잠깐만. 구님 이 얘기 나가도 상관 없어요? </strong></div><br />
@@ -144,5 +144,5 @@ $("p.news-main-content-text").html(context);
 
 var body = $("html, body");
 body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 

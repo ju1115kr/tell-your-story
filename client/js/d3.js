@@ -27,13 +27,22 @@ var svg = d3.select("div#stardustForm").append("svg").attr({
 var dataset = ajaxQuery(type='get', apiURL='/particle/random');
 
 // We're passing in a function in d3.max to tell it what we're maxing (x value)
-var xScale = d3.scale.linear()
+/*var xScale = d3.scale.linear()
     .domain([0, d3.max(dataset.particles, function (d) { return d.x + 10; })])
     .range([margin.left, w - margin.right]);  // Set margins for x specific
 
 // We're passing in a function in d3.max to tell it what we're maxing (y value)
 var yScale = d3.scale.linear()
     .domain([0, d3.max(dataset.particles, function (d) { return d.y + 10; })])
+    .range([margin.top, h - margin.bottom]);  // Set margins for y specific*/
+
+var xScale = d3.scale.linear()
+    .domain([0, 1010])
+    .range([margin.left, w - margin.right]);  // Set margins for x specific
+
+// We're passing in a function in d3.max to tell it what we're maxing (y value)
+var yScale = d3.scale.linear()
+    .domain([0, 1010])
     .range([margin.top, h - margin.bottom]);  // Set margins for y specific
 
 // Add a X and Y Axis (Note: orient means the direction that ticks go, not position)
@@ -53,6 +62,8 @@ d3.selection.prototype.last = function() {
 
 function refreshData() {
     dataset = ajaxQuery(type='get', apiURL='/particle/random');
+    old_dataset = JSON.parse(JSON.stringify(dataset));
+
     svg.selectAll("image.particle").remove();
     fadeParticles(dataset, duration=750);
     $("img#refresh").rotate({
@@ -71,6 +82,19 @@ drawParticles(dataset);
 
 // On Click, we want to add data to the array and chart
 svg.on("click", function() {
+    for( i = 0; i < svg.selectAll("image")[0].length; i++ ) {
+        if ( $(svg.selectAll("image")[0][i]).attr('href') == "/picture/yellowstar.png" ) {
+            console.log("yellow star is exist");
+            return false;
+        }
+    }
+    //if cursor does not pointing already exist particle
+    //if( $("div#particleDummy").is(':visible') ){
+    if( $("div#particleDummy").is(':visible') ){
+        console.log("particleDummy is visible");
+        return false;
+    }
+ 
     if( $("div#PostForm").is(':visible') ){
         console.log("PostForm is visible");
         svg.selectAll("image.particle").remove();
@@ -80,19 +104,15 @@ svg.on("click", function() {
 //        return false;
     }
 
-    if( $("div#ModifyForm").is(":visible") ) {
+/*    if( $("div#ModifyForm").is(":visible") ) {
         if( window.confirm("수정 중인 글이 저장되지 않았습니다. 계속하시겠습니까?") ) {
             $("div#ModifyForm").slideUp();
             svg.selectAll("image.particle").remove();
             drawParticles(dataset);
         } else return false;
-    }
+    }*/
 
-    //if cursor does not pointing already exist particle
-    if( $("div#particleDummy").is(':visible') ){
-        console.log("particleDummy is visible");
-        return false;
-    }
+   
         
     if(!fbLogin) {
         alert('페이스북 로그인이 필요합니다.');

@@ -1,4 +1,4 @@
-$("div#news-1").click(function() {
+function kja() {
     var title = `혹시, 대2병이라고 들어봤어? (김정아 편)`;
     var date = `18.01.31`;
     var context = `
@@ -56,6 +56,6 @@ $("div#news-1").click(function() {
 
     var body = $("html, body");
     body.stop().animate({scrollTop:0}, 500, 'swing');
-});
+};
 
 
