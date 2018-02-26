@@ -21,7 +21,6 @@ function openPage(pageName, elmnt, color) {
 //        if ( !$("#Galaxy").is(":hidden") ) {
         if( $("#Galaxy").css('display') !== 'none') {
 //        if ( $("#About").is(":hidden") || $("#News").is(":hidden") ) {
-            console.log("Galaxy is visible");
             if( $("div.letterForm").is(':visible') ) { $("div.letterForm").slideUp(); }
             if( $("div#PostForm").is(':visible') ) {
                 if(window.confirm("작성 중인 글이 저장되지 않았습니다. 계속하시겠습니까?")) {

@@ -84,19 +84,16 @@ drawParticles(dataset);
 svg.on("click", function() {
     for( i = 0; i < svg.selectAll("image")[0].length; i++ ) {
         if ( $(svg.selectAll("image")[0][i]).attr('href') == "/picture/yellowstar.png" ) {
-            console.log("yellow star is exist");
             return false;
         }
     }
     //if cursor does not pointing already exist particle
     //if( $("div#particleDummy").is(':visible') ){
     if( $("div#particleDummy").is(':visible') ){
-        console.log("particleDummy is visible");
         return false;
     }
  
     if( $("div#PostForm").is(':visible') ){
-        console.log("PostForm is visible");
         svg.selectAll("image.particle").remove();
         dataset.particles.pop(newData);
         drawParticles(dataset);
@@ -148,7 +145,6 @@ svg.on("click", function() {
     $("form.PostBody").submit(function(event) {
         event.preventDefault();
         if ($("textarea#PostBox").val()==="") {
-            console.log($("textarea#PostBox").val());
             return false;
         }
         else {
@@ -196,7 +192,6 @@ svg.on("click", function() {
             }
             else if(!redirect_url) {
                 //error handling
-                console.log("Something wrong :0");
                 return false;
             }
         }

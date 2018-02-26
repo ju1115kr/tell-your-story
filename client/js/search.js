@@ -7,7 +7,6 @@ $("input[name='search']").keypress(function(e){
 
     result = ajaxQuery(type='get', 
         apiURL='/search/particle/'+$("input[name='search']").val());
-    console.log(result);
 
     update(result);
     dataset = result;
