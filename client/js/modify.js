@@ -5,7 +5,7 @@ $("p#modify").click(function() {
 //    $("div.letterForm").slideUp();
     $("div.letterForm").hide();
     if (particleData.anonymous) {
-        $("img.ModifyPicture").attr("src", "./picture/fb_man_image.jpg");
+        $("img.ModifyPicture").attr("src", "./picture/anonymous.png");
         $('input#Modifyanonymousbox').prop('checked', true);
     }
     else {
@@ -40,10 +40,12 @@ $("form.ModifyBody").submit(function(event) {
             result = data;
             dataset.particles.pop(particleData);
             dataset.particles.push(result);
+            particleData = result;
             svg.selectAll("image.particle").remove();
             drawParticles(dataset);
 
-            if (anonymous) { $("div.letterPicture").attr("src", "./picture/fb_man_ima    ge.jpg"); }
+            if (anonymous) { $("img.letterPicture").attr("src", "../picture/anonymous.png"); }
+            else { $("img.letterPicture").attr("src", "https://graph.facebook.com/" + fbUserID + "/picture?type=normal"); }
             $("p.letterContextmessage").text(data.context);
             $("div#ModifyForm").slideUp();
             $("div.letterForm").slideDown();

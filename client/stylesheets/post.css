@@ -119,7 +119,7 @@
   }
   .PostSendBar input[type="checkbox"] {
     margin-left: 0;
-    margin-right: 3px;
+    margin-right: 6px;
     transform: scale(1);
   }
   .PostSendBar label {

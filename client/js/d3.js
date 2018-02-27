@@ -276,7 +276,7 @@ function handleMouseClick(d, i) {
         if(d.context) {
             //particleData = d;
             $("img.letterPicture").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");
-            if (d.anonymous) { $("img.letterPicture").attr("src","../picture/fb_man_image.jpg"); }
+            if (d.anonymous) { $("img.letterPicture").attr("src","../picture/anonymous.png"); }
             //$('p.createdDate').text(formatDate(d.created_at));
             $('p.createdDate').html(formatDate(d.created_at));
             $('p.letterLikeCount').text(d.likes_count);
