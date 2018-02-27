@@ -59,6 +59,7 @@ def put_particle(particle_id):
         return not_found('Particle does not exist')
 
     particle = Particle.from_json(request.json)
+    old_particle.anonymous = particle.anonymous
     old_particle.context = particle.context
     old_particle.parsed_context = particle.parsed_context
     db.session.commit()
