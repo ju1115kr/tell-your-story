@@ -49,6 +49,9 @@ var yScale = d3.scale.linear()
 var xAxis = d3.svg.axis().scale(xScale).orient("top");
 var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
+var tooltip = d3.select("div#stardustForm").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
 var circleAttrs = {
     x: function(d) { return xScale(d.x) - 7.5; },
@@ -220,6 +223,13 @@ function handleMouseOver(d, i) {  // Add interactivity
 
     //tip.show();
     $("div#particleDummy").show();
+
+    tooltip.html(d.context.substring(0, 35)+"···")
+        .style("left", (d3.event.pageX + 8) + "px")
+        .style("top", (d3.event.pageY - 80) + "px");
+    tooltip.transition()
+        .duration(100)
+        .style("opacity", .9);
 }
 
 function handleMouseOut(d, i) {
@@ -229,6 +239,11 @@ function handleMouseOut(d, i) {
 
     //tip.hide();
     $("div#particleDummy").hide();
+    tooltip.transition()
+        .style("left", "0px")
+        .style("top", "0px")
+        .duration(0)
+        .style("opacity", 0);
 }
 
 function handleMouseClick(d, i) {
@@ -295,12 +310,12 @@ function formatDate(date) {
     hour = d.getHours();
     minute = d.getMinutes();
 
+    if (hour >=13) { hour -= 12; AMPM = " PM"; }
+
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
     if (hour.toString().length < 2) hour = '0' + hour;
     if (minute.toString().length < 2) minute = '0' + minute;
-
-    if (hour >=13) { hour -= 12; AMPM = " PM"; }
 
     return [year, month, day].join('.') + "&nbsp; " + [hour, minute].join(':') + AMPM;
 }
