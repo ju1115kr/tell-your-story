@@ -224,12 +224,14 @@ function handleMouseOver(d, i) {  // Add interactivity
     //tip.show();
     $("div#particleDummy").show();
 
-    tooltip.html(d.context.substring(0, 35)+"···")
-        .style("left", (d3.event.pageX + 8) + "px")
-        .style("top", (d3.event.pageY - 80) + "px");
-    tooltip.transition()
-        .duration(100)
-        .style("opacity", .9);
+    if (d.context) {
+        tooltip.html(d.context.substring(0, 35)+"···")
+            .style("left", (d3.event.pageX + 8) + "px")
+            .style("top", (d3.event.pageY - 80) + "px");
+        tooltip.transition()
+            .duration(100)
+            .style("opacity", .9);
+    }
 }
 
 function handleMouseOut(d, i) {
