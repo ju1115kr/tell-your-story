@@ -12,19 +12,21 @@ class Particle(db.Model):
     parsed_context = db.Column(db.Text)
     x = db.Column(db.Float, nullable=False)
     y = db.Column(db.Float, nullable=False)
+    anonymous = db.Column(db.Boolean)
     created_at = db.Column(db.DateTime, index=True,
                     default=datetime.utcnow)
 
     comments = db.relationship('Comment', backref='particle', lazy='dynamic')
     likes = db.relationship('Like', backref='particle', lazy='dynamic')
 
-    def __init__(self, author_id, googleUserImage, context, parsed_context, x, y):
+    def __init__(self, author_id, googleUserImage, context, parsed_context, x, y, anonymous=False):
         self.author_id = author_id
         self.googleUserImage = googleUserImage
         self.context = context
         self.parsed_context = parsed_context
         self.x = x
         self.y = y
+        self.anonymous = anonymous
 
     def __repr__(self):
         return '<Particle [%r](%r):%r>' % (self.created_at, self.author_id, self.context)
@@ -38,6 +40,7 @@ class Particle(db.Model):
             'created_at': self.created_at,
             'x': self.x,
             'y': self.y,
+            'anonymous': self.anonymous,
             'likes': [ like.user_id for like in self.likes ],
             'likes_count': self.likes.count(),
         }
@@ -51,13 +54,14 @@ class Particle(db.Model):
         context = json_particle.get('context')
         x = json_particle.get('x')
         y = json_particle.get('y')
+        anonymous = json_particle.get('anonymous')
 
         if author_id is None or author_id == '':
             raise ValidationError('particle does not have information')
         parsed_context = removeEscapeChar(context).lower()
 
         particle = Particle(author_id=author_id, googleUserImage=googleUserImage, context=context,
-                parsed_context=parsed_context, x=x, y=y)
+                parsed_context=parsed_context, x=x, y=y, anonymous=anonymous)
         return particle
 
 
