@@ -4,6 +4,14 @@ $("p#modify").click(function() {
 
 //    $("div.letterForm").slideUp();
     $("div.letterForm").hide();
+    if (particleData.anonymous) {
+        $("img.ModifyPicture").attr("src", "./picture/fb_man_image.jpg");
+        $('input#Modifyanonymousbox').prop('checked', true);
+    }
+    else {
+        $("img.ModifyPicture").attr("src","https://graph.facebook.com/" + particleData.author + "/picture?type=normal");
+        $('input#Modifyanonymousbox').prop('checked', false);
+    }
     $("textarea#ModifyBox").val(particleData.context);
 //    $("div#ModifyForm").slideDown();
     $("div#ModifyForm").show();
@@ -17,8 +25,9 @@ $("form.ModifyBody").submit(function(event) {
     if ($("textarea#ModifyBox").val()==="") {
         return false;
     }
+    anonymous = $("input#Modifyanonymousbox").is(":checked") ? true : false
     var jsondata = JSON.stringify({ author_id: fbUserID, 
-        context: $("textarea#ModifyBox").val() });
+        context: $("textarea#ModifyBox").val(), anonymous: anonymous });
     var result;
 
     $.ajax({type: "put",
@@ -34,6 +43,7 @@ $("form.ModifyBody").submit(function(event) {
             svg.selectAll("image.particle").remove();
             drawParticles(dataset);
 
+            if (anonymous) { $("div.letterPicture").attr("src", "./picture/fb_man_ima    ge.jpg"); }
             $("p.letterContextmessage").text(data.context);
             $("div#ModifyForm").slideUp();
             $("div.letterForm").slideDown();

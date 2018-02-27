@@ -151,8 +151,9 @@ svg.on("click", function() {
             return false;
         }
         else {
+            anonymous = $("input#Postanonymousbox").is(':checked') ? true : false
             jsondata = JSON.stringify({ author_id: fbUserID, googleUserImage: googleUserImage,
-                context: $("textarea#PostBox").val(), x: newData.x, y: newData.y
+                context: $("textarea#PostBox").val(), x: newData.x, y: newData.y, anonymous: anonymous
             });
 
             $.ajax({type: "post",
@@ -225,9 +226,9 @@ function handleMouseOver(d, i) {  // Add interactivity
     $("div#particleDummy").show();
 
     if (d.context) {
-        tooltip.html(d.context.substring(0, 35)+"···")
+        tooltip.html(d.context.substring(0, 20)+"···")
             .style("left", (d3.event.pageX + 8) + "px")
-            .style("top", (d3.event.pageY - 80) + "px");
+            .style("top", (d3.event.pageY - 67) + "px");
         tooltip.transition()
             .duration(100)
             .style("opacity", .9);
@@ -275,6 +276,7 @@ function handleMouseClick(d, i) {
         if(d.context) {
             //particleData = d;
             $("img.letterPicture").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");
+            if (d.anonymous || d.anonymous == null) { $("img.letterPicture").attr("src","../picture/fb_man_image.jpg"); }
             //$('p.createdDate').text(formatDate(d.created_at));
             $('p.createdDate').html(formatDate(d.created_at));
             $('p.letterLikeCount').text(d.likes_count);

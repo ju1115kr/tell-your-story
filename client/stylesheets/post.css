@@ -59,7 +59,33 @@
   border-top: 1px #B3ABBA solid;
 }
 
-.PostBody input[type="submit"] {
+.PostSendBar {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.PostSendBar input[type="checkbox"] {
+  margin: 0;
+  margin-left: 5px;
+  margin-right: 10px;
+  border: 0 solid white;
+  padding: 0;
+  outline: 0;
+  white-space: nowrap;
+  background-color: #000;
+  transform: scale(2);
+}
+
+.PostSendBar label {
+  color: rgba(51, 27, 61, 1);
+  font-family: 'kopub dotum';
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.PostSendBar input[type="submit"] {
 //  margin-left: 73%;
   float: right;
   border: 0;
@@ -79,6 +105,10 @@
   #PostForm {
     min-height: 0;
   }
+  .PostHeader p {
+    font-size: 1rem;
+  }
+
  .PostBody textarea#PostBox {
     line-height: 160%;
     font-size: 0.9rem;
@@ -87,7 +117,12 @@
   .PostBody input[type="submit"] {
     font-size: 15px;
   }
-  .PostHeader p {
-    font-size: 1rem;
+  .PostSendBar input[type="checkbox"] {
+    margin-left: 0;
+    margin-right: 3px;
+    transform: scale(1);
+  }
+  .PostSendBar label {
+    font-size: 0.8rem;
   }
 }
