@@ -8,7 +8,7 @@ div#Galaxy {
 
 #stardustForm {
   margin: 0 auto;
-  width: 50%;
+  width: 100%;
 }
 
 #stardustForm svg {
@@ -58,5 +58,8 @@ div#refreshDummy {
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+  }
+  #stardustForm {
+    width: 50%;
   }
 }

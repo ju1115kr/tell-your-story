@@ -106,7 +106,7 @@
 
         <div class="letterForm">
              <div class="letterHeader">
-                <img class="letterPicture" src="./picture/defaultProfileFB.png" alt="" onerror="this.src='./picture/fb_man_image.jpg'"/>
+                <img class="letterPicture" src="./picture/anonymous.png" alt="" onerror="this.src='./picture/fb_man_image.jpg'"/>
                 <div class="letterInfo">
                     <p>우주에 도착한 먼지들</p>
                     <p class="createdDate"></p>
@@ -144,8 +144,12 @@
             <form class="PostBody">
                 <textarea id="PostBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
                 <hr />
-                <input id="PostSubmit" type="submit" value="보내기">
-                <canvas id="Postcircle" width="29" height="29"></canvas>
+                <div class="PostSendBar">
+                    <input id="Postanonymousbox" type="checkbox" value="anonymous" />
+                    <label for="Postanonymousbox">익명</label>
+                    <canvas id="Postcircle" width="29" height="29"></canvas>
+                    <input id="PostSubmit" type="submit" value="보내기">
+                </div>
             </form>
         </div>
 
@@ -157,8 +161,12 @@
             <form class="ModifyBody">
                 <textarea id="ModifyBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
                 <hr />
-                <input id="ModifySubmit" type="submit" value="수정">
-                <canvas id="Modifycircle" width="29" height="29"></canvas>
+                <div class="ModifySendBar">
+                    <input id="Modifyanonymousbox" type="checkbox" value="anonymous" />
+                    <label for="Modifyanonymousbox">익명</label>
+                    <canvas id="Modifycircle" width="29" height="29"></canvas>
+                    <input id="ModifySubmit" type="submit" value="수정">
+                </div>
             </form>
         </div>
     </div>
@@ -202,7 +210,7 @@
             <div class="news-container">
                 <h2 class="news-title">도망가고 싶을 땐 도망가, 프레임 밖으로!</h2>
                 <p class="news-date">18.02.25</p>
-                <p class="news-preview">김문독의 이야기</p>
+                <p class="news-preview">안과 밖, 김문독의 이야기</p>
             </div>
         </div>
 
@@ -214,7 +222,7 @@
             <div class="news-container">
                 <h2 class="news-title">우물 안 개구리가 되진 않을래</h2>
                 <p class="news-date">18.02.24</p>
-                <p class="news-preview">이수종의 이야기</p>
+                <p class="news-preview">상경한 부산남자, 이수종의 이야기</p>
             </div>
         </div>
 
@@ -227,7 +235,7 @@
             <div class="news-container">
                 <h2 class="news-title">왜 남들 눈치 보며 살아야 돼?</h2>
                 <p class="news-date">18.02.22</p>
-                <p class="news-preview">구현모의 이야기</p>
+                <p class="news-preview">"내가 왜 그 사람 눈치 보고 살아야돼" 구현모의 이야기</p>
             </div>
         </div>
 
@@ -239,7 +247,7 @@
             <div class="news-container">
                 <h2 class="news-title">미안하지만, 난 캔디가 아닌걸</h2>
                 <p class="news-date">18.02.21</p>
-                <p class="news-preview">고은정의 이야기</p>
+                <p class="news-preview">이젠 웃지 만은 않을 거야, 고은정의 이야기</p>
             </div>
         </div>        
 
