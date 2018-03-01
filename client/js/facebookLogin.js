@@ -1,13 +1,6 @@
 var fbLogin = false;
 var fbUserID;
 
-/*
-$("div#FBlogin-before").on('click', function() {
-    FB.login(statusChangeCallback, {scope: 'public_profile, email', return_scopes: true});
-    console.log(fbUserID);
-});
-*/
-
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id))
@@ -42,11 +35,8 @@ function statusChangeCallback(response) {
         FB.login(function(response) {
             userID = response.authResponse.userID;
             testAPI(userID);
-        //document.getElementById('status').innerHTML = 'Please log' + 'into this app.';
         });
     } else if (response.status === 'unknonwn') {
-        //document.getElementById('status').innerHTML = 'Please log' + 'into this app.';
-        //document.getElementById('status').innerHTML = 'Please log' + 'into Facebook.';
     }
 }
 

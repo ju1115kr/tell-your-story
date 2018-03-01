@@ -3,7 +3,6 @@ var canvas;
 var radius = 12.8;
 var lineWidth = 3;
 
-//if( $(window).innerWidth <= 980 ) { radius = 22; lineWidth = 5;}
 var counterClockwise = false;
 
 $("textarea#PostBox").on('change textInput input', function(e) {
@@ -32,7 +31,5 @@ function fillCircle(text, canvas) {
     if(text >= 240) {
         context.strokeStyle = '#331B3D';
     }
-    //    context.strokeStyle = '#B3ABBA';
-    //    context.strokeStyle = 'white';
     context.stroke();
 }
