@@ -154,6 +154,13 @@ p.news-main-content-text iframe {
   height: 570px
 }
 
+p.news-main-content-text iframe.vlog {
+  display: block;
+  margin: 0 auto;
+  width: 560px;
+  height: 315px;
+}
+
 div.news-main-content-header {
   margin: 30px;
 }
