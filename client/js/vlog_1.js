@@ -1,6 +1,6 @@
 function vlog_1() {
 
-    var title = `스물 다섯, 천 번째 그 여자 이야기`;
+    var title = `스물 다섯, 첫 번째 그 여자 이야기`;
     var date = `18.03.01`;
     var context = `
     &nbsp;
