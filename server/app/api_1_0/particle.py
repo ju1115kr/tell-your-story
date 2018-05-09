@@ -116,7 +116,7 @@ def delete_particle_like(particle_id):
         return bad_request('user does not like this particle')
 
     like = Like.query.filter_by(user_id=user_id) \
-                    .filter_by(particle_id=particle_id).first()
+            .filter_by(particle_id=particle_id).first()
 
     db.session.delete(like)
     db.session.commit()
