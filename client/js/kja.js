@@ -1,7 +1,7 @@
 function kja() {
-    var title = `혹시, 대2병이라고 들어봤어? (김정아 편)`;
-    var date = `18.01.31`;
-    var context = `
+  var title = `혹시, 대2병이라고 들어봤어? (김정아 편)`;
+  var date = `18.01.31`;
+  var context = `
     <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/hZBHTpLMaTc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -50,12 +50,12 @@ function kja() {
     <br /><br />
     `;
 
-    $("h2.news-main-content-header-title").text(title);
-    $("p.news-main-content-date").text(date);
-    $("p.news-main-content-text").html(context);
+  $("h2.news-main-content-header-title").text(title);
+  $("p.news-main-content-date").text(date);
+  $("p.news-main-content-text").html(context);
 
-    var body = $("html, body");
-    body.stop().animate({scrollTop:0}, 500, 'swing');
+  var body = $("html, body");
+  body.stop().animate({scrollTop:0}, 500, 'swing');
 };
 
 

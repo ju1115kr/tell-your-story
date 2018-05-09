@@ -86,7 +86,6 @@
 }
 
 .ModifySendBar input[type="submit"] {
-//  margin-left: 73%;
   float: right;
   border: 0;
   border-radius: 2px;
@@ -108,7 +107,7 @@
   .ModifyHeader p {
     font-size: 1rem;
   }
- .ModifyBody textarea#ModifyBox {
+  .ModifyBody textarea#ModifyBox {
     line-height: 160%;
     font-size: 0.9rem;
     height: 209px;

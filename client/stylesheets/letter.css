@@ -1,12 +1,10 @@
 .letterForm {
-//    display: block;
   display: none;
   margin: auto;
   margin-top: 30px;
   background: #D4CFD9;
   padding: 3px;
   width: 85%;
-//  min-height: 56%;
   border-radius: 15px;
 }
 
@@ -39,7 +37,6 @@
   margin-top: 2.5px;
   font-size: 20px;
   font-weight: normal;
-//  word-spacing: 0.35rem;
 }
 
 .letterHeader img.option {
@@ -48,7 +45,6 @@
   height: 30px;
   right: 0;
   top: 6px;
-  //left: 29%;
   bottom: 100px;
 } img.option:hover {
   cursor: pointer;
@@ -66,14 +62,12 @@
 
 .letterHeader div.popup {
   position: absolute;
-//  top: -33px;
   bottom: -48px;
   right: -5px;
   width: 22%;
   text-align: center;
   font-size: 1.4rem;
   background-color: #EEEDF2;
-//  transform: translateY(100%);
   border-radius: 7px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.19);
 }
@@ -96,20 +90,15 @@ div.popup p:hover {
 }
 
 .letterBody {
-    display: block;
-    margin: 20px;
+  display: block;
+  margin: 20px;
 }
 
 .letterBody p.letterContextmessage {
   background-color: rgba(0, 0, 0, 0);
   color: #2f1d3b;
-//  padding: 10px;
   padding: 0;
   min-height: 235px;
-//  min-height: 100%;
-//  max-height: 30%;
-//  min-width: 85%;
-//  max-width: 85%;
   line-height: 160%;
   overflow: hidden;
 }
@@ -150,7 +139,6 @@ div.popup p:hover {
 }
 
 .letterBody .letterLike img.letterStar {
-//  margin-left: 60%;
   width: 28px;
   height: 28px;
 }
@@ -212,7 +200,6 @@ div.popup p:hover {
   }
 
   .letterBody .letterLike img.letterStar {
-  //  margin-left: 60%;
     width: 14px;
     height: 14px;
   }

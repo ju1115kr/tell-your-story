@@ -23,13 +23,11 @@ div#Galaxy {
 
 .axis path, .axis line {
   file: none;
-//  stroke: black;
   stroke: #e8e6ec;
   shape-rendering: crispEdges;
 }
 
 svg {
-//  margin-top: 20px;
   display: block;
   margin-left: auto;
   margin-right: auto;

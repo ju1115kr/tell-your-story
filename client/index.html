@@ -1,357 +1,350 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta property="og:url" content="https://meonzzi.newslabfellows.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="조선의 먼찌들">
-<meta property="og:description" content="당신의 찌질했던 기억들을 담아주세요.">
-<meta property="og:image" content="https://meonzzi.newslabfellows.com/picture/meonzziLogoFull.png">
-<title>조선의 먼찌들</title>
-<script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
-<script src="./js/ajaxQuery.js"></script>
-<script src="./js/facebookLogin.js" charset="utf-8"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" charset="utf-8"></script>
-<script src="https://rawgit.com/wilq32/jqueryrotate/master/jQueryRotateCompressed.js" charset="utf-8"></script>
-<link href="https://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/aside.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/broadcast.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/d3.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/letter.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/news-layout.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/topmenu.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/post.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/modify.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/tooltip.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/introment.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/about.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/circle.css" />
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://meonzzi.newslabfellows.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="조선의 먼찌들">
+    <meta property="og:description" content="당신의 찌질했던 기억들을 담아주세요.">
+    <meta property="og:image" content="https://meonzzi.newslabfellows.com/picture/meonzziLogoFull.png">
+    <title>조선의 먼찌들</title>
+    <script src="https://code.jquery.com/jquery-3.3.0.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <script src="./js/ajaxQuery.js"></script>
+    <script src="./js/facebookLogin.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" charset="utf-8"></script>
+    <script src="https://rawgit.com/wilq32/jqueryrotate/master/jQueryRotateCompressed.js" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lora:700italic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/aside.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/layout.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/broadcast.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/d3.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/letter.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/news-layout.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/topmenu.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/post.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/modify.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/tooltip.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/introment.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/about.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/circle.css" />
+  </head>
 
-<body>
-<div id="topMenu">
-    <div id="navBarForm">
+  <body>
+    <div id="topMenu">
+      <div id="navBarForm">
         <div id="logo-link">
-            <img class="menuLogo" src="" alt="조선의 먼찌들" style="display: block; padding-right: 2rem; border-right: 1px solid #e1e1e7;"
-                onclick="openPage('Galaxy', document.getElementById('defaultOpen'))"/>
-            <div id="linktag" style="margin-right: 2rem;">
-                <a class="tablink" id="defaultOpen" onclick="openPage('Galaxy', this)">GALAXY</a>
-                <a class="tablink" onclick="openPage('About', this)">ABOUT</a>
-                <a class="tablink" onclick="openPage('News', this)">NEWS</a>
-                <!--a class="tablink" target="_blank" href="http://meonzzi.newslabfellows.com/story">STORY</a-->
-            </div>
+          <img class="menuLogo" src="" alt="조선의 먼찌들" style="display: block; padding-right: 2rem; border-right: 1px solid #e1e1e7;"
+                                                           onclick="openPage('Galaxy', document.getElementById('defaultOpen'))"/>
+          <div id="linktag" style="margin-right: 2rem;">
+            <a class="tablink" id="defaultOpen" onclick="openPage('Galaxy', this)">GALAXY</a>
+            <a class="tablink" onclick="openPage('About', this)">ABOUT</a>
+            <a class="tablink" onclick="openPage('News', this)">NEWS</a>
+          </div>
         </div>
         <div id="fbtag" style="display: flex; align-items: center; padding-right: 1rem;">
-            <img class="FBlogin-Img" src="" alt="" />
-            <div class="fb-login-button_" id="FBlogin-before" 
-                data-max-rows="1" data-size="medium"
-                data-button-type="continue_with"
-                data-show-faces="false"
-                data-auto-logout-link="false"
-                data-use-continue-as="true"
-                data-scope="public_profile, email" onclick="checkLoginState();">
-                <img id="FB-default-picture" src="./picture/defaultProfileFB.png" alt="프로필"/>
-                <p><b id="FB-realname"></b><b>페이스북</b>으로&nbsp;로그인</p>
-            </div>
+          <img class="FBlogin-Img" src="" alt="" />
+          <div class="fb-login-button_" id="FBlogin-before" 
+                                        data-max-rows="1"
+                                        data-size="medium"
+                                        data-button-type="continue_with"
+                                        data-show-faces="false"
+                                        data-auto-logout-link="false"
+                                        data-use-continue-as="true"
+                                        data-scope="public_profile, email" onclick="checkLoginState();">
+            <img id="FB-default-picture" src="./picture/defaultProfileFB.png" alt="프로필"/>
+            <p><b id="FB-realname"></b><b>페이스북</b>으로&nbsp;로그인</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<div id="Galaxy" class="tabcontent">
-    <div id="stardustForm">
+    <div id="Galaxy" class="tabcontent">
+      <div id="stardustForm">
         <div id="particleDummy"></div>
         <div id="refreshDummy"></div>
-    </div>
-    <div id="aside">
+      </div>
+      <div id="aside">
         <div id="refreshBar">
-            <img id="refresh" src="./picture/refresh_new.png" alt="" onclick="javascript:refreshData()"/>
-            <hr />
+          <img id="refresh" src="./picture/refresh_new.png" alt="" onclick="javascript:refreshData()"/>
+          <hr />
         </div>
 
         <div id="searchBarForm">
-            <div id="keywordBar">
-                <strong>키워드 검색</strong>
+          <div id="keywordBar">
+            <strong>키워드 검색</strong>
+          </div>
+          <div id="searchBar">
+            <div id="searchBarforCenter">
+              <input type="text" id="searchBox" name="search" placeholder="추천 키워드 &nbsp;&nbsp;#친구&nbsp;#돈" autocomplete="off" />
             </div>
-            <div id="searchBar">
-                <div id="searchBarforCenter">
-                    <input type="text" id="searchBox" name="search" placeholder="추천 키워드 &nbsp;&nbsp;#친구&nbsp;#돈" autocomplete="off" />
-                </div>
-            </div>
+          </div>
         </div>
 
-
         <div id="introduceBar">
-            <img id="howto_text" src="./picture/howto_text.png" alt="" />
-            <hr />
-            <img id="howto_picture" src="./picture/howto_picture.png" alt="" />
+          <img id="howto_text" src="./picture/howto_text.png" alt="" />
+          <hr />
+          <img id="howto_picture" src="./picture/howto_picture.png" alt="" />
         </div>
 
         <div class="letterForm">
-             <div class="letterHeader">
-                <img class="letterPicture" src="./picture/anonymous.png" alt="" onerror="this.src='./picture/fb_man_image.jpg'"/>
-                <div class="letterInfo">
-                    <p>우주에 도착한 먼지들</p>
-                    <p class="createdDate"></p>
-                </div>
-                <img class="option" src="../picture/option.png" alt="" />
-                <div class="arrow"></div>
-                <div class="popup">
-                    <p id="modify">수정</p>
-                    <p id="delete">삭제</p>
-                </div>
+          <div class="letterHeader">
+            <img class="letterPicture" src="./picture/anonymous.png" alt="" onerror="this.src='./picture/fb_man_image.jpg'"/>
+            <div class="letterInfo">
+              <p>우주에 도착한 먼지들</p>
+              <p class="createdDate"></p>
             </div>
-
-           <div class="letterBody">
-               <p class="letterContextmessage"></p>
-               <hr />
-                <div class="letterLike">
-                    <div class="letterStarplus" style="justify-content:center; align-items: center; display:flex;">
-                        <img class="letterStarplusImage" src="./picture/starplus.png" alt=""/>
-                        <p class="letterStarplusText">공감하기</p>
-                    </div>
-                    <div style="justify-content:center; align-items: center; display:flex;">
-                        <img class="letterStar" src="./picture/purplestar.png" alt=""/>
-                        <p class="letterLikeCount"></p>
-                    </div>
-                </div>
+            <img class="option" src="../picture/option.png" alt="" />
+            <div class="arrow"></div>
+            <div class="popup">
+              <p id="modify">수정</p>
+              <p id="delete">삭제</p>
             </div>
+          </div>
 
+          <div class="letterBody">
+            <p class="letterContextmessage"></p>
+            <hr />
+            <div class="letterLike">
+              <div class="letterStarplus" style="justify-content:center; align-items: center; display:flex;">
+                <img class="letterStarplusImage" src="./picture/starplus.png" alt=""/>
+                <p class="letterStarplusText">공감하기</p>
+              </div>
+              <div style="justify-content:center; align-items: center; display:flex;">
+                <img class="letterStar" src="./picture/purplestar.png" alt=""/>
+                <p class="letterLikeCount"></p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div id="PostForm">
-            <div class="PostHeader">
-                <img class="PostPicture" src="./picture/defaultProfileFB.png" alt="" />
-                <p>우주에 먼지 보내기</p>
+          <div class="PostHeader">
+            <img class="PostPicture" src="./picture/defaultProfileFB.png" alt="" />
+            <p>우주에 먼지 보내기</p>
+          </div>
+          <form class="PostBody">
+            <textarea id="PostBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
+            <hr />
+            <div class="PostSendBar">
+              <input id="Postanonymousbox" type="checkbox" value="anonymous" />
+              <label for="Postanonymousbox">익명</label>
+              <canvas id="Postcircle" width="29" height="29"></canvas>
+              <input id="PostSubmit" type="submit" value="보내기">
             </div>
-            <form class="PostBody">
-                <textarea id="PostBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
-                <hr />
-                <div class="PostSendBar">
-                    <input id="Postanonymousbox" type="checkbox" value="anonymous" />
-                    <label for="Postanonymousbox">익명</label>
-                    <canvas id="Postcircle" width="29" height="29"></canvas>
-                    <input id="PostSubmit" type="submit" value="보내기">
-                </div>
-            </form>
+          </form>
         </div>
 
         <div id="ModifyForm">
-            <div class="ModifyHeader">
-                <img class="ModifyPicture" src="./picture/defaultProfileFB.png" alt="" />
-                <p>우주에 먼지 보내기</p>
+          <div class="ModifyHeader">
+            <img class="ModifyPicture" src="./picture/defaultProfileFB.png" alt="" />
+            <p>우주에 먼지 보내기</p>
+          </div>
+          <form class="ModifyBody">
+            <textarea id="ModifyBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
+            <hr />
+            <div class="ModifySendBar">
+              <input id="Modifyanonymousbox" type="checkbox" value="anonymous" />
+              <label for="Modifyanonymousbox">익명</label>
+              <canvas id="Modifycircle" width="29" height="29"></canvas>
+              <input id="ModifySubmit" type="submit" value="수정">
             </div>
-            <form class="ModifyBody">
-                <textarea id="ModifyBox" placeholder="여기를 눌러 글을 작성할 수 있습니다. (280자 이내)" autocomplete="off" maxlength="280"></textarea>
-                <hr />
-                <div class="ModifySendBar">
-                    <input id="Modifyanonymousbox" type="checkbox" value="anonymous" />
-                    <label for="Modifyanonymousbox">익명</label>
-                    <canvas id="Modifycircle" width="29" height="29"></canvas>
-                    <input id="ModifySubmit" type="submit" value="수정">
-                </div>
-            </form>
+          </form>
         </div>
+      </div>
     </div>
-</div>
 
-
-<div id="About" class="tabcontent">
-    <img id="web-about-text" src="./picture/web-about-text.png" alt="AboutImg" />
-    <div id="web-linkicon">
+    <div id="About" class="tabcontent">
+      <img id="web-about-text" src="./picture/web-about-text.png" alt="AboutImg" />
+      <div id="web-linkicon">
         <a target="_blank" href="https://fb.me/meonzzi"><img id="web-fbicon" class="web-icon" src="./picture/web-fbicon.png" alt="fbicon"/></a>
         <a target="_blank" href="https://www.youtube.com/channel/UCiGd2VpzFG-cc1eJVc4Khqw"><img id="web-yticon" class="web-icon" src="./picture/web-yticon.png" alt="yticon" /></a>
+      </div>
     </div>
-</div>
 
-
-<div id="News" class="tabcontent" style="display: none;">
-    <div class="news-main-content">
+    <div id="News" class="tabcontent" style="display: none;">
+      <div class="news-main-content">
         <a class="news-main-Close">&times;</a>
         <div class="news-main-content-header">
-            <p class="news-main-content-header-text">조선의 먼찌들<p>
-            <h2 class="news-main-content-header-title">기사 제목</h2>
-            <p class="news-main-content-date"></p>
-            <hr />
+          <p class="news-main-content-header-text">조선의 먼찌들<p>
+          <h2 class="news-main-content-header-title">기사 제목</h2>
+          <p class="news-main-content-date"></p>
+          <hr />
         </div>
 
         <div class="news-main-content-body">
-            <p class="news-main-content-text">Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+          <p class="news-main-content-text"></p>
         </div>
-    </div>
+      </div>
 
-    <div class="news-wrapper">
+      <div class="news-wrapper">
         <div class="news-letter" id="news-11">
-            <div class="news-header">
-                <img class="news-header-img" src="picture/vlog_1.png" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">스물다섯, 첫 번째 그 여자 이야기</h2>
-                <p class="news-date">18.03.01</p>
-                <p class="news-preview">스물 다섯, 인생의 4분의 1을 지나는 우리. 근데 나, 잘 살고 있는 걸까?</p>
-            </div>
+          <div class="news-header">
+            <img class="news-header-img" src="picture/vlog_1.png" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">스물다섯, 첫 번째 그 여자 이야기</h2>
+            <p class="news-date">18.03.01</p>
+            <p class="news-preview">스물 다섯, 인생의 4분의 1을 지나는 우리. 근데 나, 잘 살고 있는 걸까?</p>
+          </div>
         </div>
 
 
         <div class="news-letter" id="news-10">
-            <div class="news-header">
-                <img class="news-header-img" src="picture/kmd.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">도망가고 싶을 땐 도망가, 프레임 밖으로!</h2>
-                <p class="news-date">18.02.25</p>
-                <p class="news-preview">안과 밖, 김문독의 이야기</p>
-            </div>
+          <div class="news-header">
+            <img class="news-header-img" src="picture/kmd.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">도망가고 싶을 땐 도망가, 프레임 밖으로!</h2>
+            <p class="news-date">18.02.25</p>
+            <p class="news-preview">안과 밖, 김문독의 이야기</p>
+          </div>
         </div>
 
         <div class="news-letter" id="news-9">
-            <div class="news-header">
-                <img class="news-header-img" src="picture/lsj.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">우물 안 개구리가 되진 않을래</h2>
-                <p class="news-date">18.02.24</p>
-                <p class="news-preview">상경한 부산남자, 이수종의 이야기</p>
-            </div>
+          <div class="news-header">
+            <img class="news-header-img" src="picture/lsj.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">우물 안 개구리가 되진 않을래</h2>
+            <p class="news-date">18.02.24</p>
+            <p class="news-preview">상경한 부산남자, 이수종의 이야기</p>
+          </div>
         </div>
 
 
         <div class="news-letter" id="news-8">
-            <div class="news-header">
-                <img class="news-header-img" src="picture/khm.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">왜 남들 눈치 보며 살아야 돼?</h2>
-                <p class="news-date">18.02.22</p>
-                <p class="news-preview">"내가 왜 그 사람 눈치 보고 살아야돼" 구현모의 이야기</p>
-            </div>
+          <div class="news-header">
+            <img class="news-header-img" src="picture/khm.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">왜 남들 눈치 보며 살아야 돼?</h2>
+            <p class="news-date">18.02.22</p>
+            <p class="news-preview">"내가 왜 그 사람 눈치 보고 살아야돼" 구현모의 이야기</p>
+          </div>
         </div>
 
         <div class="news-letter" id="news-7">
-            <div class="news-header">
-                <img class="news-header-img" src="picture/kuj.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">미안하지만, 난 캔디가 아닌걸</h2>
-                <p class="news-date">18.02.21</p>
-                <p class="news-preview">이젠 웃지 만은 않을 거야, 고은정의 이야기</p>
-            </div>
+          <div class="news-header">
+            <img class="news-header-img" src="picture/kuj.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">미안하지만, 난 캔디가 아닌걸</h2>
+            <p class="news-date">18.02.21</p>
+            <p class="news-preview">이젠 웃지 만은 않을 거야, 고은정의 이야기</p>
+          </div>
         </div>        
 
         <div class="news-letter" id="news-6">
-             <div class="news-header">
-                <img class="news-header-img" src="picture/yjh.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">네-니오로 남겠습니다.</h2>
-                <p class="news-date">18.02.19</p>
-                <p class="news-preview">오늘 소개드릴 찌질이는 그리 엄청난 것은 아니지만, 대단한겁니다. 유준호의 이야기</p>
-            </div>
+          <div class="news-header">
+            <img class="news-header-img" src="picture/yjh.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">네-니오로 남겠습니다.</h2>
+            <p class="news-date">18.02.19</p>
+            <p class="news-preview">오늘 소개드릴 찌질이는 그리 엄청난 것은 아니지만, 대단한겁니다. 유준호의 이야기</p>
+          </div>
 
         </div>
 
         <div class="news-letter" id="news-5">
-             <div class="news-header">
-                <img class="news-header-img" src="picture/yks.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">꼭, 나비가 되지 않아도</h2>
-                <p class="news-date">18.02.18</p>
-                <p class="news-preview">"애초에 달성할 수 없는 거라고 알고 있어요." 아직은 번데기인 염규상의 이야기</p>
-            </div>
-        
+          <div class="news-header">
+            <img class="news-header-img" src="picture/yks.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">꼭, 나비가 되지 않아도</h2>
+            <p class="news-date">18.02.18</p>
+            <p class="news-preview">"애초에 달성할 수 없는 거라고 알고 있어요." 아직은 번데기인 염규상의 이야기</p>
+          </div>
+
         </div>
 
         <div class="news-letter" id="news-4">
-             <div class="news-header">
-                <img class="news-header-img" src="picture/jun.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">완벽하게 틀에 맞지 않는 방법</h2>
-                <p class="news-date">18.02.14</p>
-                <p class="news-preview">완벽하게 그 틀에 맞지는 않았던 것 같았던 전유나의 이야기</p>
-            </div>
+          <div class="news-header">
+            <img class="news-header-img" src="picture/jun.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">완벽하게 틀에 맞지 않는 방법</h2>
+            <p class="news-date">18.02.14</p>
+            <p class="news-preview">완벽하게 그 틀에 맞지는 않았던 것 같았던 전유나의 이야기</p>
+          </div>
         </div>
 
         <div class="news-letter" id="news-3">
-             <div class="news-header">
-                <img class="news-header-img" src="picture/kbk.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">사람을&nbsp;끌어당기는<br />힘은&nbsp;뭘까?</h2>
-                <p class="news-date">18.02.12</p>
-                <p class="news-preview">한번도&nbsp;클럽을&nbsp;가본&nbsp;적&nbsp;없다는,&nbsp;자칭&nbsp;최고존엄&nbsp;국범근의&nbsp;이야기</p>
-            </div>
-        
+          <div class="news-header">
+            <img class="news-header-img" src="picture/kbk.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">사람을&nbsp;끌어당기는<br />힘은&nbsp;뭘까?</h2>
+            <p class="news-date">18.02.12</p>
+            <p class="news-preview">한번도&nbsp;클럽을&nbsp;가본&nbsp;적&nbsp;없다는,&nbsp;자칭&nbsp;최고존엄&nbsp;국범근의&nbsp;이야기</p>
+          </div>
+
         </div>
 
         <div class="news-letter" id="news-2">
-            <div class="news-header">
-                <img class="news-header-img" src="picture/kju.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">Fake&nbsp;it&nbsp;&apos;til&nbsp;you<br />make&nbsp;it</h2>
-                <p class="news-date">18.02.10</p>
-                <p class="news-preview">&quot;자연스러운&nbsp;게&nbsp;좋잖아요.&quot;&nbsp;파란&nbsp;가죽&nbsp;자켓과.&nbsp;푹&nbsp;눌러쓴&nbsp;비니,&nbsp;김종우의&nbsp;이야기</p>
-            </div>
+          <div class="news-header">
+            <img class="news-header-img" src="picture/kju.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">Fake&nbsp;it&nbsp;&apos;til&nbsp;you<br />make&nbsp;it</h2>
+            <p class="news-date">18.02.10</p>
+            <p class="news-preview">&quot;자연스러운&nbsp;게&nbsp;좋잖아요.&quot;&nbsp;파란&nbsp;가죽&nbsp;자켓과.&nbsp;푹&nbsp;눌러쓴&nbsp;비니,&nbsp;김종우의&nbsp;이야기</p>
+          </div>
 
         </div>
 
         <div class="news-letter" id="news-1">
-             <div class="news-header">
-                <img class="news-header-img" src="picture/kja.jpg" alt="" />
-                <hr />
-            </div>
-            <div class="news-container">
-                <h2 class="news-title">혹시,&nbsp;대2병이라고<br />들어봤어?</h2>
-                <p class="news-date">18.02.08</p>
-                <p class="news-preview">&quot;요즘엔&nbsp;좀&nbsp;괜찮아졌어요.&quot;&nbsp;러블리한&nbsp;스물일곱,&nbsp;김정아의&nbsp;이야기</p>
-            </div>
+          <div class="news-header">
+            <img class="news-header-img" src="picture/kja.jpg" alt="" />
+            <hr />
+          </div>
+          <div class="news-container">
+            <h2 class="news-title">혹시,&nbsp;대2병이라고<br />들어봤어?</h2>
+            <p class="news-date">18.02.08</p>
+            <p class="news-preview">&quot;요즘엔&nbsp;좀&nbsp;괜찮아졌어요.&quot;&nbsp;러블리한&nbsp;스물일곱,&nbsp;김정아의&nbsp;이야기</p>
+          </div>
         </div>
-
+      </div>
     </div>
 
-</div>
-
-<script src="./js/openPage.js" charset="utf-8"></script>
-<script src="./js/d3.js" charset="utf-8"></script>
-<script src="./js/search.js" charset="utf-8"></script>
-<script src="./js/webEvent.js" charset="utf-8"></script>
-<script src="./js/google_login.js" charset="utf-8"></script>
-<script src="./js/topmenu.js" charset="utf-8"></script>
-<script src="./js/circle.js" charset="utf-8"></script>
-<script src="./js/like.js" charset="utf-8"></script>
-<script src="./js/delete.js" charset="utf-8"></script>
-<script src="./js/modify.js" charset="utf-8"></script>
-<script src="./js/kja.js" charset="utf-8"></script>
-<script src="./js/kju.js" charset="utf-8"></script>
-<script src="./js/kbk.js" charset="utf-8"></script>
-<script src="./js/jun.js" charset="utf-8"></script>
-<script src="./js/yks.js" charset="utf-8"></script>
-<script src="./js/yjh.js" charset="utf-8"></script>
-<script src="./js/kuj.js" charset="utf-8"></script>
-<script src="./js/khm.js" charset="utf-8"></script>
-<script src="./js/lsj.js" charset="utf-8"></script>
-<script src="./js/kmd.js" charset="utf-8"></script>
-<script src="./js/vlog_1.js" charset="utf-8"></script>
-<script src="./js/news.js" charset="utf-8"></script>
-</body>
+    <script src="./js/openPage.js" charset="utf-8"></script>
+    <script src="./js/d3.js" charset="utf-8"></script>
+    <script src="./js/search.js" charset="utf-8"></script>
+    <script src="./js/webEvent.js" charset="utf-8"></script>
+    <script src="./js/google_login.js" charset="utf-8"></script>
+    <script src="./js/topmenu.js" charset="utf-8"></script>
+    <script src="./js/circle.js" charset="utf-8"></script>
+    <script src="./js/like.js" charset="utf-8"></script>
+    <script src="./js/delete.js" charset="utf-8"></script>
+    <script src="./js/modify.js" charset="utf-8"></script>
+    <script src="./js/kja.js" charset="utf-8"></script>
+    <script src="./js/kju.js" charset="utf-8"></script>
+    <script src="./js/kbk.js" charset="utf-8"></script>
+    <script src="./js/jun.js" charset="utf-8"></script>
+    <script src="./js/yks.js" charset="utf-8"></script>
+    <script src="./js/yjh.js" charset="utf-8"></script>
+    <script src="./js/kuj.js" charset="utf-8"></script>
+    <script src="./js/khm.js" charset="utf-8"></script>
+    <script src="./js/lsj.js" charset="utf-8"></script>
+    <script src="./js/kmd.js" charset="utf-8"></script>
+    <script src="./js/vlog_1.js" charset="utf-8"></script>
+    <script src="./js/news.js" charset="utf-8"></script>
+  </body>
 </html>
-
 
