@@ -25,11 +25,10 @@ $("div.logoForm").click(function() {
 });
 
 if(window.location.search.includes("news")){
-    search = window.location.search.substr(1);
+  search = window.location.search.substr(1);
 
-    openPage("News", '', "");
-    if( search !== "news") {
-        $("div#"+search).trigger('click');
-        //document.getElementById(search).click();
-    }
+  openPage("News", '', "");
+  if( search !== "news") {
+    $("div#"+search).trigger('click');
+  }
 }

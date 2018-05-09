@@ -1,8 +1,5 @@
 div#mainView {
   display: grid;
-  //grid: ;
-  //grid-template-columns: 1fr 1fr;
-  //grid-template-rows: 1fr;
   grid-column-gap: 5px;
   grid-row-gap: 5px;
   background-color: #f4c20d;

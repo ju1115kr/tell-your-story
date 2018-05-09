@@ -43,7 +43,6 @@
 }
 
 #linktag a:hover {
-//  background-color: rgba(0, 0, 0, 0);
   color: #877693;
   cursor: pointer;
   font-weight: bold;
@@ -87,7 +86,6 @@ div#FBlogin-before {
 }
 
 div#FBlogin-before img#FB-default-picture {
-//  border: 1px solid #362540;
   border-radius: 90px;
   width: 54px;
   height: 54px;

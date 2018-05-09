@@ -2,15 +2,10 @@
   width: 100%;
   min-height: 690px;
   height: auto;
-//  position: absolute;
-//  margin-top: 20px;
   margin-right: 150px;
-//  margin-top: 0;
-//  margin-right: 0;
   background-color: rgba(238,237,242, 1);
   font-size: 2rem;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-//  overflow: scroll;
 }
 
 #refreshBar {
@@ -41,7 +36,6 @@
   font-weight: bold;
   color: rgba(51, 27, 61, 1);
   width: 85%;
-//  height: 50%;
   display: block;
   margin: auto;
   margin-top: 15px;
@@ -69,7 +63,6 @@
     padding: 0;
   }
   div#introuduceBar {
-//    height: 58%;
   }
   div#introduceBar p{
     font-size: 1rem;
@@ -81,10 +74,7 @@
   #aside {
     width: 27%;
     height: 670px;
-//    margin: 0 auto;
     margin: auto;
-//    height: 590px;
-//    height: 90%;
     top: 150px;
     right: 100px;
     background-color: #DDD9E2;
@@ -99,7 +89,6 @@
     padding: 0;
   }
   div#introduceBar {
-//    height: 58%;
   }
   div#introduceBar p {
     font-size: 1rem;

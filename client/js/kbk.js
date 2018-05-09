@@ -1,12 +1,12 @@
 function kbk() {
-    var title = `큰 행성이 뿜어내는 매력같은 것`;
-    var date = `18.02.11`;
-    var context = `
+  var title = `큰 행성이 뿜어내는 매력같은 것`;
+  var date = `18.02.11`;
+  var context = `
     <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/6YzK3Pz-DWs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
     &nbsp;
-<div></div><br />
+  <div></div><br />
     <div><em>쥐픽쳐스 대표, 자칭 최고 존엄, 뉴스 읽어주는 남자... 라고 불리우는 낭랑 22세. 항간에 아직 그가 한번도 클럽을 가본 적이 없다는 소문이 있다던데. &quot;클럽에는 뭘 입고 가죠? 이거 입고 가면 되나요?&quot; 라고 묻는 그의 오늘의 의상은 버건디색 목폴라와 회색 정장 마이. 아니야, 그거 안돼. </em></div><br />
     <div></div>
     <div></div><br />
@@ -59,11 +59,11 @@ function kbk() {
     `;
 
 
-    $("h2.news-main-content-header-title").text(title);
-    $("p.news-main-content-date").text(date);
-    $("p.news-main-content-text").html(context);
+  $("h2.news-main-content-header-title").text(title);
+  $("p.news-main-content-date").text(date);
+  $("p.news-main-content-text").html(context);
 
-    var body = $("html, body");
-    body.stop().animate({scrollTop:0}, 500, 'swing');
+  var body = $("html, body");
+  body.stop().animate({scrollTop:0}, 500, 'swing');
 };
 

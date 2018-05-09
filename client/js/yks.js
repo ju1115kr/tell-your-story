@@ -1,8 +1,8 @@
 function yks() {
 
-    var title = `꼭 나비가 되지 않아도`;
-    var date = `18.02.17`;
-    var context = `
+  var title = `꼭 나비가 되지 않아도`;
+  var date = `18.02.17`;
+  var context = `
     <br />
     <iframe width="560" height="315" src="https://www.youtube.com/embed/lQhZLRS0iDc" frame    border="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />
     <strong>어어. 음악하는 사람이에요?</strong><br />
@@ -77,11 +77,11 @@ function yks() {
     `;
 
 
-$("h2.news-main-content-header-title").text(title);
-$("p.news-main-content-date").text(date);
-$("p.news-main-content-text").html(context);
+  $("h2.news-main-content-header-title").text(title);
+  $("p.news-main-content-date").text(date);
+  $("p.news-main-content-text").html(context);
 
-var body = $("html, body");
-body.stop().animate({scrollTop:0}, 500, 'swing');
+  var body = $("html, body");
+  body.stop().animate({scrollTop:0}, 500, 'swing');
 };
 

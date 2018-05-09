@@ -1,13 +1,13 @@
 function lsj() {
 
-    var title = `우물 안 개구리가 되진 않을래`;
-    var date = `18.02.24`;
-    var context = `
+  var title = `우물 안 개구리가 되진 않을래`;
+  var date = `18.02.24`;
+  var context = `
     <br />
     <iframe width="560" height="315" src="https://youtube.com/embed/n8FXS4s8VSA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />
     &nbsp;
 
-    <div><h2>PART I. 그는 ___</h2></div><br />
+  <div><h2>PART I. 그는 ___</h2></div><br />
     <strong>아, 수종님. 인터뷰가 먼저 나가버려서 어떡해요. 우리가 먼저 했는데.</strong><br />
 
     <div style="text-align: center;"><img src="../picture/lsj1.png" alt="" width="490" height="294" /> <br />나와의 인터뷰를 진행한 바로 다음날, 현모님과 인터뷰를 했고, 나는 너무 똑같아서 놀랬고....<br /></div><br /><br />
@@ -43,10 +43,10 @@ function lsj() {
     <strong>그러고보니, 요즘 만드시는 콘텐츠에는 본인이 거의 안 나오시네요. 그쵸. </strong><br /><br />
 
     <span>네. 그 생각이 들고나서부턴, 내가 영상을 잘 만들어서 내공으로 인정받고 싶지, 저라는 사람을 표면적으로 보여주고 싶지 않게 되더라고요. 최근에는, 옛날에 올린 페이스북 게시물들을 쭈욱 보면서, 제가 빛나보이려고 썼었던 유치한 썸네일들을 다 바꿨어요. 김주하처럼 욕먹기 전에, 제가 자기 반성을 시작해서 다행이에요. 허허. </span><br /><br />
-<br /><br />
+    <br /><br />
     &nbsp;
 
-<h2>PART II. ____ 부산 청년, 서울 오다</h2><br />
+  <h2>PART II. ____ 부산 청년, 서울 오다</h2><br />
     그런 맥락에서, 이번에 서울에 올라오게 된 건 <span class="s1">익숙함에서 탈피하는 일이었어요. </span><span class="s1">찌질함을 극복하기 위한 노력의 일환이기도 해요. </span><br /><br />
     <span class="s1">그런거 있죠, 서울에서는 패션 위크면 동대문을 간다, 연극을 보려면 대학로를 간다, 지역마다 이런 게 있잖아요.  슈스케는 경희대 평화의 전당에서 한다. 근데 부산에는 사실 지역에서 할 게 없어요. 대학에도 대자보가 붙거나 페미니즘 학회, 활동 같은 것도 상대적으로 많이 활발하지 않고.</span><br /><br />
     <span class="s1">'공간'이라는게 주는 느낌이 있잖아요. 그게 무서운 것 같아요. 재작년에 서울 여행을 처음 왔을 때, 광화문엘 가장 먼저 갔어요. 서울의 중심이잖아요. 집회가 열리는 정치의 중심. 세상의 흐름의 중심에 있다는 공간이 주는 느낌. 부산에 있을 때는 뉴스로만 접하지, 집회가 실제로 주는 느낌이 뭔지 잘 몰라요. 요즘에는 다 온라인으로 볼 수 있다 해도, 공동체가 뭔지, 연대한다는 것이 뭔지, 직접 그 자리에서 그 공기를 맡아본 적이 없으면 그 느낌을 가지기 힘들어요.</span><br /><br />
@@ -65,11 +65,11 @@ function lsj() {
     `;
 
 
-$("h2.news-main-content-header-title").text(title);
-$("p.news-main-content-date").text(date);
-$("p.news-main-content-text").html(context);
+  $("h2.news-main-content-header-title").text(title);
+  $("p.news-main-content-date").text(date);
+  $("p.news-main-content-text").html(context);
 
-var body = $("html, body");
-body.stop().animate({scrollTop:0}, 500, 'swing');
+  var body = $("html, body");
+  body.stop().animate({scrollTop:0}, 500, 'swing');
 };
 

@@ -1,12 +1,12 @@
 function vlog_1() {
 
-    var title = `스물 다섯, 첫 번째 그 여자 이야기`;
-    var date = `18.03.01`;
-    var context = `
+  var title = `스물 다섯, 첫 번째 그 여자 이야기`;
+  var date = `18.03.01`;
+  var context = `
     &nbsp;
-    <iframe class="vlog" width="1920" height="1080" src="https://youtube.com/embed/OLygstgrqNI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />
+  <iframe class="vlog" width="1920" height="1080" src="https://youtube.com/embed/OLygstgrqNI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br /><br />
     &nbsp;
-    <br /><br />
+  <br /><br />
 
     <span>스물 다섯, 인생의 4분의 1을 지나는 우리.</span>
     <span>근데 나, 잘 살고 있는 걸까?</span><br />
@@ -32,11 +32,11 @@ function vlog_1() {
     `;
 
 
-$("h2.news-main-content-header-title").text(title);
-$("p.news-main-content-date").text(date);
-$("p.news-main-content-text").html(context);
+  $("h2.news-main-content-header-title").text(title);
+  $("p.news-main-content-date").text(date);
+  $("p.news-main-content-text").html(context);
 
-var body = $("html, body");
-body.stop().animate({scrollTop:0}, 500, 'swing');
+  var body = $("html, body");
+  body.stop().animate({scrollTop:0}, 500, 'swing');
 };
 
