@@ -5,11 +5,11 @@ var lineWidth = 3;
 
 var counterClockwise = false;
 
-$("textarea#PostBox").on('change textInput input', function(e) {
+$("textarea#PostBox").on('change textInput input', function (e) {
   fillCircle($("textarea#PostBox").val().length, canvas)
 });
 
-$("textarea#ModifyBox").on('change textInput input', function(e) {
+$("textarea#ModifyBox").on('change textInput input', function (e) {
   fillCircle($("textarea#ModifyBox").val().length, canvas)
 });
 
@@ -28,7 +28,7 @@ function fillCircle(text, canvas) {
   context.lineWidth = lineWidth;
 
   context.strokeStyle = '#B0A9B5';
-  if(text >= 240) {
+  if (text >= 240) {
     context.strokeStyle = '#331B3D';
   }
   context.stroke();

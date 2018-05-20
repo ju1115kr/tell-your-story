@@ -57,6 +57,6 @@ function yjh() {
   $("p.news-main-content-text").html(context);
 
   var body = $("html, body");
-  body.stop().animate({scrollTop:0}, 500, 'swing');
+  body.stop().animate({ scrollTop: 0 }, 500, 'swing');
 };
 

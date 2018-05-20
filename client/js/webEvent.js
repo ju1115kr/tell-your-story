@@ -1,5 +1,5 @@
-$("img.option").click(function() {
-  if( $("div.popup").is(':visible') ) {
+$("img.option").click(function () {
+  if ($("div.popup").is(':visible')) {
     $("div.popup").hide();
     $("div.arrow").hide();
   }
@@ -10,16 +10,16 @@ $("img.option").click(function() {
 });
 
 //letter close 버튼 클릭 시
-$("a.letterClose").click(function() {
+$("a.letterClose").click(function () {
   $("div.letterForm").slideUp();
 });
 
-$("div#PostRequestForm > input").click(function() {
+$("div#PostRequestForm > input").click(function () {
   $("div#PostRequestForm").hide();
   $("div#PostForm").slideDown();
 });
 
-$("a.PostFormClose").click(function() {
+$("a.PostFormClose").click(function () {
   $("div#PostForm").slideUp();
 });
 

@@ -10,25 +10,25 @@ $("div#news-9").on('click', lsj);
 $("div#news-10").on('click', kmd);
 $("div#news-11").on('click', vlog_1);
 
-$("div.news-letter").click(function() {
+$("div.news-letter").click(function () {
   $("div.news-main-content").fadeIn();
 });
 
-$("a.news-main-Close").click(function() {
+$("a.news-main-Close").click(function () {
   $("div.news-letter").fadeIn();
   $("div.news-main-content").fadeOut();
 });
 
-$("div.logoForm").click(function() {
+$("div.logoForm").click(function () {
   $("div.news-letter").show();
   $("div.news-main-content").hide();
 });
 
-if(window.location.search.includes("news")){
+if (window.location.search.includes("news")) {
   search = window.location.search.substr(1);
 
   openPage("News", '', "");
-  if( search !== "news") {
-    $("div#"+search).trigger('click');
+  if (search !== "news") {
+    $("div#" + search).trigger('click');
   }
 }
