@@ -11,7 +11,7 @@ var w = $("div#stardustForm").width() / 1.7,
   particleData;
 
 //Mobile View Respons
-if(window.innerWidth < 990) {
+if (window.innerWidth < 990) {
   w = window.innerWidth / 1.5,
     h = window.innerHeight * 0.5,
     refresh_size = 150,
@@ -23,7 +23,7 @@ var svg = d3.select("div#stardustForm").append("svg").attr({
   height: h
 });
 
-var dataset = ajaxQuery(type='get', apiURL='/particle/random');
+var dataset = ajaxQuery(type = 'get', apiURL = '/particle/random');
 
 var xScale = d3.scale.linear()
   .domain([0, 1010])
@@ -43,27 +43,27 @@ var tooltip = d3.select("div#stardustForm").append("div")
   .style("opacity", 0);
 
 var circleAttrs = {
-  x: function(d) { return xScale(d.x) - 7.5; },
-  y: function(d) { return yScale(d.y) - 7.5; }
+  x: function (d) { return xScale(d.x) - 7.5; },
+  y: function (d) { return yScale(d.y) - 7.5; }
 };
 
-d3.selection.prototype.last = function() {
+d3.selection.prototype.last = function () {
   var last = this.size() - 1;
   return d3.select(this[0][last]);
 };
 
 function refreshData() {
-  dataset = ajaxQuery(type='get', apiURL='/particle/random');
+  dataset = ajaxQuery(type = 'get', apiURL = '/particle/random');
   old_dataset = JSON.parse(JSON.stringify(dataset));
 
   svg.selectAll("image.particle").remove();
-  fadeParticles(dataset, duration=750);
+  fadeParticles(dataset, duration = 750);
   $("img#refresh").rotate({
     angle: 0,
     animateTo: 180,
     easing: $.easing.easeInOutElastic
   });
-  if( $("div.letterForm").is(":visible") ) {
+  if ($("div.letterForm").is(":visible")) {
     $("div.letterForm").slideUp();
     $("div#introduceBar").slideDown();
   }
@@ -73,24 +73,24 @@ function refreshData() {
 drawParticles(dataset);
 
 // On Click, we want to add data to the array and chart
-svg.on("click", function() {
-  for( i = 0; i < svg.selectAll("image")[0].length; i++ ) {
-    if ( $(svg.selectAll("image")[0][i]).attr('href') == "/picture/yellowstar.png" ) {
+svg.on("click", function () {
+  for (i = 0; i < svg.selectAll("image")[0].length; i++) {
+    if ($(svg.selectAll("image")[0][i]).attr('href') == "/picture/yellowstar.png") {
       return false;
     }
   }
-  if( $("div#particleDummy").is(':visible') ){
+  if ($("div#particleDummy").is(':visible')) {
     return false;
   }
 
-  if( $("div#PostForm").is(':visible') ){
+  if ($("div#PostForm").is(':visible')) {
     svg.selectAll("image.particle").remove();
     dataset.particles.pop(newData);
     drawParticles(dataset);
     dataset = JSON.parse(JSON.stringify(old_dataset));
   }
 
-  if(!fbLogin) {
+  if (!fbLogin) {
     alert('페이스북 로그인이 필요합니다.');
     //checkLoginState();
     return false;
@@ -99,8 +99,8 @@ svg.on("click", function() {
   var coords = d3.mouse(this);
 
   newData = {
-    x: Math.round( xScale.invert(coords[0]) ),
-    y: Math.round( yScale.invert(coords[1]) )
+    x: Math.round(xScale.invert(coords[0])),
+    y: Math.round(yScale.invert(coords[1]))
   };
 
   old_dataset = JSON.parse(JSON.stringify(dataset));
@@ -114,44 +114,47 @@ svg.on("click", function() {
   $("div#introduceBar").hide();
   $("#particleDummy").hide();
 
-  if( $(window).innerWidth() < 990 ) {
+  if ($(window).innerWidth() < 990) {
     var body = $("html, body");
-    body.stop().animate({scrollTop: $("div#PostForm").prop('scrollHeight')});
+    body.stop().animate({ scrollTop: $("div#PostForm").prop('scrollHeight') });
   }
 
-  $("form.PostBody").submit(function(event) {
+  $("form.PostBody").submit(function (event) {
     event.preventDefault();
-    if ($("textarea#PostBox").val()==="") {
+    if ($("textarea#PostBox").val() === "") {
       return false;
     }
     else {
       anonymous = $("input#Postanonymousbox").is(':checked') ? true : false
-      jsondata = JSON.stringify({ author_id: fbUserID, googleUserImage: googleUserImage,
+      jsondata = JSON.stringify({
+        author_id: fbUserID, googleUserImage: googleUserImage,
         context: $("textarea#PostBox").val(), x: newData.x, y: newData.y, anonymous: anonymous
       });
 
-      $.ajax({type: "post",
+      $.ajax({
+        type: "post",
         url: API + "/particle",
         contentType: 'application/json; charset=utf-8',
         traditional: true,
         async: false,
         data: jsondata,
-        complete: function(xhr) {
+        complete: function (xhr) {
           if (xhr.status == 201) {
             redirect_url = xhr.getResponseHeader("location");
           }
         }
       });
 
-      if(redirect_url) { // if posting success
+      if (redirect_url) { // if posting success
         $("div#PostForm").slideUp();
         $("form").trigger("reset");
-        $.ajax({type: "get",
+        $.ajax({
+          type: "get",
           url: redirect_url,
           contentType: "apllication/json; charset=utf-8",
           traditional: true,
           async: false,
-          success: function(data) {
+          success: function (data) {
             newParticle = data;
           }
         });
@@ -159,7 +162,7 @@ svg.on("click", function() {
         dataset.particles.push(newParticle);
         old_dataset = dataset;
 
-        if( $(window).innerWidth() < 990 ) { 
+        if ($(window).innerWidth() < 990) {
           $("html, body").stop().animate({ scrollTop: 0 }, 1000);
         }
         drawParticles(dataset);
@@ -168,14 +171,14 @@ svg.on("click", function() {
         $("div#PostForm").slideUp();
         $("div#introduceBar").slideDown();
       }
-      else if(!redirect_url) {
+      else if (!redirect_url) {
         return false;
       }
     }
   });
 })
 
-svg.on('dbclick', function() { return false; });
+svg.on('dbclick', function () { return false; });
 
 $("svg").hide();
 $("svg").delay(800).fadeIn(1000);
@@ -194,7 +197,7 @@ function handleMouseOver(d, i) {  // Add interactivity
   $("div#particleDummy").show();
 
   if (d.context) {
-    tooltip.html(d.context.substring(0, 20)+"···")
+    tooltip.html(d.context.substring(0, 20) + "···")
       .style("left", (d3.event.pageX + 8) + "px")
       .style("top", (d3.event.pageY - 67) + "px");
     tooltip.transition()
@@ -218,15 +221,15 @@ function handleMouseOut(d, i) {
 
 function handleMouseClick(d, i) {
 
-  if ($("div#particleDummy").is(':visible')){
-    if ( $("div#introduceBar").is(':visible')) { $("div#introduceBar").slideUp(); }
-    if ( $("div#ModifyForm").is(":visible")) {
-      if ( window.confirm("수정 중인 글이 저장되지 않았습니다. 계속하시겠습니까?") ) {
+  if ($("div#particleDummy").is(':visible')) {
+    if ($("div#introduceBar").is(':visible')) { $("div#introduceBar").slideUp(); }
+    if ($("div#ModifyForm").is(":visible")) {
+      if (window.confirm("수정 중인 글이 저장되지 않았습니다. 계속하시겠습니까?")) {
         $("div#ModifyForm").slideUp();
       } else return false;
     }
 
-    if ( $("div#PostForm").is(':visible')) {
+    if ($("div#PostForm").is(':visible')) {
       $("div#PostForm").slideUp();
       svg.selectAll("image.particle").remove();
       dataset.particles.pop(newData);
@@ -234,9 +237,9 @@ function handleMouseClick(d, i) {
       dataset = JSON.parse(JSON.stringify(old_dataset));
     }
     particleData = d;
-    if(d.context) {
-      $("img.letterPicture").attr("src","https://graph.facebook.com/" + d.author + "/picture?type=normal");
-      if (d.anonymous) { $("img.letterPicture").attr("src","../picture/anonymous.png"); }
+    if (d.context) {
+      $("img.letterPicture").attr("src", "https://graph.facebook.com/" + d.author + "/picture?type=normal");
+      if (d.anonymous) { $("img.letterPicture").attr("src", "../picture/anonymous.png"); }
       $('p.createdDate').html(formatDate(d.created_at));
       $('p.letterLikeCount').text(d.likes_count);
       $('p.letterContextmessage').text(d.context);
@@ -246,9 +249,9 @@ function handleMouseClick(d, i) {
 
       $('div.letterForm').slideDown();
 
-      if( $(window).innerWidth() < 990 ) {
+      if ($(window).innerWidth() < 990) {
         var body = $("html, body");
-        body.stop().animate({scrollTop: $(document).height() }, 1000);
+        body.stop().animate({ scrollTop: $(document).height() }, 1000);
       }
     }
     else {
@@ -267,11 +270,11 @@ function formatDate(date) {
 
     month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),
-    year = d.getFullYear();
-  hour = d.getHours();
-  minute = d.getMinutes();
+    year = d.getFullYear(),
+    hour = d.getHours(),
+    minute = d.getMinutes();
 
-  if (hour >=13) { hour -= 12; AMPM = " PM"; }
+  if (hour >= 13) { hour -= 12; AMPM = " PM"; }
 
   if (month.length < 2) month = '0' + month;
   if (day.length < 2) day = '0' + day;
@@ -335,7 +338,7 @@ function twinkleParticle() {
 }
 
 function check_me(d) {
-  if( parseInt(fbUserID) == d.author ) {
+  if (parseInt(fbUserID) == d.author) {
     $("img.option").show();
     $("div.popup").hide();
     $("div.arrow").hide();

@@ -1,18 +1,18 @@
-$("input[name='search']").keypress(function(e){
-  if(e.keyCode == 13){
-    if($("input[name='search']").val() === ""){
+$("input[name='search']").keypress(function (e) {
+  if (e.keyCode == 13) {
+    if ($("input[name='search']").val() === "") {
       alert("검색할 키워드를 입력해주세요.");
       return false;
     }
 
-    result = ajaxQuery(type='get', 
-      apiURL='/search/particle/'+$("input[name='search']").val());
+    result = ajaxQuery(type = 'get',
+      apiURL = '/search/particle/' + $("input[name='search']").val());
 
     update(result);
     dataset = result;
     old_dataset = result;
 
-    if( $(window).innerWidth() < 990 ) {
+    if ($(window).innerWidth() < 990) {
       $("html, body").stop().animate({ scrollTop: 0 }, 1000);
     }
   }

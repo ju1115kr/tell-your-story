@@ -1,4 +1,4 @@
-$("p#delete").click(function() {
+$("p#delete").click(function () {
   $("div.popup").hide();
   $("div.arrow").hide();
 
@@ -6,16 +6,17 @@ $("p#delete").click(function() {
     var jsondata = JSON.stringify({ author_id: fbUserID });
     var result;
 
-    $.ajax({type: "delete",
+    $.ajax({
+      type: "delete",
       url: API + "/particle/" + particleData.id,
       contentType: 'application/json; charset=utf-8',
       traditional: true,
       async: false,
       data: jsondata,
-      success: function(data) {
+      success: function (data) {
         result = data;
       },
-      error: function(xhr, ajaxOptions, thrownError) {
+      error: function (xhr, ajaxOptions, thrownError) {
         console.log(xhr.status, ajaxOptions, thrownError);
         return false;
       }

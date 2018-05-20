@@ -1,4 +1,4 @@
-$("p#modify").click(function() {
+$("p#modify").click(function () {
   $("div.popup").hide();
   $("div.arrow").hide();
 
@@ -8,33 +8,36 @@ $("p#modify").click(function() {
     $('input#Modifyanonymousbox').prop('checked', true);
   }
   else {
-    $("img.ModifyPicture").attr("src","https://graph.facebook.com/" + particleData.author + "/picture?type=normal");
+    $("img.ModifyPicture").attr("src", "https://graph.facebook.com/" + particleData.author + "/picture?type=normal");
     $('input#Modifyanonymousbox').prop('checked', false);
   }
   $("textarea#ModifyBox").val(particleData.context);
   $("div#ModifyForm").show();
   $("textarea#ModifyBox").focus();
-  fillCircle( particleData.context.length, document.getElementById('Modifycircle'));
+  fillCircle(particleData.context.length, document.getElementById('Modifycircle'));
   canvas = document.getElementById('Modifycircle');
 });
 
-$("form.ModifyBody").submit(function(event) {
+$("form.ModifyBody").submit(function (event) {
   event.preventDefault();
-  if ($("textarea#ModifyBox").val()==="") {
+  if ($("textarea#ModifyBox").val() === "") {
     return false;
   }
   anonymous = $("input#Modifyanonymousbox").is(":checked") ? true : false
-  var jsondata = JSON.stringify({ author_id: fbUserID, 
-    context: $("textarea#ModifyBox").val(), anonymous: anonymous });
+  var jsondata = JSON.stringify({
+    author_id: fbUserID,
+    context: $("textarea#ModifyBox").val(), anonymous: anonymous
+  });
   var result;
 
-  $.ajax({type: "put",
+  $.ajax({
+    type: "put",
     url: API + "/particle/" + particleData.id,
     contentType: 'application/json; charset=utf-8',
     traditional: true,
     async: false,
     data: jsondata,
-    success: function(data) {
+    success: function (data) {
       result = data;
       dataset.particles.pop(particleData);
       dataset.particles.push(result);
@@ -50,7 +53,7 @@ $("form.ModifyBody").submit(function(event) {
 
       $("textarea#ModifyBox").val(data.context);
     },
-    error: function(xhr, ajaxOptions, thrownError) {
+    error: function (xhr, ajaxOptions, thrownError) {
       console.log(xhr.status, ajaxOptions, thrownError);
       return false;
     }
