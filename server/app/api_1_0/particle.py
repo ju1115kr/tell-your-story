@@ -112,11 +112,11 @@ def delete_particle_like(particle_id):
         return not_found('Particle does not exist')
 
     user_id = request.json.get('userID')
-    if int(user_id) not in [ like.user_id for like in particle.likes ]:
+    if int(user_id) not in [like.user_id for like in particle.likes]:
         return bad_request('user does not like this particle')
 
     like = Like.query.filter_by(user_id=user_id) \
-            .filter_by(particle_id=particle_id).first()
+        .filter_by(particle_id=particle_id).first()
 
     db.session.delete(like)
     db.session.commit()
@@ -155,7 +155,7 @@ def post_particle_comment(particle_id):
     db.session.add(comment)
     db.session.commit()
     resp = make_response()
-    resp.headers['Location'] = url_for('api.get_comment', comment_id=comment.id)
+    resp.headers['Location'] = url_for(
+        'api.get_comment', comment_id=comment.id)
     resp.status_code = 201
     return resp
-
