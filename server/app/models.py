@@ -3,6 +3,7 @@ from . import db
 from app.exceptions import ValidationError
 from datetime import datetime
 
+
 class Particle(db.Model):
     __tablename__ = 'particles'
     id = db.Column(db.Integer, primary_key=True)
@@ -14,7 +15,7 @@ class Particle(db.Model):
     y = db.Column(db.Float, nullable=False)
     anonymous = db.Column(db.Boolean)
     created_at = db.Column(db.DateTime, index=True,
-            default=datetime.utcnow)
+                           default=datetime.utcnow)
 
     comments = db.relationship('Comment', backref='particle', lazy='dynamic')
     likes = db.relationship('Like', backref='particle', lazy='dynamic')
@@ -33,19 +34,18 @@ class Particle(db.Model):
 
     def to_json(self):  # json 출력 루틴
         json_particle = {
-                'id': self.id,
-                'author': self.author_id,
-                'googleUserImage': self.googleUserImage,
-                'context': self.context,
-                'created_at': self.created_at,
-                'x': self.x,
-                'y': self.y,
-                'anonymous': self.anonymous,
-                'likes': [ like.user_id for like in self.likes ],
-                'likes_count': self.likes.count(),
-                }
+            'id': self.id,
+            'author': self.author_id,
+            'googleUserImage': self.googleUserImage,
+            'context': self.context,
+            'created_at': self.created_at,
+            'x': self.x,
+            'y': self.y,
+            'anonymous': self.anonymous,
+            'likes': [like.user_id for like in self.likes],
+            'likes_count': self.likes.count(),
+        }
         return json_particle
-
 
     @staticmethod
     def from_json(json_particle):  # json 입력 루틴
@@ -61,14 +61,15 @@ class Particle(db.Model):
         parsed_context = removeEscapeChar(context).lower()
 
         particle = Particle(author_id=author_id, googleUserImage=googleUserImage, context=context,
-                parsed_context=parsed_context, x=x, y=y, anonymous=anonymous)
+                            parsed_context=parsed_context, x=x, y=y, anonymous=anonymous)
         return particle
 
 
 class Like(db.Model):
     __tablename__ = 'likes'
     id = db.Column(db.Integer, primary_key=True)
-    particle_id = db.Column(db.Integer, db.ForeignKey('particles.id'), nullable=False)
+    particle_id = db.Column(db.Integer, db.ForeignKey(
+        'particles.id'), nullable=False)
     user_id = db.Column(db.BigInteger, nullable=False)
 
     def __init__(self, user_id):
@@ -79,7 +80,7 @@ class Like(db.Model):
         user_id = json_like.get('userID')
         if user_id is None or user_id == '':
             raise ValidationError('Like does not have information')
-        like = Like(user_id = user_id)
+        like = Like(user_id=user_id)
         return like
 
 
@@ -91,10 +92,10 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer)
     googleUserImage = db.Column(db.Text)
-    particle_id = db.Column(db.Integer, db.ForeignKey('particles.id'), nullable=False)
+    particle_id = db.Column(db.Integer, db.ForeignKey(
+        'particles.id'), nullable=False)
     parent_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     comments = db.relationship('Comment', lazy='dynamic')
-
 
     def __init__(self, context, parsed_context, particle_id=None):
         self.context = context
@@ -119,15 +120,15 @@ class Comment(db.Model):
 
     def to_json(self):  # json 출력 루틴
         json_comment = {
-                'id': self.id,
-                'author': self.author_id,
-                'googleUserImage': self.googleUserImage,
-                'context': self.context,
-                'created_at': self.created_at,
-                'particle_id': self.particle_id,
-                'parent_id': self.parent_id,
-                'count_reply': self.comments.count()
-                }
+            'id': self.id,
+            'author': self.author_id,
+            'googleUserImage': self.googleUserImage,
+            'context': self.context,
+            'created_at': self.created_at,
+            'particle_id': self.particle_id,
+            'parent_id': self.parent_id,
+            'count_reply': self.comments.count()
+        }
         return json_comment
 
 
@@ -135,6 +136,5 @@ def removeEscapeChar(context):
     import re
     str = re.sub("(<([^>]+)>)", "", context)
     str = str.replace('&nbsp;', "").replace('&lt;', "<").replace('&gt;', ">")\
-            .replace('&amp;', "&").replace('&quot;', '"')
+        .replace('&amp;', "&").replace('&quot;', '"')
     return str
-

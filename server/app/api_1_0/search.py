@@ -13,10 +13,9 @@ def search_particle(context):
 
     context = context.lower()
     result = Particle.query\
-            .filter(Particle.parsed_context.like('%'+context+'%'))\
-            .order_by(Particle.id.desc()).all()
+        .filter(Particle.parsed_context.like('%'+context+'%'))\
+        .order_by(Particle.id.desc()).all()
 
     if result is None:
         return not_found('Result does not exist')
-    return jsonify({'particles':[particle.to_json() for particle in result]})
-
+    return jsonify({'particles': [particle.to_json() for particle in result]})
