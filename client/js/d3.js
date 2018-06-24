@@ -148,16 +148,8 @@ svg.on("click", function () {
       if (redirect_url) { // if posting success
         $("div#PostForm").slideUp();
         $("form").trigger("reset");
-        $.ajax({
-          type: "get",
-          url: redirect_url,
-          contentType: "apllication/json; charset=utf-8",
-          traditional: true,
-          async: false,
-          success: function (data) {
-            newParticle = data;
-          }
-        });
+
+        newParticle = ajaxQuery(type = 'get', apiURL = redirect_url);
         dataset.particles.pop(newData);
         dataset.particles.push(newParticle);
         old_dataset = dataset;
