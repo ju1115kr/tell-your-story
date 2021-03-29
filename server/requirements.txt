@@ -45,7 +45,7 @@ permission==0.4.1
 pyasn1==0.1.9
 pyasn1-modules==0.0.8
 pycparser==2.14
-Pygments==2.0.2
+Pygments==2.7.4
 PyMySQL==0.9.1
 pyOpenSSL==0.15.1
 python-dateutil==2.4.2
