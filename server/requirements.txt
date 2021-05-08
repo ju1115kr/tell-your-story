@@ -3,7 +3,7 @@ autopep8==1.2.1
 cssselect==0.9.1
 dominate==2.1.17
 enum34==1.1.2
-eventlet==0.22.0
+eventlet==0.31.0
 flake8==2.4.1
 Flask==0.10.1
 Flask-Bootstrap==3.3.5.7
